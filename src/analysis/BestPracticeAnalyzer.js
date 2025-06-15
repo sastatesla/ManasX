@@ -1,17 +1,8 @@
 import { ESLint } from 'eslint';
 import fs from 'fs';
 import path from 'path';
-import dotenv from 'dotenv';
-import { OpenAI } from 'openai';
 import { callAiModelOnCode } from '../utils/AiModel.js';
 
-dotenv.config();
-const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
-
-
-/**
- * Recursively collect all JS files from a directory.
- */
 async function getAllJSFiles(dir) {
   let files = [];
   for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
@@ -25,20 +16,9 @@ async function getAllJSFiles(dir) {
   return files;
 }
 
-// async function callAIModelOnCode(code, filename) {
-//   const prompt = `You are a code reviewer. Review the following JavaScript code for best practices, maintainability, and style. Suggest improvements. Respond in JSON: [{line, message, suggestion}].\n\nFile: ${filename}\n\nCode:\n${code}`;
-//   const completion = await openai.chat.completions.create({
-//     messages: [{ role: 'user', content: prompt }],
-//     model: 'gpt-4o',
-//   });
-//   // Parse completion.choices[0].message.content as JSON.
-//   // Handle errors as needed.
-//   return JSON.parse(completion.choices[0].message.content);
-// }
 
 export default class BestPracticesAnalyzer {
   /**
-   * Analyze a file or directory using ESLint and an AI model.
    * @param {string} fileOrDir - Path to a file or directory.
    * @returns {Promise<Array>} List of issues (from ESLint + AI).
    */

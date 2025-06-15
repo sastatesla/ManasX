@@ -22,7 +22,6 @@ function normalizeSuggestion(suggestion) {
 
 export default class PerformanceAgent {
   /**
-   * Analyze file for performance issues, metrics, and log detailed suggestions.
    * @param {string} file - Path to the file to analyze.
    * @returns {Promise<{metrics: Object, issues: Array, suggestions: Array}>}
    */
@@ -71,7 +70,6 @@ export default class PerformanceAgent {
         logger.info('No performance issues found.');
       }
 
-      // Normalize and log suggestions, if any
       if (suggestions && suggestions.length) {
         logger.info('Suggestions:');
         for (const rawSuggestion of suggestions) {

@@ -5,7 +5,6 @@ import { logger } from '../utils/logger.js';
 
 export default class BestPracticesAgent {
   /**
-   * Analyze file for best practice issues and log detailed suggestions.
    * @param {string} file - Path to the file to analyze.
    * @returns {Promise<{issues: Array, suggestions: Array}>}
    */

@@ -44,6 +44,5 @@ export async function ensureApiKey() {
   return key;
 }
 
-// Before importing your CLI logic, ensure the key is available.
 await ensureApiKey();
 import('../src/cli/index.js');

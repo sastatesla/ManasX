@@ -2,7 +2,6 @@ import chalk from 'chalk';
 
 function colorizeArgs(args, colorFn) {
   return args.map(arg => {
-    // Stringify objects for better readability
     if (typeof arg === 'object') {
       return colorFn(JSON.stringify(arg, null, 2));
     }

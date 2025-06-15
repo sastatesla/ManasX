@@ -2,12 +2,11 @@ import dotenv from 'dotenv';
 dotenv.config();
 import fetch from 'node-fetch';
 
-const API_KEY = process.env.GROQ_API_KEY || process.env.GROQ_API_KEY;
+const API_KEY = process.env.GROQ_API_KEY || process.env.AI_MODEL_API_KEY;
 const API_URL = process.env.GROQ_API_URL || "https://api.groq.com/openai/v1/chat/completions";
 const DEFAULT_MODEL = process.env.GROQ_MODEL || "llama3-70b-8192";
 
 /**
- * DRY utility to call Groq/OpenAI-compatible chat API.
  * @param {string} prompt - The system/user prompt for the model.
  * @param {object} [options] - Optional: { model, temperature }
  * @returns {Promise<string>} - The raw content returned by the model.
@@ -36,7 +35,6 @@ async function callGroqChatModel(prompt, options = {}) {
   }
 
   const data = await response.json();
-  // Try both OpenAI-compatible and Groq format
   if (data.choices?.[0]?.message?.content) {
     return data.choices[0].message.content;
   } else if (typeof data.choices?.[0]?.text === "string") {
@@ -47,7 +45,6 @@ async function callGroqChatModel(prompt, options = {}) {
 }
 
 /**
- * Call Groq API with Llama 3 for code review and best practices.
  * @param {string} code - The source code to review.
  * @param {string} filename - The name of the file.
  * @returns {Promise<Array>} Suggestions in the format [{line, message, suggestion}]
@@ -72,7 +69,6 @@ ${code}
 }
 
 /**
- * Call Groq API to analyze code for performance metrics, issues, and suggestions.
  * @param {string} code - The source code to analyze.
  * @param {string} filename - The name of the file.
  * @returns {Promise<{metrics: Object, issues: Array, suggestions: Array}>}
@@ -94,12 +90,13 @@ ${code}
 `
 
   const content = await callGroqChatModel(prompt);
+  console.log("AI Model Response:", content);
 
-  // Extract the first JSON object from the response
   const jsonMatch = content.match(/\{[\s\S]*\}/);
   if (jsonMatch) {
     try {
       const parsed = JSON.parse(jsonMatch[0]);
+      console.log("Parsed AI Model Response:", parsed);
       return parsed;
     } catch (e) {
       console.error("Failed to parse AI response:", e);
