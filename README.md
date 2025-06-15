@@ -26,6 +26,15 @@ npm install -g manasx
 
 ---
 
+## API Key Setup
+
+On first run, ManasX will prompt you to enter your GROQ API key and save it securely in `~/.manasxrc`.
+You only need to do this once.
+
+Get your GROQ API key at: https://console.groq.com/
+
+If you ever need to update the key, just edit `~/.manasxrc` or set the `GROQ_API_KEY` environment variable.
+
 ## Usage 01
 
 Analyze a file for performance issues:

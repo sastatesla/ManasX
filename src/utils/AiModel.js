@@ -2,7 +2,7 @@ import dotenv from 'dotenv';
 dotenv.config();
 import fetch from 'node-fetch';
 
-const API_KEY = process.env.GROQ_API_KEY || process.env.AI_MODEL_API_KEY;
+const API_KEY = process.env.GROQ_API_KEY || process.env.GROQ_API_KEY;
 const API_URL = process.env.GROQ_API_URL || "https://api.groq.com/openai/v1/chat/completions";
 const DEFAULT_MODEL = process.env.GROQ_MODEL || "llama3-70b-8192";
 
