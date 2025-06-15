@@ -3,6 +3,7 @@
   "version": "1.0.3",
   "main": "index.js",
   "type": "module",
+  "description": "An AI-powered CLI tool for analyzing JavaScript/TypeScript code performance and providing actionable suggestions.",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "manasx": "node src/cli/index.js"
@@ -10,10 +11,24 @@
   "bin": {
     "manasx": "bin/agentic.js"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": "",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sastatesla/manasx.git"
+  },
+ 
+  "homepage": "https://github.com/sastatesla/manasx#readme",
+  "keywords": [
+    "cli",
+    "performance",
+    "analysis",
+    "javascript",
+    "typescript",
+    "ai",
+    "code"
+  ],
+
+  "author": "Amaan Ansari",
+  "license": "MIT",
   "dependencies": {
     "chalk": "^5.4.1",
     "commander": "^14.0.0",
