@@ -139,6 +139,3 @@ MIT
 
 ---
 
-## Authors
-
-Created by [Your Name] and contributors.
