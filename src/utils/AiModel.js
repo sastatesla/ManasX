@@ -91,7 +91,7 @@ Code to analyze:
 ---
 ${code}
 ---
-`;
+`
 
   const content = await callGroqChatModel(prompt);
 
