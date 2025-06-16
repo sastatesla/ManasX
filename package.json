@@ -13,10 +13,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/sastatesla/manasx.git"
+    "url": "https://github.com/sastatesla/ManasX-AgenticAI"
   },
  
-  "homepage": "https://github.com/sastatesla/manasx#readme",
   "keywords": [
     "cli",
     "performance",

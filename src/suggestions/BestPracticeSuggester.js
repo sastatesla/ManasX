@@ -1,9 +1,6 @@
-/**
- * BestPracticesSuggester generates suggestions for best practice issues.
- */
+
 export default class BestPracticesSuggester {
   /**
-   * Generate suggestions for best practice issues.
    * @param {Array} issues - Array of issue objects.
    * @returns {Array} Array of suggestion objects.
    */

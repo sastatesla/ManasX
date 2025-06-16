@@ -2,7 +2,6 @@ import fs from 'fs/promises';
 import PerformanceAnalyzer from '../analysis/PerformanceAnalyzer.js';
 import { logger } from '../utils/logger.js';
 
-// Utility to normalize various possible field names to codeSnippet for issues/suggestions
 function normalizeIssue(issue) {
   if (!issue || typeof issue !== "object") return issue;
   let codeSnippet = issue.codeSnippet || issue['code snippet'] || issue.snippet || '';
@@ -41,7 +40,6 @@ export default class PerformanceAgent {
 
       const { metrics = {}, issues = [], suggestions = [] } = await PerformanceAnalyzer.analyze(file);
 
-      // Log metrics, if any
       if (metrics && Object.keys(metrics).length > 0) {
         logger.info('Performance metrics:');
         for (const [key, value] of Object.entries(metrics)) {
@@ -51,7 +49,6 @@ export default class PerformanceAgent {
         logger.info('No performance metrics found.');
       }
 
-      // Normalize and log issues, if any
       if (issues && issues.length) {
         logger.info(`Performance issues found (${issues.length}):`);
         for (const rawIssue of issues) {
