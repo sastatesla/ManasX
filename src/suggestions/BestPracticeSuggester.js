@@ -1,9 +1,5 @@
 
 export default class BestPracticesSuggester {
-  /**
-   * @param {Array} issues - Array of issue objects.
-   * @returns {Array} Array of suggestion objects.
-   */
   static suggest(issues) {
     return issues.map(issue => {
       let suggestion = '';

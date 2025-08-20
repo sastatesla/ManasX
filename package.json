@@ -1,16 +1,29 @@
 {
   "name": "manasx",
-  "version": "1.1.3",
-  "main": "index.js",
+  "version": "2.0.0",
+  "main": "src/index.js",
   "type": "module",
-  "description": "An AI-powered CLI tool for analyzing JavaScript/TypeScript code performance and providing actionable suggestions.",
+  "description": "Enterprise code governance and AI audit platform. Detects AI drift, enforces organizational standards, and audits AI-generated code with continuous monitoring.",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "manasx": "node src/cli/index.js"
+    "test": "node run-tests.js",
+    "test:setup": "node test/test-setup.js",
+    "manasx": "node src/cli/index.js",
+    "watch": "node src/cli/index.js watch",
+    "watch-all": "node src/cli/index.js watch-all",
+    "watch-src": "node src/cli/index.js watch src/",
+    "governance": "node src/cli/index.js watch-all",
+    "prepublishOnly": "npm test",
+    "postinstall": "echo '\n🚀 ManasX Enterprise Code Governance installed successfully!\n📖 Get started: manasx --help\n🔧 Setup: manasx init-rules\n👀 Monitor: manasx watch-all\n'"
   },
   "bin": {
     "manasx": "bin/agentic.js"
   },
+  "files": [
+    "bin/",
+    "src/",
+    "manasx-rules.json",
+    "README.md"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/sastatesla/ManasX-AgenticAI"
@@ -18,15 +31,34 @@
  
   "keywords": [
     "cli",
-    "performance",
-    "analysis",
+    "enterprise",
+    "governance",
+    "ai-audit",
+    "code-standards",
+    "pattern-detection",
+    "drift-detection",
+    "organizational-rules",
+    "ai-generated-code",
+    "compliance",
     "javascript",
     "typescript",
-    "ai",
-    "code"
+    "continuous-monitoring",
+    "mcp-server",
+    "real-time",
+    "security-audit"
   ],
-
-  "author": "Amaan Ansari",
+  "homepage": "https://github.com/sastatesla/ManasX-AgenticAI#readme",
+  "bugs": {
+    "url": "https://github.com/sastatesla/ManasX-AgenticAI/issues"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
+  },
+  "author": {
+    "name": "Amaan Ansari",
+    "url": "https://github.com/sastatesla"
+  },
   "license": "MIT",
   "dependencies": {
     "chalk": "^5.4.1",

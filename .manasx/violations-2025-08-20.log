@@ -1,0 +1,1393 @@
+
+====================================================================================================
+VIOLATIONS REPORT - 2025-08-20T16:48:07.364Z
+FILE: test-enhanced-ui.js
+TOTAL VIOLATIONS: 3
+====================================================================================================
+
+🔥 CRITICAL SEVERITY (1 issues):
+--------------------------------------------------
+1. eval() usage is prohibited for security reasons
+   📍 Line 1, Column 1
+   📋 Rule: security/no-eval (security)
+
+
+🚨 HIGH SEVERITY (1 issues):
+--------------------------------------------------
+1. Synchronous readFileSync detected
+   📍 Line 1, Column 1
+   📋 Rule: performance/no-sync-fs (performance)
+
+
+⚠️ MEDIUM SEVERITY (1 issues):
+--------------------------------------------------
+1. Use companyFetch instead of raw fetch
+   📍 Line 1, Column 1
+   📋 Rule: security/require-company-fetch (security)
+
+====================================================================================================
+
+====================================================================================================
+VIOLATIONS REPORT - 2025-08-20T16:52:39.434Z
+FILE: utils/logger.js
+TOTAL VIOLATIONS: 1
+====================================================================================================
+
+💡 LOW SEVERITY (1 issues):
+--------------------------------------------------
+1. console.log statements should be removed
+   📍 Line 1, Column 1
+   📋 Rule: performance/no-console-log (performance)
+
+====================================================================================================
+
+====================================================================================================
+VIOLATIONS REPORT - 2025-08-20T16:52:52.106Z
+FILE: monitor/ContinuousMonitor.js
+TOTAL VIOLATIONS: 4
+====================================================================================================
+
+🚨 HIGH SEVERITY (2 issues):
+--------------------------------------------------
+1. Synchronous readFileSync detected
+   📍 Line 1, Column 1
+   📋 Rule: performance/no-sync-fs (performance)
+
+2. Synchronous statSync detected
+   📍 Line 1, Column 1
+   📋 Rule: performance/no-sync-fs (performance)
+
+
+💡 LOW SEVERITY (2 issues):
+--------------------------------------------------
+1. console.log statements should be removed
+   📍 Line 1, Column 1
+   📋 Rule: performance/no-console-log (performance)
+
+2. Imports should be ordered: external libraries first, then internal
+   📍 Line 1, Column 1
+   📋 Rule: imports/order (imports)
+
+====================================================================================================
+
+====================================================================================================
+VIOLATIONS REPORT - 2025-08-20T16:53:13.001Z
+FILE: monitor/ContinuousMonitor.js
+TOTAL VIOLATIONS: 3
+====================================================================================================
+
+🚨 HIGH SEVERITY (2 issues):
+--------------------------------------------------
+1. Synchronous readFileSync detected
+   📍 Line 1, Column 1
+   📋 Rule: performance/no-sync-fs (performance)
+
+2. Synchronous statSync detected
+   📍 Line 1, Column 1
+   📋 Rule: performance/no-sync-fs (performance)
+
+
+💡 LOW SEVERITY (1 issues):
+--------------------------------------------------
+1. Imports should be ordered: external libraries first, then internal
+   📍 Line 1, Column 1
+   📋 Rule: imports/order (imports)
+
+====================================================================================================
+
+====================================================================================================
+VIOLATIONS REPORT - 2025-08-20T16:53:25.904Z
+FILE: monitor/ContinuousMonitor.js
+TOTAL VIOLATIONS: 3
+====================================================================================================
+
+🚨 HIGH SEVERITY (2 issues):
+--------------------------------------------------
+1. Synchronous readFileSync detected
+   📍 Line 1, Column 1
+   📋 Rule: performance/no-sync-fs (performance)
+
+2. Synchronous statSync detected
+   📍 Line 1, Column 1
+   📋 Rule: performance/no-sync-fs (performance)
+
+
+💡 LOW SEVERITY (1 issues):
+--------------------------------------------------
+1. Imports should be ordered: external libraries first, then internal
+   📍 Line 1, Column 1
+   📋 Rule: imports/order (imports)
+
+====================================================================================================
+
+====================================================================================================
+VIOLATIONS REPORT - 2025-08-20T16:54:02.254Z
+FILE: test-clean-cli.js
+TOTAL VIOLATIONS: 1
+====================================================================================================
+
+🔥 CRITICAL SEVERITY (1 issues):
+--------------------------------------------------
+1. eval() usage is prohibited for security reasons
+   📍 Line 1, Column 1
+   📋 Rule: security/no-eval (security)
+
+====================================================================================================
+
+====================================================================================================
+VIOLATIONS REPORT - 2025-08-20T16:56:29.493Z
+FILE: test-multiple-violations.js
+TOTAL VIOLATIONS: 3
+====================================================================================================
+
+🔥 CRITICAL SEVERITY (1 issues):
+--------------------------------------------------
+1. eval() usage is prohibited for security reasons
+   📍 Line 1, Column 1
+   📋 Rule: security/no-eval (security)
+
+
+🚨 HIGH SEVERITY (1 issues):
+--------------------------------------------------
+1. Synchronous readFileSync detected
+   📍 Line 1, Column 1
+   📋 Rule: performance/no-sync-fs (performance)
+
+
+⚠️ MEDIUM SEVERITY (1 issues):
+--------------------------------------------------
+1. Use companyFetch instead of raw fetch
+   📍 Line 1, Column 1
+   📋 Rule: security/require-company-fetch (security)
+
+====================================================================================================
+
+====================================================================================================
+VIOLATIONS REPORT - 2025-08-20T17:08:09.001Z
+FILE: index.js
+TOTAL VIOLATIONS: 3
+====================================================================================================
+
+🚨 HIGH SEVERITY (1 issues):
+--------------------------------------------------
+1. Synchronous readFileSync detected
+   📍 Line 1, Column 1
+   📋 Rule: performance/no-sync-fs (performance)
+
+
+💡 LOW SEVERITY (2 issues):
+--------------------------------------------------
+1. console.log statements should be removed
+   📍 Line 1, Column 1
+   📋 Rule: performance/no-console-log (performance)
+
+2. Imports should be ordered: external libraries first, then internal
+   📍 Line 1, Column 1
+   📋 Rule: imports/order (imports)
+
+====================================================================================================
+
+====================================================================================================
+VIOLATIONS REPORT - 2025-08-20T17:09:16.866Z
+FILE: integrations/MCPServer.js
+TOTAL VIOLATIONS: 1
+====================================================================================================
+
+🚨 HIGH SEVERITY (1 issues):
+--------------------------------------------------
+1. Synchronous readFileSync detected
+   📍 Line 1, Column 1
+   📋 Rule: performance/no-sync-fs (performance)
+
+====================================================================================================
+
+====================================================================================================
+VIOLATIONS REPORT - 2025-08-20T17:09:40.670Z
+FILE: integrations/MCPServer.js
+TOTAL VIOLATIONS: 2
+====================================================================================================
+
+🚨 HIGH SEVERITY (1 issues):
+--------------------------------------------------
+1. Synchronous readFileSync detected
+   📍 Line 1, Column 1
+   📋 Rule: performance/no-sync-fs (performance)
+
+
+💡 LOW SEVERITY (1 issues):
+--------------------------------------------------
+1. Imports should be ordered: external libraries first, then internal
+   📍 Line 1, Column 1
+   📋 Rule: imports/order (imports)
+
+====================================================================================================
+
+====================================================================================================
+VIOLATIONS REPORT - 2025-08-20T17:11:12.255Z
+FILE: integrations/MCPServer.js
+TOTAL VIOLATIONS: 2
+====================================================================================================
+
+🚨 HIGH SEVERITY (1 issues):
+--------------------------------------------------
+1. Synchronous readFileSync detected
+   📍 Line 1, Column 1
+   📋 Rule: performance/no-sync-fs (performance)
+
+
+💡 LOW SEVERITY (1 issues):
+--------------------------------------------------
+1. Imports should be ordered: external libraries first, then internal
+   📍 Line 1, Column 1
+   📋 Rule: imports/order (imports)
+
+====================================================================================================
+
+====================================================================================================
+VIOLATIONS REPORT - 2025-08-20T17:11:20.043Z
+FILE: integrations/MCPServer.js
+TOTAL VIOLATIONS: 2
+====================================================================================================
+
+🚨 HIGH SEVERITY (1 issues):
+--------------------------------------------------
+1. Synchronous readFileSync detected
+   📍 Line 1, Column 1
+   📋 Rule: performance/no-sync-fs (performance)
+
+
+💡 LOW SEVERITY (1 issues):
+--------------------------------------------------
+1. Imports should be ordered: external libraries first, then internal
+   📍 Line 1, Column 1
+   📋 Rule: imports/order (imports)
+
+====================================================================================================
+
+====================================================================================================
+VIOLATIONS REPORT - 2025-08-20T17:13:50.516Z
+FILE: integrations/MCPServer.js
+TOTAL VIOLATIONS: 2
+====================================================================================================
+
+🚨 HIGH SEVERITY (1 issues):
+--------------------------------------------------
+1. Synchronous readFileSync detected
+   📍 Line 1, Column 1
+   📋 Rule: performance/no-sync-fs (performance)
+
+
+💡 LOW SEVERITY (1 issues):
+--------------------------------------------------
+1. Imports should be ordered: external libraries first, then internal
+   📍 Line 1, Column 1
+   📋 Rule: imports/order (imports)
+
+====================================================================================================
+
+====================================================================================================
+VIOLATIONS REPORT - 2025-08-20T17:14:00.256Z
+FILE: integrations/MCPServer.js
+TOTAL VIOLATIONS: 2
+====================================================================================================
+
+🚨 HIGH SEVERITY (1 issues):
+--------------------------------------------------
+1. Synchronous readFileSync detected
+   📍 Line 1, Column 1
+   📋 Rule: performance/no-sync-fs (performance)
+
+
+💡 LOW SEVERITY (1 issues):
+--------------------------------------------------
+1. Imports should be ordered: external libraries first, then internal
+   📍 Line 1, Column 1
+   📋 Rule: imports/order (imports)
+
+====================================================================================================
+
+====================================================================================================
+VIOLATIONS REPORT - 2025-08-20T17:14:20.159Z
+FILE: integrations/MCPServer.js
+TOTAL VIOLATIONS: 2
+====================================================================================================
+
+🚨 HIGH SEVERITY (1 issues):
+--------------------------------------------------
+1. Synchronous readFileSync detected
+   📍 Line 1, Column 1
+   📋 Rule: performance/no-sync-fs (performance)
+
+
+💡 LOW SEVERITY (1 issues):
+--------------------------------------------------
+1. Imports should be ordered: external libraries first, then internal
+   📍 Line 1, Column 1
+   📋 Rule: imports/order (imports)
+
+====================================================================================================
+
+====================================================================================================
+VIOLATIONS REPORT - 2025-08-20T17:14:45.066Z
+FILE: integrations/MCPServer.js
+TOTAL VIOLATIONS: 2
+====================================================================================================
+
+🚨 HIGH SEVERITY (1 issues):
+--------------------------------------------------
+1. Synchronous readFileSync detected
+   📍 Line 1, Column 1
+   📋 Rule: performance/no-sync-fs (performance)
+
+
+💡 LOW SEVERITY (1 issues):
+--------------------------------------------------
+1. Imports should be ordered: external libraries first, then internal
+   📍 Line 1, Column 1
+   📋 Rule: imports/order (imports)
+
+====================================================================================================
+
+====================================================================================================
+VIOLATIONS REPORT - 2025-08-20T17:18:08.150Z
+FILE: utils/logger.js
+TOTAL VIOLATIONS: 1
+====================================================================================================
+
+💡 LOW SEVERITY (1 issues):
+--------------------------------------------------
+1. console.log statements should be removed
+   📍 Line 1, Column 1
+   📋 Rule: performance/no-console-log (performance)
+
+====================================================================================================
+
+====================================================================================================
+VIOLATIONS REPORT - 2025-08-20T17:18:24.738Z
+FILE: monitor/ContinuousMonitor.js
+TOTAL VIOLATIONS: 3
+====================================================================================================
+
+🚨 HIGH SEVERITY (2 issues):
+--------------------------------------------------
+1. Synchronous readFileSync detected
+   📍 Line 1, Column 1
+   📋 Rule: performance/no-sync-fs (performance)
+
+2. Synchronous statSync detected
+   📍 Line 1, Column 1
+   📋 Rule: performance/no-sync-fs (performance)
+
+
+💡 LOW SEVERITY (1 issues):
+--------------------------------------------------
+1. Imports should be ordered: external libraries first, then internal
+   📍 Line 1, Column 1
+   📋 Rule: imports/order (imports)
+
+====================================================================================================
+
+====================================================================================================
+VIOLATIONS REPORT - 2025-08-20T17:23:45.418Z
+FILE: test-violations.js
+TOTAL VIOLATIONS: 4
+====================================================================================================
+
+🔥 CRITICAL SEVERITY (1 issues):
+--------------------------------------------------
+1. eval() usage is prohibited for security reasons
+   📍 Line 1, Column 1
+   📋 Rule: security/no-eval (security)
+
+
+🚨 HIGH SEVERITY (2 issues):
+--------------------------------------------------
+1. Direct HTML manipulation detected
+   📍 Line 1, Column 1
+   📋 Rule: security/no-dangerous-html (security)
+
+2. Synchronous readFileSync detected
+   📍 Line 1, Column 1
+   📋 Rule: performance/no-sync-fs (performance)
+
+
+⚠️ MEDIUM SEVERITY (1 issues):
+--------------------------------------------------
+1. Use companyFetch instead of raw fetch
+   📍 Line 1, Column 1
+   📋 Rule: security/require-company-fetch (security)
+
+====================================================================================================
+
+====================================================================================================
+VIOLATIONS REPORT - 2025-08-20T17:24:51.472Z
+FILE: index.js
+TOTAL VIOLATIONS: 3
+====================================================================================================
+
+🚨 HIGH SEVERITY (1 issues):
+--------------------------------------------------
+1. Synchronous readFileSync detected
+   📍 Line 1, Column 1
+   📋 Rule: performance/no-sync-fs (performance)
+
+
+💡 LOW SEVERITY (2 issues):
+--------------------------------------------------
+1. console.log statements should be removed
+   📍 Line 1, Column 1
+   📋 Rule: performance/no-console-log (performance)
+
+2. Imports should be ordered: external libraries first, then internal
+   📍 Line 1, Column 1
+   📋 Rule: imports/order (imports)
+
+====================================================================================================
+
+====================================================================================================
+VIOLATIONS REPORT - 2025-08-20T17:25:06.170Z
+FILE: test-violations.js
+TOTAL VIOLATIONS: 4
+====================================================================================================
+
+🔥 CRITICAL SEVERITY (1 issues):
+--------------------------------------------------
+1. eval() usage is prohibited for security reasons
+   📍 Line 1, Column 1
+   📋 Rule: security/no-eval (security)
+
+
+🚨 HIGH SEVERITY (2 issues):
+--------------------------------------------------
+1. Direct HTML manipulation detected
+   📍 Line 1, Column 1
+   📋 Rule: security/no-dangerous-html (security)
+
+2. Synchronous readFileSync detected
+   📍 Line 1, Column 1
+   📋 Rule: performance/no-sync-fs (performance)
+
+
+⚠️ MEDIUM SEVERITY (1 issues):
+--------------------------------------------------
+1. Use companyFetch instead of raw fetch
+   📍 Line 1, Column 1
+   📋 Rule: security/require-company-fetch (security)
+
+====================================================================================================
+
+====================================================================================================
+VIOLATIONS REPORT - 2025-08-20T17:26:13.137Z
+FILE: utils/logger.js
+TOTAL VIOLATIONS: 1
+====================================================================================================
+
+💡 LOW SEVERITY (1 issues):
+--------------------------------------------------
+1. console.log statements should be removed
+   📍 Line 1, Column 1
+   📋 Rule: performance/no-console-log (performance)
+
+====================================================================================================
+
+====================================================================================================
+VIOLATIONS REPORT - 2025-08-20T17:26:21.431Z
+FILE: test-violations.js
+TOTAL VIOLATIONS: 4
+====================================================================================================
+
+🔥 CRITICAL SEVERITY (1 issues):
+--------------------------------------------------
+1. eval() usage is prohibited for security reasons
+   📍 Line 1, Column 1
+   📋 Rule: security/no-eval (security)
+
+
+🚨 HIGH SEVERITY (2 issues):
+--------------------------------------------------
+1. Direct HTML manipulation detected
+   📍 Line 1, Column 1
+   📋 Rule: security/no-dangerous-html (security)
+
+2. Synchronous readFileSync detected
+   📍 Line 1, Column 1
+   📋 Rule: performance/no-sync-fs (performance)
+
+
+⚠️ MEDIUM SEVERITY (1 issues):
+--------------------------------------------------
+1. Use companyFetch instead of raw fetch
+   📍 Line 1, Column 1
+   📋 Rule: security/require-company-fetch (security)
+
+====================================================================================================
+
+====================================================================================================
+VIOLATIONS REPORT - 2025-08-20T17:27:46.330Z
+FILE: test-violations.js
+TOTAL VIOLATIONS: 5
+====================================================================================================
+
+🔥 CRITICAL SEVERITY (1 issues):
+--------------------------------------------------
+1. eval() usage is prohibited for security reasons
+   📍 Line 1, Column 1
+   📋 Rule: security/no-eval (security)
+
+
+🚨 HIGH SEVERITY (3 issues):
+--------------------------------------------------
+1. Direct HTML manipulation detected
+   📍 Line 1, Column 1
+   📋 Rule: security/no-dangerous-html (security)
+
+2. Synchronous readFileSync detected
+   📍 Line 1, Column 1
+   📋 Rule: performance/no-sync-fs (performance)
+
+3. Synchronous statSync detected
+   📍 Line 1, Column 1
+   📋 Rule: performance/no-sync-fs (performance)
+
+
+⚠️ MEDIUM SEVERITY (1 issues):
+--------------------------------------------------
+1. Use companyFetch instead of raw fetch
+   📍 Line 1, Column 1
+   📋 Rule: security/require-company-fetch (security)
+
+====================================================================================================
+
+====================================================================================================
+VIOLATIONS REPORT - 2025-08-20T17:30:00.474Z
+FILE: utils/logger.js
+TOTAL VIOLATIONS: 1
+====================================================================================================
+
+💡 LOW SEVERITY (1 issues):
+--------------------------------------------------
+1. console.log statements should be removed
+   📍 Line 1, Column 1
+   📋 Rule: performance/no-console-log (performance)
+
+====================================================================================================
+
+====================================================================================================
+VIOLATIONS REPORT - 2025-08-20T17:30:15.633Z
+FILE: test-violations.js
+TOTAL VIOLATIONS: 5
+====================================================================================================
+
+🔥 CRITICAL SEVERITY (1 issues):
+--------------------------------------------------
+1. eval() usage is prohibited for security reasons
+   📍 Line 1, Column 1
+   📋 Rule: security/no-eval (security)
+
+
+🚨 HIGH SEVERITY (3 issues):
+--------------------------------------------------
+1. Direct HTML manipulation detected
+   📍 Line 1, Column 1
+   📋 Rule: security/no-dangerous-html (security)
+
+2. Synchronous readFileSync detected
+   📍 Line 1, Column 1
+   📋 Rule: performance/no-sync-fs (performance)
+
+3. Synchronous statSync detected
+   📍 Line 1, Column 1
+   📋 Rule: performance/no-sync-fs (performance)
+
+
+⚠️ MEDIUM SEVERITY (1 issues):
+--------------------------------------------------
+1. Use companyFetch instead of raw fetch
+   📍 Line 1, Column 1
+   📋 Rule: security/require-company-fetch (security)
+
+====================================================================================================
+
+====================================================================================================
+VIOLATIONS REPORT - 2025-08-20T17:31:40.009Z
+FILE: monitor/ContinuousMonitor.js
+TOTAL VIOLATIONS: 3
+====================================================================================================
+
+🚨 HIGH SEVERITY (2 issues):
+--------------------------------------------------
+1. Synchronous readFileSync detected
+   📍 Line 1, Column 1
+   📋 Rule: performance/no-sync-fs (performance)
+
+2. Synchronous statSync detected
+   📍 Line 1, Column 1
+   📋 Rule: performance/no-sync-fs (performance)
+
+
+💡 LOW SEVERITY (1 issues):
+--------------------------------------------------
+1. Imports should be ordered: external libraries first, then internal
+   📍 Line 1, Column 1
+   📋 Rule: imports/order (imports)
+
+====================================================================================================
+
+====================================================================================================
+VIOLATIONS REPORT - 2025-08-20T17:31:49.212Z
+FILE: test-violations.js
+TOTAL VIOLATIONS: 5
+====================================================================================================
+
+🔥 CRITICAL SEVERITY (1 issues):
+--------------------------------------------------
+1. eval() usage is prohibited for security reasons
+   📍 Line 1, Column 1
+   📋 Rule: security/no-eval (security)
+
+
+🚨 HIGH SEVERITY (3 issues):
+--------------------------------------------------
+1. Direct HTML manipulation detected
+   📍 Line 1, Column 1
+   📋 Rule: security/no-dangerous-html (security)
+
+2. Synchronous readFileSync detected
+   📍 Line 1, Column 1
+   📋 Rule: performance/no-sync-fs (performance)
+
+3. Synchronous statSync detected
+   📍 Line 1, Column 1
+   📋 Rule: performance/no-sync-fs (performance)
+
+
+⚠️ MEDIUM SEVERITY (1 issues):
+--------------------------------------------------
+1. Use companyFetch instead of raw fetch
+   📍 Line 1, Column 1
+   📋 Rule: security/require-company-fetch (security)
+
+====================================================================================================
+
+====================================================================================================
+VIOLATIONS REPORT - 2025-08-20T17:34:43.556Z
+FILE: utils/logger.js
+TOTAL VIOLATIONS: 1
+====================================================================================================
+
+💡 LOW SEVERITY (1 issues):
+--------------------------------------------------
+1. console.log statements should be removed
+   📍 Line 1, Column 1
+   📋 Rule: performance/no-console-log (performance)
+
+====================================================================================================
+
+====================================================================================================
+VIOLATIONS REPORT - 2025-08-20T17:34:56.428Z
+FILE: test-violations.js
+TOTAL VIOLATIONS: 5
+====================================================================================================
+
+🔥 CRITICAL SEVERITY (1 issues):
+--------------------------------------------------
+1. eval() usage is prohibited for security reasons
+   📍 Line 1, Column 1
+   📋 Rule: security/no-eval (security)
+
+
+🚨 HIGH SEVERITY (3 issues):
+--------------------------------------------------
+1. Direct HTML manipulation detected
+   📍 Line 1, Column 1
+   📋 Rule: security/no-dangerous-html (security)
+
+2. Synchronous readFileSync detected
+   📍 Line 1, Column 1
+   📋 Rule: performance/no-sync-fs (performance)
+
+3. Synchronous statSync detected
+   📍 Line 1, Column 1
+   📋 Rule: performance/no-sync-fs (performance)
+
+
+⚠️ MEDIUM SEVERITY (1 issues):
+--------------------------------------------------
+1. Use companyFetch instead of raw fetch
+   📍 Line 1, Column 1
+   📋 Rule: security/require-company-fetch (security)
+
+====================================================================================================
+
+====================================================================================================
+VIOLATIONS REPORT - 2025-08-20T17:36:56.645Z
+FILE: utils/logger.js
+TOTAL VIOLATIONS: 1
+====================================================================================================
+
+💡 LOW SEVERITY (1 issues):
+--------------------------------------------------
+1. console.log statements should be removed
+   📍 Line 1, Column 1
+   📋 Rule: performance/no-console-log (performance)
+
+====================================================================================================
+
+====================================================================================================
+VIOLATIONS REPORT - 2025-08-20T17:48:36.981Z
+FILE: utils/logger.js
+TOTAL VIOLATIONS: 1
+====================================================================================================
+
+💡 LOW SEVERITY (1 issues):
+--------------------------------------------------
+1. console.log statements should be removed
+   📍 Line 1, Column 1
+   📋 Rule: performance/no-console-log (performance)
+
+====================================================================================================
+
+====================================================================================================
+VIOLATIONS REPORT - 2025-08-20T17:48:43.926Z
+FILE: utils/logger.js
+TOTAL VIOLATIONS: 1
+====================================================================================================
+
+💡 LOW SEVERITY (1 issues):
+--------------------------------------------------
+1. console.log statements should be removed
+   📍 Line 1, Column 1
+   📋 Rule: performance/no-console-log (performance)
+
+====================================================================================================
+
+====================================================================================================
+VIOLATIONS REPORT - 2025-08-20T17:49:11.473Z
+FILE: index.js
+TOTAL VIOLATIONS: 3
+====================================================================================================
+
+🚨 HIGH SEVERITY (1 issues):
+--------------------------------------------------
+1. Synchronous readFileSync detected
+   📍 Line 1, Column 1
+   📋 Rule: performance/no-sync-fs (performance)
+
+
+💡 LOW SEVERITY (2 issues):
+--------------------------------------------------
+1. console.log statements should be removed
+   📍 Line 1, Column 1
+   📋 Rule: performance/no-console-log (performance)
+
+2. Imports should be ordered: external libraries first, then internal
+   📍 Line 1, Column 1
+   📋 Rule: imports/order (imports)
+
+====================================================================================================
+
+====================================================================================================
+VIOLATIONS REPORT - 2025-08-20T17:49:25.307Z
+FILE: monitor/ContinuousMonitor.js
+TOTAL VIOLATIONS: 3
+====================================================================================================
+
+🚨 HIGH SEVERITY (2 issues):
+--------------------------------------------------
+1. Synchronous readFileSync detected
+   📍 Line 1, Column 1
+   📋 Rule: performance/no-sync-fs (performance)
+
+2. Synchronous statSync detected
+   📍 Line 1, Column 1
+   📋 Rule: performance/no-sync-fs (performance)
+
+
+💡 LOW SEVERITY (1 issues):
+--------------------------------------------------
+1. Imports should be ordered: external libraries first, then internal
+   📍 Line 1, Column 1
+   📋 Rule: imports/order (imports)
+
+====================================================================================================
+
+====================================================================================================
+VIOLATIONS REPORT - 2025-08-20T17:49:34.850Z
+FILE: ai-audit/AIAuditor.js
+TOTAL VIOLATIONS: 1
+====================================================================================================
+
+🚨 HIGH SEVERITY (1 issues):
+--------------------------------------------------
+1. Direct HTML manipulation detected
+   📍 Line 1, Column 1
+   📋 Rule: security/no-dangerous-html (security)
+
+====================================================================================================
+
+====================================================================================================
+VIOLATIONS REPORT - 2025-08-20T17:49:34.862Z
+FILE: index.js
+TOTAL VIOLATIONS: 3
+====================================================================================================
+
+🚨 HIGH SEVERITY (1 issues):
+--------------------------------------------------
+1. Synchronous readFileSync detected
+   📍 Line 1, Column 1
+   📋 Rule: performance/no-sync-fs (performance)
+
+
+💡 LOW SEVERITY (2 issues):
+--------------------------------------------------
+1. console.log statements should be removed
+   📍 Line 1, Column 1
+   📋 Rule: performance/no-console-log (performance)
+
+2. Imports should be ordered: external libraries first, then internal
+   📍 Line 1, Column 1
+   📋 Rule: imports/order (imports)
+
+====================================================================================================
+
+====================================================================================================
+VIOLATIONS REPORT - 2025-08-20T17:49:34.870Z
+FILE: governance/RuleEngine.js
+TOTAL VIOLATIONS: 13
+====================================================================================================
+
+🔥 CRITICAL SEVERITY (1 issues):
+--------------------------------------------------
+1. eval() usage is prohibited for security reasons
+   📍 Line 1, Column 1
+   📋 Rule: security/no-eval (security)
+
+
+🚨 HIGH SEVERITY (9 issues):
+--------------------------------------------------
+1. Direct HTML manipulation detected
+   📍 Line 1, Column 1
+   📋 Rule: security/no-dangerous-html (security)
+
+2. Synchronous readFileSync detected
+   📍 Line 1, Column 1
+   📋 Rule: performance/no-sync-fs (performance)
+
+3. Synchronous writeFileSync detected
+   📍 Line 1, Column 1
+   📋 Rule: performance/no-sync-fs (performance)
+
+4. Synchronous statSync detected
+   📍 Line 1, Column 1
+   📋 Rule: performance/no-sync-fs (performance)
+
+5. Direct database access outside repository layer
+   📍 Line 1, Column 1
+   📋 Rule: architecture/no-direct-db (architecture)
+
+6. Direct database access outside repository layer
+   📍 Line 1, Column 1
+   📋 Rule: architecture/no-direct-db (architecture)
+
+7. Direct database access outside repository layer
+   📍 Line 1, Column 1
+   📋 Rule: architecture/no-direct-db (architecture)
+
+8. Direct database access outside repository layer
+   📍 Line 1, Column 1
+   📋 Rule: architecture/no-direct-db (architecture)
+
+9. Direct database access outside repository layer
+   📍 Line 1, Column 1
+   📋 Rule: architecture/no-direct-db (architecture)
+
+
+⚠️ MEDIUM SEVERITY (1 issues):
+--------------------------------------------------
+1. Deeply nested relative imports detected
+   📍 Line 1, Column 1
+   📋 Rule: imports/no-relative-parent (imports)
+
+
+💡 LOW SEVERITY (2 issues):
+--------------------------------------------------
+1. console.log statements should be removed
+   📍 Line 1, Column 1
+   📋 Rule: performance/no-console-log (performance)
+
+2. Imports should be ordered: external libraries first, then internal
+   📍 Line 1, Column 1
+   📋 Rule: imports/order (imports)
+
+====================================================================================================
+
+====================================================================================================
+VIOLATIONS REPORT - 2025-08-20T17:49:34.875Z
+FILE: integrations/MCPServer.js
+TOTAL VIOLATIONS: 2
+====================================================================================================
+
+🚨 HIGH SEVERITY (1 issues):
+--------------------------------------------------
+1. Synchronous readFileSync detected
+   📍 Line 1, Column 1
+   📋 Rule: performance/no-sync-fs (performance)
+
+
+💡 LOW SEVERITY (1 issues):
+--------------------------------------------------
+1. Imports should be ordered: external libraries first, then internal
+   📍 Line 1, Column 1
+   📋 Rule: imports/order (imports)
+
+====================================================================================================
+
+====================================================================================================
+VIOLATIONS REPORT - 2025-08-20T17:49:34.879Z
+FILE: monitor/ContinuousMonitor.js
+TOTAL VIOLATIONS: 3
+====================================================================================================
+
+🚨 HIGH SEVERITY (2 issues):
+--------------------------------------------------
+1. Synchronous readFileSync detected
+   📍 Line 1, Column 1
+   📋 Rule: performance/no-sync-fs (performance)
+
+2. Synchronous statSync detected
+   📍 Line 1, Column 1
+   📋 Rule: performance/no-sync-fs (performance)
+
+
+💡 LOW SEVERITY (1 issues):
+--------------------------------------------------
+1. Imports should be ordered: external libraries first, then internal
+   📍 Line 1, Column 1
+   📋 Rule: imports/order (imports)
+
+====================================================================================================
+
+====================================================================================================
+VIOLATIONS REPORT - 2025-08-20T17:49:36.055Z
+FILE: analysis/SimpleBestPracticeAnalyzer.js
+TOTAL VIOLATIONS: 2
+====================================================================================================
+
+🚨 HIGH SEVERITY (2 issues):
+--------------------------------------------------
+1. Synchronous readFileSync detected
+   📍 Line 1, Column 1
+   📋 Rule: performance/no-sync-fs (performance)
+
+2. Synchronous statSync detected
+   📍 Line 1, Column 1
+   📋 Rule: performance/no-sync-fs (performance)
+
+====================================================================================================
+
+====================================================================================================
+VIOLATIONS REPORT - 2025-08-20T17:49:36.278Z
+FILE: utils/logger.js
+TOTAL VIOLATIONS: 1
+====================================================================================================
+
+💡 LOW SEVERITY (1 issues):
+--------------------------------------------------
+1. console.log statements should be removed
+   📍 Line 1, Column 1
+   📋 Rule: performance/no-console-log (performance)
+
+====================================================================================================
+
+====================================================================================================
+VIOLATIONS REPORT - 2025-08-20T17:49:36.378Z
+FILE: analysis/BestPracticeAnalyzer.js
+TOTAL VIOLATIONS: 2
+====================================================================================================
+
+🚨 HIGH SEVERITY (2 issues):
+--------------------------------------------------
+1. Synchronous readFileSync detected
+   📍 Line 1, Column 1
+   📋 Rule: performance/no-sync-fs (performance)
+
+2. Synchronous statSync detected
+   📍 Line 1, Column 1
+   📋 Rule: performance/no-sync-fs (performance)
+
+====================================================================================================
+
+====================================================================================================
+VIOLATIONS REPORT - 2025-08-20T17:49:36.560Z
+FILE: utils/AiModel.js
+TOTAL VIOLATIONS: 2
+====================================================================================================
+
+⚠️ MEDIUM SEVERITY (1 issues):
+--------------------------------------------------
+1. Use companyFetch instead of raw fetch
+   📍 Line 1, Column 1
+   📋 Rule: security/require-company-fetch (security)
+
+
+💡 LOW SEVERITY (1 issues):
+--------------------------------------------------
+1. console.log statements should be removed
+   📍 Line 1, Column 1
+   📋 Rule: performance/no-console-log (performance)
+
+====================================================================================================
+
+====================================================================================================
+VIOLATIONS REPORT - 2025-08-20T17:49:36.608Z
+FILE: ai-audit/AIDetector.js
+TOTAL VIOLATIONS: 1
+====================================================================================================
+
+💡 LOW SEVERITY (1 issues):
+--------------------------------------------------
+1. Imports should be ordered: external libraries first, then internal
+   📍 Line 1, Column 1
+   📋 Rule: imports/order (imports)
+
+====================================================================================================
+
+====================================================================================================
+VIOLATIONS REPORT - 2025-08-20T17:49:36.659Z
+FILE: utils/logFormatter.js
+TOTAL VIOLATIONS: 3
+====================================================================================================
+
+🚨 HIGH SEVERITY (2 issues):
+--------------------------------------------------
+1. Synchronous writeFileSync detected
+   📍 Line 1, Column 1
+   📋 Rule: performance/no-sync-fs (performance)
+
+2. Synchronous statSync detected
+   📍 Line 1, Column 1
+   📋 Rule: performance/no-sync-fs (performance)
+
+
+💡 LOW SEVERITY (1 issues):
+--------------------------------------------------
+1. console.log statements should be removed
+   📍 Line 1, Column 1
+   📋 Rule: performance/no-console-log (performance)
+
+====================================================================================================
+
+====================================================================================================
+VIOLATIONS REPORT - 2025-08-20T17:49:36.806Z
+FILE: governance/PatternLearner.js
+TOTAL VIOLATIONS: 1
+====================================================================================================
+
+💡 LOW SEVERITY (1 issues):
+--------------------------------------------------
+1. Imports should be ordered: external libraries first, then internal
+   📍 Line 1, Column 1
+   📋 Rule: imports/order (imports)
+
+====================================================================================================
+
+====================================================================================================
+VIOLATIONS REPORT - 2025-08-20T17:49:46.503Z
+FILE: ai-audit/AIDetector.js
+TOTAL VIOLATIONS: 1
+====================================================================================================
+
+💡 LOW SEVERITY (1 issues):
+--------------------------------------------------
+1. Imports should be ordered: external libraries first, then internal
+   📍 Line 1, Column 1
+   📋 Rule: imports/order (imports)
+
+====================================================================================================
+
+====================================================================================================
+VIOLATIONS REPORT - 2025-08-20T17:49:46.505Z
+FILE: utils/AiModel.js
+TOTAL VIOLATIONS: 2
+====================================================================================================
+
+⚠️ MEDIUM SEVERITY (1 issues):
+--------------------------------------------------
+1. Use companyFetch instead of raw fetch
+   📍 Line 1, Column 1
+   📋 Rule: security/require-company-fetch (security)
+
+
+💡 LOW SEVERITY (1 issues):
+--------------------------------------------------
+1. console.log statements should be removed
+   📍 Line 1, Column 1
+   📋 Rule: performance/no-console-log (performance)
+
+====================================================================================================
+
+====================================================================================================
+VIOLATIONS REPORT - 2025-08-20T17:49:46.508Z
+FILE: monitor/ContinuousMonitor.js
+TOTAL VIOLATIONS: 3
+====================================================================================================
+
+🚨 HIGH SEVERITY (2 issues):
+--------------------------------------------------
+1. Synchronous readFileSync detected
+   📍 Line 1, Column 1
+   📋 Rule: performance/no-sync-fs (performance)
+
+2. Synchronous statSync detected
+   📍 Line 1, Column 1
+   📋 Rule: performance/no-sync-fs (performance)
+
+
+💡 LOW SEVERITY (1 issues):
+--------------------------------------------------
+1. Imports should be ordered: external libraries first, then internal
+   📍 Line 1, Column 1
+   📋 Rule: imports/order (imports)
+
+====================================================================================================
+
+====================================================================================================
+VIOLATIONS REPORT - 2025-08-20T17:49:46.509Z
+FILE: index.js
+TOTAL VIOLATIONS: 3
+====================================================================================================
+
+🚨 HIGH SEVERITY (1 issues):
+--------------------------------------------------
+1. Synchronous readFileSync detected
+   📍 Line 1, Column 1
+   📋 Rule: performance/no-sync-fs (performance)
+
+
+💡 LOW SEVERITY (2 issues):
+--------------------------------------------------
+1. console.log statements should be removed
+   📍 Line 1, Column 1
+   📋 Rule: performance/no-console-log (performance)
+
+2. Imports should be ordered: external libraries first, then internal
+   📍 Line 1, Column 1
+   📋 Rule: imports/order (imports)
+
+====================================================================================================
+
+====================================================================================================
+VIOLATIONS REPORT - 2025-08-20T17:49:46.511Z
+FILE: analysis/BestPracticeAnalyzer.js
+TOTAL VIOLATIONS: 2
+====================================================================================================
+
+🚨 HIGH SEVERITY (2 issues):
+--------------------------------------------------
+1. Synchronous readFileSync detected
+   📍 Line 1, Column 1
+   📋 Rule: performance/no-sync-fs (performance)
+
+2. Synchronous statSync detected
+   📍 Line 1, Column 1
+   📋 Rule: performance/no-sync-fs (performance)
+
+====================================================================================================
+
+====================================================================================================
+VIOLATIONS REPORT - 2025-08-20T17:49:46.520Z
+FILE: governance/PatternLearner.js
+TOTAL VIOLATIONS: 1
+====================================================================================================
+
+💡 LOW SEVERITY (1 issues):
+--------------------------------------------------
+1. Imports should be ordered: external libraries first, then internal
+   📍 Line 1, Column 1
+   📋 Rule: imports/order (imports)
+
+====================================================================================================
+
+====================================================================================================
+VIOLATIONS REPORT - 2025-08-20T17:49:46.522Z
+FILE: integrations/MCPServer.js
+TOTAL VIOLATIONS: 2
+====================================================================================================
+
+🚨 HIGH SEVERITY (1 issues):
+--------------------------------------------------
+1. Synchronous readFileSync detected
+   📍 Line 1, Column 1
+   📋 Rule: performance/no-sync-fs (performance)
+
+
+💡 LOW SEVERITY (1 issues):
+--------------------------------------------------
+1. Imports should be ordered: external libraries first, then internal
+   📍 Line 1, Column 1
+   📋 Rule: imports/order (imports)
+
+====================================================================================================
+
+====================================================================================================
+VIOLATIONS REPORT - 2025-08-20T17:49:46.525Z
+FILE: utils/logFormatter.js
+TOTAL VIOLATIONS: 3
+====================================================================================================
+
+🚨 HIGH SEVERITY (2 issues):
+--------------------------------------------------
+1. Synchronous writeFileSync detected
+   📍 Line 1, Column 1
+   📋 Rule: performance/no-sync-fs (performance)
+
+2. Synchronous statSync detected
+   📍 Line 1, Column 1
+   📋 Rule: performance/no-sync-fs (performance)
+
+
+💡 LOW SEVERITY (1 issues):
+--------------------------------------------------
+1. console.log statements should be removed
+   📍 Line 1, Column 1
+   📋 Rule: performance/no-console-log (performance)
+
+====================================================================================================
+
+====================================================================================================
+VIOLATIONS REPORT - 2025-08-20T17:49:46.528Z
+FILE: analysis/SimpleBestPracticeAnalyzer.js
+TOTAL VIOLATIONS: 2
+====================================================================================================
+
+🚨 HIGH SEVERITY (2 issues):
+--------------------------------------------------
+1. Synchronous readFileSync detected
+   📍 Line 1, Column 1
+   📋 Rule: performance/no-sync-fs (performance)
+
+2. Synchronous statSync detected
+   📍 Line 1, Column 1
+   📋 Rule: performance/no-sync-fs (performance)
+
+====================================================================================================
+
+====================================================================================================
+VIOLATIONS REPORT - 2025-08-20T17:49:46.532Z
+FILE: ai-audit/AIAuditor.js
+TOTAL VIOLATIONS: 1
+====================================================================================================
+
+🚨 HIGH SEVERITY (1 issues):
+--------------------------------------------------
+1. Direct HTML manipulation detected
+   📍 Line 1, Column 1
+   📋 Rule: security/no-dangerous-html (security)
+
+====================================================================================================
+
+====================================================================================================
+VIOLATIONS REPORT - 2025-08-20T17:49:46.535Z
+FILE: governance/RuleEngine.js
+TOTAL VIOLATIONS: 13
+====================================================================================================
+
+🔥 CRITICAL SEVERITY (1 issues):
+--------------------------------------------------
+1. eval() usage is prohibited for security reasons
+   📍 Line 1, Column 1
+   📋 Rule: security/no-eval (security)
+
+
+🚨 HIGH SEVERITY (9 issues):
+--------------------------------------------------
+1. Direct HTML manipulation detected
+   📍 Line 1, Column 1
+   📋 Rule: security/no-dangerous-html (security)
+
+2. Synchronous readFileSync detected
+   📍 Line 1, Column 1
+   📋 Rule: performance/no-sync-fs (performance)
+
+3. Synchronous writeFileSync detected
+   📍 Line 1, Column 1
+   📋 Rule: performance/no-sync-fs (performance)
+
+4. Synchronous statSync detected
+   📍 Line 1, Column 1
+   📋 Rule: performance/no-sync-fs (performance)
+
+5. Direct database access outside repository layer
+   📍 Line 1, Column 1
+   📋 Rule: architecture/no-direct-db (architecture)
+
+6. Direct database access outside repository layer
+   📍 Line 1, Column 1
+   📋 Rule: architecture/no-direct-db (architecture)
+
+7. Direct database access outside repository layer
+   📍 Line 1, Column 1
+   📋 Rule: architecture/no-direct-db (architecture)
+
+8. Direct database access outside repository layer
+   📍 Line 1, Column 1
+   📋 Rule: architecture/no-direct-db (architecture)
+
+9. Direct database access outside repository layer
+   📍 Line 1, Column 1
+   📋 Rule: architecture/no-direct-db (architecture)
+
+
+⚠️ MEDIUM SEVERITY (1 issues):
+--------------------------------------------------
+1. Deeply nested relative imports detected
+   📍 Line 1, Column 1
+   📋 Rule: imports/no-relative-parent (imports)
+
+
+💡 LOW SEVERITY (2 issues):
+--------------------------------------------------
+1. console.log statements should be removed
+   📍 Line 1, Column 1
+   📋 Rule: performance/no-console-log (performance)
+
+2. Imports should be ordered: external libraries first, then internal
+   📍 Line 1, Column 1
+   📋 Rule: imports/order (imports)
+
+====================================================================================================
+
+====================================================================================================
+VIOLATIONS REPORT - 2025-08-20T17:49:46.666Z
+FILE: utils/logger.js
+TOTAL VIOLATIONS: 1
+====================================================================================================
+
+💡 LOW SEVERITY (1 issues):
+--------------------------------------------------
+1. console.log statements should be removed
+   📍 Line 1, Column 1
+   📋 Rule: performance/no-console-log (performance)
+
+====================================================================================================
+
+====================================================================================================
+VIOLATIONS REPORT - 2025-08-20T17:50:35.390Z
+FILE: governance/RuleEngine.js
+TOTAL VIOLATIONS: 2
+====================================================================================================
+
+🔥 CRITICAL SEVERITY (1 issues):
+--------------------------------------------------
+1. eval() usage is prohibited for security reasons
+   📍 Line 1, Column 1
+   📋 Rule: security/no-eval (security)
+
+
+🚨 HIGH SEVERITY (1 issues):
+--------------------------------------------------
+1. Direct HTML manipulation detected
+   📍 Line 1, Column 1
+   📋 Rule: security/no-dangerous-html (security)
+
+====================================================================================================
