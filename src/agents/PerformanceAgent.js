@@ -20,10 +20,6 @@ function normalizeSuggestion(suggestion) {
 }
 
 export default class PerformanceAgent {
-  /**
-   * @param {string} file - Path to the file to analyze.
-   * @returns {Promise<{metrics: Object, issues: Array, suggestions: Array}>}
-   */
   async analyze(file) {
     if (!file) {
       logger.error('No file path provided to analyze.');

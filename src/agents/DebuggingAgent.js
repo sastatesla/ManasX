@@ -1,13 +1,9 @@
 import fs from 'fs/promises';
-import BestPracticesAnalyzer from '../analysis/BestPracticeAnalyzer.js';
+import BestPracticesAnalyzer from '../analysis/SimpleBestPracticeAnalyzer.js';
 import BestPracticesSuggester from '../suggestions/BestPracticeSuggester.js';
 import { logger } from '../utils/logger.js';
 
 export default class BestPracticesAgent {
-  /**
-   * @param {string} file - Path to the file to analyze.
-   * @returns {Promise<{issues: Array, suggestions: Array}>}
-   */
   async analyze(file) {
     if (!file) {
       logger.error('No file path provided to analyze.');

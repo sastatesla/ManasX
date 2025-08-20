@@ -1,10 +1,3 @@
-let ESLint;
-try {
-  const eslintModule = await import('eslint');
-  ESLint = eslintModule.ESLint;
-} catch (error) {
-  console.warn('ESLint not available - skipping ESLint analysis');
-}
 import fs from 'fs';
 import path from 'path';
 import { callAiModelOnCode } from '../utils/AiModel.js';
@@ -22,8 +15,7 @@ async function getAllJSFiles(dir) {
   return files;
 }
 
-
-export default class BestPracticesAnalyzer {
+export default class SimpleBestPracticeAnalyzer {
   static async analyze(fileOrDir) {
     let filesToCheck = [];
     const stat = fs.statSync(fileOrDir);
@@ -34,29 +26,6 @@ export default class BestPracticesAnalyzer {
     }
 
     const issues = [];
-    
-    if (ESLint) {
-      try {
-        const eslint = new ESLint({ fix: false });
-        const results = await eslint.lintFiles(filesToCheck);
-
-        for (const result of results) {
-          for (const msg of result.messages) {
-            issues.push({
-              source: 'ESLint',
-              file: result.filePath,
-              line: msg.line,
-              column: msg.column,
-              message: msg.message,
-              rule: msg.ruleId,
-              severity: msg.severity === 2 ? 'error' : 'warning'
-            });
-          }
-        }
-      } catch (error) {
-        console.warn('ESLint analysis failed:', error.message);
-      }
-    }
 
     for (const filePath of filesToCheck) {
       const code = fs.readFileSync(filePath, 'utf-8');

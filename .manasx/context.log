@@ -1,0 +1,1108 @@
+{"timestamp":"2025-08-20T16:23:29.679Z","event":"monitor_started","watchDirectory":"src/","filesWatched":19,"configuration":{"hasPatterns":false,"hasRules":false,"aiDetection":true,"driftDetection":true,"ruleChecking":true}}
+{"timestamp":"2025-08-20T16:23:34.570Z","event":"monitor_stopped","duration":5,"stats":{"filesWatched":19,"changesDetected":0,"violationsFound":0,"aiCodeDetected":0,"startTime":"2025-08-20T16:23:29.679Z"}}
+{"timestamp":"2025-08-20T16:26:55.058Z","event":"monitor_started","watchDirectory":"test-workspace","filesWatched":3,"configuration":{"hasPatterns":false,"hasRules":true,"aiDetection":true,"driftDetection":true,"ruleChecking":true}}
+{"timestamp":"2025-08-20T16:26:57.935Z","event":"file_analyzed","file":"ai-generated.js","violations":[],"insights":[],"aiDetection":{"isLikelyAI":false,"confidence":0.4325996784866337,"indicators":[{"type":"comment_pattern","description":"AI-typical comment structure detected","confidence":0.6,"evidence":"// Helper function"},{"type":"comment_pattern","description":"AI-typical comment structure detected","confidence":0.6,"evidence":"/**\n * This function processes user data and returns formatted results\n * @param {Object} userData -"},{"type":"naming_pattern","description":"AI-typical function naming detected","confidence":0.4,"evidence":"processUserData","line":7}],"recommendation":"Some AI-typical patterns detected. Verify the code follows established patterns and conventions."},"driftScore":null,"recommendations":[],"summary":{"hasViolations":false,"hasInsights":false,"totalIssues":0,"severity":"info"}}
+{"timestamp":"2025-08-20T16:27:02.010Z","event":"monitor_stopped","duration":7,"stats":{"filesWatched":3,"changesDetected":1,"violationsFound":0,"aiCodeDetected":0,"startTime":"2025-08-20T16:26:55.058Z"}}
+{"timestamp":"2025-08-20T16:29:34.739Z","event":"monitor_started","watchDirectory":"src/","filesWatched":19,"configuration":{"hasPatterns":false,"hasRules":true,"aiDetection":true,"driftDetection":true,"ruleChecking":true}}
+{"timestamp":"2025-08-20T16:35:51.143Z","event":"file_analyzed","file":"test-demo.js","violations":[],"insights":[],"aiDetection":{"isLikelyAI":false,"confidence":0.4801466122086823,"indicators":[{"type":"comment_pattern","description":"AI-typical comment structure detected","confidence":0.6,"evidence":"// Helper function"},{"type":"comment_pattern","description":"AI-typical comment structure detected","confidence":0.6,"evidence":"/**\n * This function calculates user statistics and generates a report\n * @param {Array} users - Arr"},{"type":"comment_pattern","description":"AI-typical comment structure detected","confidence":0.6,"evidence":"// Example usage:"}],"recommendation":"Some AI-typical patterns detected. Verify the code follows established patterns and conventions."},"driftScore":null,"recommendations":[],"summary":{"hasViolations":false,"hasInsights":false,"totalIssues":0,"severity":"info"}}
+{"timestamp":"2025-08-20T16:36:04.730Z","event":"file_analyzed","file":"test-violations.js","violations":[{"rule":"security/no-eval","category":"security","severity":"critical","file":"src/test-violations.js","line":1,"column":1,"message":"eval() usage is prohibited for security reasons","description":"The eval() function poses security risks and should not be used","autofix":false,"tags":[]},{"rule":"security/no-dangerous-html","category":"security","severity":"high","file":"src/test-violations.js","line":1,"column":1,"message":"Direct HTML manipulation detected","description":"Direct innerHTML/outerHTML manipulation can lead to XSS vulnerabilities","autofix":false,"tags":[]},{"rule":"security/require-company-fetch","category":"security","severity":"medium","file":"src/test-violations.js","line":1,"column":1,"message":"Use companyFetch instead of raw fetch","description":"All API calls must use the company fetch wrapper instead of raw fetch","autofix":false,"tags":[]},{"rule":"performance/no-sync-fs","category":"performance","severity":"high","file":"src/test-violations.js","line":1,"column":1,"message":"Synchronous readFileSync detected","description":"Synchronous file operations block the event loop","autofix":false,"tags":[]}],"insights":[],"aiDetection":{"isLikelyAI":false,"confidence":0.3272153480994887,"indicators":[{"type":"comment_pattern","description":"AI-typical comment structure detected","confidence":0.6,"evidence":"// TODO: Implement"},{"type":"naming_pattern","description":"AI-typical function naming detected","confidence":0.4,"evidence":"updateContent","line":23},{"type":"structure_pattern","description":"AI-typical code structure detected","confidence":0.5,"evidence":"var result =","line":29}],"recommendation":"No strong indicators of AI generation detected."},"driftScore":null,"recommendations":[],"summary":{"hasViolations":true,"hasInsights":false,"totalIssues":4,"severity":"critical"}}
+{"timestamp":"2025-08-20T16:36:18.070Z","event":"file_analyzed","file":"test-good-code.js","violations":[{"rule":"security/require-company-fetch","category":"security","severity":"medium","file":"src/test-good-code.js","line":1,"column":1,"message":"Use companyFetch instead of raw fetch","description":"All API calls must use the company fetch wrapper instead of raw fetch","autofix":false,"tags":[]}],"insights":[],"aiDetection":{"isLikelyAI":false,"confidence":0.4055621985812191,"indicators":[{"type":"structure_pattern","description":"AI-typical code structure detected","confidence":0.5,"evidence":"try {\n      const response = await fetch(`/api/users/${userId}`);\n      \n      if (!response.ok) {\n ","line":4},{"type":"structure_pattern","description":"AI-typical code structure detected","confidence":0.5,"evidence":"try {\n      const response = await fetch('/api/users', {\n        method: 'POST',\n        headers: {\n","line":21},{"type":"structure_pattern","description":"AI-typical code structure detected","confidence":0.5,"evidence":"try {\n      const validatedUser = apiService.validateUserData(userData);\n      const createdUser = a","line":60}],"recommendation":"Some AI-typical patterns detected. Verify the code follows established patterns and conventions."},"driftScore":null,"recommendations":[],"summary":{"hasViolations":true,"hasInsights":false,"totalIssues":1,"severity":"medium"}}
+{"timestamp":"2025-08-20T16:36:29.631Z","event":"file_analyzed","file":"test-demo.js","violations":[{"rule":"security/no-eval","category":"security","severity":"critical","file":"src/test-demo.js","line":1,"column":1,"message":"eval() usage is prohibited for security reasons","description":"The eval() function poses security risks and should not be used","autofix":false,"tags":[]},{"rule":"security/require-company-fetch","category":"security","severity":"medium","file":"src/test-demo.js","line":1,"column":1,"message":"Use companyFetch instead of raw fetch","description":"All API calls must use the company fetch wrapper instead of raw fetch","autofix":false,"tags":[]}],"insights":[],"aiDetection":{"isLikelyAI":false,"confidence":0.4838686053641432,"indicators":[{"type":"comment_pattern","description":"AI-typical comment structure detected","confidence":0.6,"evidence":"// Helper function"},{"type":"comment_pattern","description":"AI-typical comment structure detected","confidence":0.6,"evidence":"/**\n * This function calculates user statistics and generates a report\n * @param {Array} users - Arr"},{"type":"comment_pattern","description":"AI-typical comment structure detected","confidence":0.6,"evidence":"// Example usage:"}],"recommendation":"Some AI-typical patterns detected. Verify the code follows established patterns and conventions."},"driftScore":null,"recommendations":[],"summary":{"hasViolations":true,"hasInsights":false,"totalIssues":2,"severity":"critical"}}
+{"timestamp":"2025-08-20T16:40:24.682Z","event":"file_analyzed","file":"utils/logger.js","violations":[{"rule":"performance/no-console-log","category":"performance","severity":"low","file":"src/utils/logger.js","line":1,"column":1,"message":"console.log statements should be removed","description":"Console.log statements should not be present in production code","autofix":false,"tags":[]}],"insights":[],"aiDetection":{"isLikelyAI":false,"confidence":0,"indicators":[],"recommendation":"No strong indicators of AI generation detected."},"driftScore":null,"recommendations":[],"summary":{"hasViolations":true,"hasInsights":false,"totalIssues":1,"severity":"low"}}
+{"timestamp":"2025-08-20T16:41:04.854Z","event":"file_analyzed","file":"utils/logFormatter.js","violations":[{"rule":"performance/no-sync-fs","category":"performance","severity":"high","file":"src/utils/logFormatter.js","line":1,"column":1,"message":"Synchronous writeFileSync detected","description":"Synchronous file operations block the event loop","autofix":false,"tags":[]},{"rule":"performance/no-sync-fs","category":"performance","severity":"high","file":"src/utils/logFormatter.js","line":1,"column":1,"message":"Synchronous statSync detected","description":"Synchronous file operations block the event loop","autofix":false,"tags":[]},{"rule":"performance/no-console-log","category":"performance","severity":"low","file":"src/utils/logFormatter.js","line":1,"column":1,"message":"console.log statements should be removed","description":"Console.log statements should not be present in production code","autofix":false,"tags":[]}],"insights":[],"aiDetection":{"isLikelyAI":false,"confidence":0.21085258175254348,"indicators":[{"type":"structure_pattern","description":"AI-typical code structure detected","confidence":0.5,"evidence":"try {\n      const files = fs.readdirSync(this.logDir);\n      const cutoffDate = new Date();\n      cu","line":214},{"type":"import_pattern","description":"AI-typical import pattern detected","confidence":0.3,"evidence":"import path from 'path'","line":2}],"recommendation":"No strong indicators of AI generation detected."},"driftScore":null,"recommendations":[],"summary":{"hasViolations":true,"hasInsights":false,"totalIssues":3,"severity":"high"}}
+{"timestamp":"2025-08-20T16:41:19.610Z","event":"file_analyzed","file":"monitor/ContinuousMonitor.js","violations":[{"rule":"performance/no-sync-fs","category":"performance","severity":"high","file":"src/monitor/ContinuousMonitor.js","line":1,"column":1,"message":"Synchronous readFileSync detected","description":"Synchronous file operations block the event loop","autofix":false,"tags":[]},{"rule":"performance/no-sync-fs","category":"performance","severity":"high","file":"src/monitor/ContinuousMonitor.js","line":1,"column":1,"message":"Synchronous statSync detected","description":"Synchronous file operations block the event loop","autofix":false,"tags":[]},{"rule":"imports/order","category":"imports","severity":"low","file":"src/monitor/ContinuousMonitor.js","line":1,"column":1,"message":"Imports should be ordered: external libraries first, then internal","description":"External imports should come before internal imports","autofix":true,"tags":[]}],"insights":[],"aiDetection":{"isLikelyAI":false,"confidence":0.18963616764856733,"indicators":[{"type":"import_pattern","description":"AI-typical import pattern detected","confidence":0.3,"evidence":"import { EventEmitter } from 'events';\nimport PatternLearner from '../governance/PatternLearner.js';\nimport DriftDetector from '../governance/DriftDetector.js';\nimport RuleEngine from '../governance/RuleEngine.js';\nimport AIDetector from '../ai-audit/AIDetector.js';\nimport AIAuditor from '../ai-audit/AIAuditor.js';\nimport { logger } from '../utils","line":3},{"type":"import_pattern","description":"AI-typical import pattern detected","confidence":0.3,"evidence":"import { LogFormatter } from '../utils","line":9},{"type":"import_pattern","description":"AI-typical import pattern detected","confidence":0.3,"evidence":"import path from 'path'","line":2}],"recommendation":"No strong indicators of AI generation detected."},"driftScore":null,"recommendations":[],"summary":{"hasViolations":true,"hasInsights":false,"totalIssues":3,"severity":"high"}}
+{"timestamp":"2025-08-20T16:41:43.584Z","event":"file_analyzed","file":"monitor/ContinuousMonitor.js","violations":[{"rule":"performance/no-sync-fs","category":"performance","severity":"high","file":"src/monitor/ContinuousMonitor.js","line":1,"column":1,"message":"Synchronous readFileSync detected","description":"Synchronous file operations block the event loop","autofix":false,"tags":[]},{"rule":"performance/no-sync-fs","category":"performance","severity":"high","file":"src/monitor/ContinuousMonitor.js","line":1,"column":1,"message":"Synchronous statSync detected","description":"Synchronous file operations block the event loop","autofix":false,"tags":[]},{"rule":"imports/order","category":"imports","severity":"low","file":"src/monitor/ContinuousMonitor.js","line":1,"column":1,"message":"Imports should be ordered: external libraries first, then internal","description":"External imports should come before internal imports","autofix":true,"tags":[]}],"insights":[],"aiDetection":{"isLikelyAI":false,"confidence":0.18963616764856733,"indicators":[{"type":"import_pattern","description":"AI-typical import pattern detected","confidence":0.3,"evidence":"import { EventEmitter } from 'events';\nimport PatternLearner from '../governance/PatternLearner.js';\nimport DriftDetector from '../governance/DriftDetector.js';\nimport RuleEngine from '../governance/RuleEngine.js';\nimport AIDetector from '../ai-audit/AIDetector.js';\nimport AIAuditor from '../ai-audit/AIAuditor.js';\nimport { logger } from '../utils","line":3},{"type":"import_pattern","description":"AI-typical import pattern detected","confidence":0.3,"evidence":"import { LogFormatter } from '../utils","line":10},{"type":"import_pattern","description":"AI-typical import pattern detected","confidence":0.3,"evidence":"import path from 'path'","line":2}],"recommendation":"No strong indicators of AI generation detected."},"driftScore":null,"recommendations":[],"summary":{"hasViolations":true,"hasInsights":false,"totalIssues":3,"severity":"high"}}
+{"timestamp":"2025-08-20T16:43:13.362Z","event":"file_analyzed","file":"monitor/ContinuousMonitor.js","violations":[{"rule":"performance/no-sync-fs","category":"performance","severity":"high","file":"src/monitor/ContinuousMonitor.js","line":1,"column":1,"message":"Synchronous readFileSync detected","description":"Synchronous file operations block the event loop","autofix":false,"tags":[]},{"rule":"performance/no-sync-fs","category":"performance","severity":"high","file":"src/monitor/ContinuousMonitor.js","line":1,"column":1,"message":"Synchronous statSync detected","description":"Synchronous file operations block the event loop","autofix":false,"tags":[]},{"rule":"performance/no-console-log","category":"performance","severity":"low","file":"src/monitor/ContinuousMonitor.js","line":1,"column":1,"message":"console.log statements should be removed","description":"Console.log statements should not be present in production code","autofix":false,"tags":[]},{"rule":"imports/order","category":"imports","severity":"low","file":"src/monitor/ContinuousMonitor.js","line":1,"column":1,"message":"Imports should be ordered: external libraries first, then internal","description":"External imports should come before internal imports","autofix":true,"tags":[]}],"insights":[],"aiDetection":{"isLikelyAI":false,"confidence":0.18963616764856733,"indicators":[{"type":"import_pattern","description":"AI-typical import pattern detected","confidence":0.3,"evidence":"import { EventEmitter } from 'events';\nimport PatternLearner from '../governance/PatternLearner.js';\nimport DriftDetector from '../governance/DriftDetector.js';\nimport RuleEngine from '../governance/RuleEngine.js';\nimport AIDetector from '../ai-audit/AIDetector.js';\nimport AIAuditor from '../ai-audit/AIAuditor.js';\nimport { logger } from '../utils","line":3},{"type":"import_pattern","description":"AI-typical import pattern detected","confidence":0.3,"evidence":"import { LogFormatter } from '../utils","line":10},{"type":"import_pattern","description":"AI-typical import pattern detected","confidence":0.3,"evidence":"import path from 'path'","line":2}],"recommendation":"No strong indicators of AI generation detected."},"driftScore":null,"recommendations":[],"summary":{"hasViolations":true,"hasInsights":false,"totalIssues":4,"severity":"high"}}
+{"timestamp":"2025-08-20T16:43:25.208Z","event":"file_analyzed","file":"monitor/ContinuousMonitor.js","violations":[{"rule":"performance/no-sync-fs","category":"performance","severity":"high","file":"src/monitor/ContinuousMonitor.js","line":1,"column":1,"message":"Synchronous readFileSync detected","description":"Synchronous file operations block the event loop","autofix":false,"tags":[]},{"rule":"performance/no-sync-fs","category":"performance","severity":"high","file":"src/monitor/ContinuousMonitor.js","line":1,"column":1,"message":"Synchronous statSync detected","description":"Synchronous file operations block the event loop","autofix":false,"tags":[]},{"rule":"performance/no-console-log","category":"performance","severity":"low","file":"src/monitor/ContinuousMonitor.js","line":1,"column":1,"message":"console.log statements should be removed","description":"Console.log statements should not be present in production code","autofix":false,"tags":[]},{"rule":"imports/order","category":"imports","severity":"low","file":"src/monitor/ContinuousMonitor.js","line":1,"column":1,"message":"Imports should be ordered: external libraries first, then internal","description":"External imports should come before internal imports","autofix":true,"tags":[]}],"insights":[],"aiDetection":{"isLikelyAI":false,"confidence":0.18963616764856733,"indicators":[{"type":"import_pattern","description":"AI-typical import pattern detected","confidence":0.3,"evidence":"import { EventEmitter } from 'events';\nimport PatternLearner from '../governance/PatternLearner.js';\nimport DriftDetector from '../governance/DriftDetector.js';\nimport RuleEngine from '../governance/RuleEngine.js';\nimport AIDetector from '../ai-audit/AIDetector.js';\nimport AIAuditor from '../ai-audit/AIAuditor.js';\nimport { logger } from '../utils","line":3},{"type":"import_pattern","description":"AI-typical import pattern detected","confidence":0.3,"evidence":"import { LogFormatter } from '../utils","line":10},{"type":"import_pattern","description":"AI-typical import pattern detected","confidence":0.3,"evidence":"import path from 'path'","line":2}],"recommendation":"No strong indicators of AI generation detected."},"driftScore":null,"recommendations":[],"summary":{"hasViolations":true,"hasInsights":false,"totalIssues":4,"severity":"high"}}
+{"timestamp":"2025-08-20T16:44:39.811Z","event":"file_analyzed","file":"test-demo.js","violations":[{"rule":"security/no-eval","category":"security","severity":"critical","file":"src/test-demo.js","line":1,"column":1,"message":"eval() usage is prohibited for security reasons","description":"The eval() function poses security risks and should not be used","autofix":false,"tags":[]},{"rule":"security/require-company-fetch","category":"security","severity":"medium","file":"src/test-demo.js","line":1,"column":1,"message":"Use companyFetch instead of raw fetch","description":"All API calls must use the company fetch wrapper instead of raw fetch","autofix":false,"tags":[]}],"insights":[],"aiDetection":{"isLikelyAI":false,"confidence":0.4838686053641432,"indicators":[{"type":"comment_pattern","description":"AI-typical comment structure detected","confidence":0.6,"evidence":"// Helper function"},{"type":"comment_pattern","description":"AI-typical comment structure detected","confidence":0.6,"evidence":"/**\n * This function calculates user statistics and generates a report\n * @param {Array} users - Arr"},{"type":"comment_pattern","description":"AI-typical comment structure detected","confidence":0.6,"evidence":"// Example usage:"}],"recommendation":"Some AI-typical patterns detected. Verify the code follows established patterns and conventions."},"driftScore":null,"recommendations":[],"summary":{"hasViolations":true,"hasInsights":false,"totalIssues":2,"severity":"critical"}}
+{"timestamp":"2025-08-20T16:45:57.509Z","event":"monitor_stopped","duration":983,"stats":{"filesWatched":19,"changesDetected":11,"violationsFound":27,"aiCodeDetected":0,"startTime":"2025-08-20T16:29:34.738Z"}}
+{"timestamp":"2025-08-20T16:46:01.024Z","event":"monitor_started","watchDirectory":"src/","filesWatched":23,"configuration":{"hasPatterns":false,"hasRules":true,"aiDetection":true,"driftDetection":true,"ruleChecking":true}}
+────────────────────────────────────────────────────────────────────────────────
+📅 TIMESTAMP: 2025-08-20T16:48:07.364Z
+🎯 EVENT: file_analyzed
+📁 FILE: test-enhanced-ui.js
+📊 SUMMARY:
+   • Violations: 3
+   • Severity: critical
+   • AI Detected: NO
+🚨 VIOLATIONS:
+   1. 🔥 [CRITICAL] eval() usage is prohibited for security reasons
+      📍 Line 1 | Rule: security/no-eval
+   2. ⚠️ [MEDIUM] Use companyFetch instead of raw fetch
+      📍 Line 1 | Rule: security/require-company-fetch
+   3. 🚨 [HIGH] Synchronous readFileSync detected
+      📍 Line 1 | Rule: performance/no-sync-fs
+────────────────────────────────────────────────────────────────────────────────
+📅 TIMESTAMP: 2025-08-20T16:52:39.434Z
+🎯 EVENT: file_analyzed
+📁 FILE: utils/logger.js
+📊 SUMMARY:
+   • Violations: 1
+   • Severity: low
+   • AI Detected: NO
+🚨 VIOLATIONS:
+   1. 💡 [LOW] console.log statements should be removed
+      📍 Line 1 | Rule: performance/no-console-log
+────────────────────────────────────────────────────────────────────────────────
+📅 TIMESTAMP: 2025-08-20T16:52:52.106Z
+🎯 EVENT: file_analyzed
+📁 FILE: monitor/ContinuousMonitor.js
+📊 SUMMARY:
+   • Violations: 4
+   • Severity: high
+   • AI Detected: NO
+🚨 VIOLATIONS:
+   1. 🚨 [HIGH] Synchronous readFileSync detected
+      📍 Line 1 | Rule: performance/no-sync-fs
+   2. 🚨 [HIGH] Synchronous statSync detected
+      📍 Line 1 | Rule: performance/no-sync-fs
+   3. 💡 [LOW] console.log statements should be removed
+      📍 Line 1 | Rule: performance/no-console-log
+   4. 💡 [LOW] Imports should be ordered: external libraries first, then internal
+      📍 Line 1 | Rule: imports/order
+────────────────────────────────────────────────────────────────────────────────
+📅 TIMESTAMP: 2025-08-20T16:53:13.001Z
+🎯 EVENT: file_analyzed
+📁 FILE: monitor/ContinuousMonitor.js
+📊 SUMMARY:
+   • Violations: 3
+   • Severity: high
+   • AI Detected: NO
+🚨 VIOLATIONS:
+   1. 🚨 [HIGH] Synchronous readFileSync detected
+      📍 Line 1 | Rule: performance/no-sync-fs
+   2. 🚨 [HIGH] Synchronous statSync detected
+      📍 Line 1 | Rule: performance/no-sync-fs
+   3. 💡 [LOW] Imports should be ordered: external libraries first, then internal
+      📍 Line 1 | Rule: imports/order
+────────────────────────────────────────────────────────────────────────────────
+📅 TIMESTAMP: 2025-08-20T16:53:25.904Z
+🎯 EVENT: file_analyzed
+📁 FILE: monitor/ContinuousMonitor.js
+📊 SUMMARY:
+   • Violations: 3
+   • Severity: high
+   • AI Detected: NO
+🚨 VIOLATIONS:
+   1. 🚨 [HIGH] Synchronous readFileSync detected
+      📍 Line 1 | Rule: performance/no-sync-fs
+   2. 🚨 [HIGH] Synchronous statSync detected
+      📍 Line 1 | Rule: performance/no-sync-fs
+   3. 💡 [LOW] Imports should be ordered: external libraries first, then internal
+      📍 Line 1 | Rule: imports/order
+────────────────────────────────────────────────────────────────────────────────
+📅 TIMESTAMP: 2025-08-20T16:53:39.980Z
+🎯 EVENT: file_analyzed
+📁 FILE: test-clean-cli.js
+📊 SUMMARY:
+   • Violations: 0
+   • Severity: info
+   • AI Detected: NO
+────────────────────────────────────────────────────────────────────────────────
+📅 TIMESTAMP: 2025-08-20T16:54:02.254Z
+🎯 EVENT: file_analyzed
+📁 FILE: test-clean-cli.js
+📊 SUMMARY:
+   • Violations: 1
+   • Severity: critical
+   • AI Detected: NO
+🚨 VIOLATIONS:
+   1. 🔥 [CRITICAL] eval() usage is prohibited for security reasons
+      📍 Line 1 | Rule: security/no-eval
+{"timestamp":"2025-08-20T16:54:08.385Z","event":"monitor_stopped","duration":487,"stats":{"filesWatched":23,"changesDetected":7,"violationsFound":15,"aiCodeDetected":0,"startTime":"2025-08-20T16:46:01.024Z"}}
+{"timestamp":"2025-08-20T16:54:11.127Z","event":"monitor_started","watchDirectory":"src/","filesWatched":25,"configuration":{"hasPatterns":false,"hasRules":true,"aiDetection":true,"driftDetection":true,"ruleChecking":true}}
+────────────────────────────────────────────────────────────────────────────────
+📅 TIMESTAMP: 2025-08-20T16:56:29.493Z
+🎯 EVENT: file_analyzed
+📁 FILE: test-multiple-violations.js
+📊 SUMMARY:
+   • Violations: 3
+   • Severity: critical
+   • AI Detected: NO
+🚨 VIOLATIONS:
+   1. 🔥 [CRITICAL] eval() usage is prohibited for security reasons
+      📍 Line 1 | Rule: security/no-eval
+   2. ⚠️ [MEDIUM] Use companyFetch instead of raw fetch
+      📍 Line 1 | Rule: security/require-company-fetch
+   3. 🚨 [HIGH] Synchronous readFileSync detected
+      📍 Line 1 | Rule: performance/no-sync-fs
+────────────────────────────────────────────────────────────────────────────────
+📅 TIMESTAMP: 2025-08-20T16:56:58.695Z
+🎯 EVENT: file_analyzed
+📁 FILE: test-clean-file.js
+📊 SUMMARY:
+   • Violations: 0
+   • Severity: info
+   • AI Detected: NO
+────────────────────────────────────────────────────────────────────────────────
+📅 TIMESTAMP: 2025-08-20T16:57:14.456Z
+🎯 EVENT: file_analyzed
+📁 FILE: test-ai-patterns.js
+📊 SUMMARY:
+   • Violations: 0
+   • Severity: info
+   • AI Detected: NO
+────────────────────────────────────────────────────────────────────────────────
+📅 TIMESTAMP: 2025-08-20T17:07:27.017Z
+🎯 EVENT: file_analyzed
+📁 FILE: cli/index.js
+📊 SUMMARY:
+   • Violations: 0
+   • Severity: info
+   • AI Detected: NO
+────────────────────────────────────────────────────────────────────────────────
+📅 TIMESTAMP: 2025-08-20T17:07:36.848Z
+🎯 EVENT: file_analyzed
+📁 FILE: cli/index.js
+📊 SUMMARY:
+   • Violations: 0
+   • Severity: info
+   • AI Detected: NO
+────────────────────────────────────────────────────────────────────────────────
+📅 TIMESTAMP: 2025-08-20T17:08:09.000Z
+🎯 EVENT: file_analyzed
+📁 FILE: index.js
+📊 SUMMARY:
+   • Violations: 3
+   • Severity: high
+   • AI Detected: NO
+🚨 VIOLATIONS:
+   1. 🚨 [HIGH] Synchronous readFileSync detected
+      📍 Line 1 | Rule: performance/no-sync-fs
+   2. 💡 [LOW] console.log statements should be removed
+      📍 Line 1 | Rule: performance/no-console-log
+   3. 💡 [LOW] Imports should be ordered: external libraries first, then internal
+      📍 Line 1 | Rule: imports/order
+────────────────────────────────────────────────────────────────────────────────
+📅 TIMESTAMP: 2025-08-20T17:08:34.346Z
+🎯 EVENT: file_analyzed
+📁 FILE: integrations/MCPServer.js
+📊 SUMMARY:
+   • Violations: 0
+   • Severity: info
+   • AI Detected: NO
+────────────────────────────────────────────────────────────────────────────────
+📅 TIMESTAMP: 2025-08-20T17:09:02.518Z
+🎯 EVENT: file_analyzed
+📁 FILE: integrations/MCPServer.js
+📊 SUMMARY:
+   • Violations: 0
+   • Severity: info
+   • AI Detected: NO
+────────────────────────────────────────────────────────────────────────────────
+📅 TIMESTAMP: 2025-08-20T17:09:16.866Z
+🎯 EVENT: file_analyzed
+📁 FILE: integrations/MCPServer.js
+📊 SUMMARY:
+   • Violations: 1
+   • Severity: high
+   • AI Detected: NO
+🚨 VIOLATIONS:
+   1. 🚨 [HIGH] Synchronous readFileSync detected
+      📍 Line 1 | Rule: performance/no-sync-fs
+────────────────────────────────────────────────────────────────────────────────
+📅 TIMESTAMP: 2025-08-20T17:09:40.669Z
+🎯 EVENT: file_analyzed
+📁 FILE: integrations/MCPServer.js
+📊 SUMMARY:
+   • Violations: 2
+   • Severity: high
+   • AI Detected: NO
+🚨 VIOLATIONS:
+   1. 🚨 [HIGH] Synchronous readFileSync detected
+      📍 Line 1 | Rule: performance/no-sync-fs
+   2. 💡 [LOW] Imports should be ordered: external libraries first, then internal
+      📍 Line 1 | Rule: imports/order
+────────────────────────────────────────────────────────────────────────────────
+📅 TIMESTAMP: 2025-08-20T17:11:12.255Z
+🎯 EVENT: file_analyzed
+📁 FILE: integrations/MCPServer.js
+📊 SUMMARY:
+   • Violations: 2
+   • Severity: high
+   • AI Detected: NO
+🚨 VIOLATIONS:
+   1. 🚨 [HIGH] Synchronous readFileSync detected
+      📍 Line 1 | Rule: performance/no-sync-fs
+   2. 💡 [LOW] Imports should be ordered: external libraries first, then internal
+      📍 Line 1 | Rule: imports/order
+────────────────────────────────────────────────────────────────────────────────
+📅 TIMESTAMP: 2025-08-20T17:11:20.043Z
+🎯 EVENT: file_analyzed
+📁 FILE: integrations/MCPServer.js
+📊 SUMMARY:
+   • Violations: 2
+   • Severity: high
+   • AI Detected: NO
+🚨 VIOLATIONS:
+   1. 🚨 [HIGH] Synchronous readFileSync detected
+      📍 Line 1 | Rule: performance/no-sync-fs
+   2. 💡 [LOW] Imports should be ordered: external libraries first, then internal
+      📍 Line 1 | Rule: imports/order
+────────────────────────────────────────────────────────────────────────────────
+📅 TIMESTAMP: 2025-08-20T17:13:50.509Z
+🎯 EVENT: file_analyzed
+📁 FILE: integrations/MCPServer.js
+📊 SUMMARY:
+   • Violations: 2
+   • Severity: high
+   • AI Detected: NO
+🚨 VIOLATIONS:
+   1. 🚨 [HIGH] Synchronous readFileSync detected
+      📍 Line 1 | Rule: performance/no-sync-fs
+   2. 💡 [LOW] Imports should be ordered: external libraries first, then internal
+      📍 Line 1 | Rule: imports/order
+────────────────────────────────────────────────────────────────────────────────
+📅 TIMESTAMP: 2025-08-20T17:14:00.256Z
+🎯 EVENT: file_analyzed
+📁 FILE: integrations/MCPServer.js
+📊 SUMMARY:
+   • Violations: 2
+   • Severity: high
+   • AI Detected: NO
+🚨 VIOLATIONS:
+   1. 🚨 [HIGH] Synchronous readFileSync detected
+      📍 Line 1 | Rule: performance/no-sync-fs
+   2. 💡 [LOW] Imports should be ordered: external libraries first, then internal
+      📍 Line 1 | Rule: imports/order
+────────────────────────────────────────────────────────────────────────────────
+📅 TIMESTAMP: 2025-08-20T17:14:20.159Z
+🎯 EVENT: file_analyzed
+📁 FILE: integrations/MCPServer.js
+📊 SUMMARY:
+   • Violations: 2
+   • Severity: high
+   • AI Detected: NO
+🚨 VIOLATIONS:
+   1. 🚨 [HIGH] Synchronous readFileSync detected
+      📍 Line 1 | Rule: performance/no-sync-fs
+   2. 💡 [LOW] Imports should be ordered: external libraries first, then internal
+      📍 Line 1 | Rule: imports/order
+────────────────────────────────────────────────────────────────────────────────
+📅 TIMESTAMP: 2025-08-20T17:14:45.066Z
+🎯 EVENT: file_analyzed
+📁 FILE: integrations/MCPServer.js
+📊 SUMMARY:
+   • Violations: 2
+   • Severity: high
+   • AI Detected: NO
+🚨 VIOLATIONS:
+   1. 🚨 [HIGH] Synchronous readFileSync detected
+      📍 Line 1 | Rule: performance/no-sync-fs
+   2. 💡 [LOW] Imports should be ordered: external libraries first, then internal
+      📍 Line 1 | Rule: imports/order
+────────────────────────────────────────────────────────────────────────────────
+📅 TIMESTAMP: 2025-08-20T17:18:08.149Z
+🎯 EVENT: file_analyzed
+📁 FILE: utils/logger.js
+📊 SUMMARY:
+   • Violations: 1
+   • Severity: low
+   • AI Detected: NO
+🚨 VIOLATIONS:
+   1. 💡 [LOW] console.log statements should be removed
+      📍 Line 1 | Rule: performance/no-console-log
+────────────────────────────────────────────────────────────────────────────────
+📅 TIMESTAMP: 2025-08-20T17:18:24.738Z
+🎯 EVENT: file_analyzed
+📁 FILE: monitor/ContinuousMonitor.js
+📊 SUMMARY:
+   • Violations: 3
+   • Severity: high
+   • AI Detected: NO
+🚨 VIOLATIONS:
+   1. 🚨 [HIGH] Synchronous readFileSync detected
+      📍 Line 1 | Rule: performance/no-sync-fs
+   2. 🚨 [HIGH] Synchronous statSync detected
+      📍 Line 1 | Rule: performance/no-sync-fs
+   3. 💡 [LOW] Imports should be ordered: external libraries first, then internal
+      📍 Line 1 | Rule: imports/order
+{"timestamp":"2025-08-20T17:18:31.438Z","event":"monitor_stopped","duration":1460,"stats":{"filesWatched":25,"changesDetected":18,"violationsFound":25,"aiCodeDetected":0,"startTime":"2025-08-20T16:54:11.127Z"}}
+{"timestamp":"2025-08-20T17:18:33.997Z","event":"monitor_started","watchDirectory":"src/","filesWatched":28,"configuration":{"hasPatterns":false,"hasRules":true,"aiDetection":true,"driftDetection":true,"ruleChecking":true}}
+{"timestamp":"2025-08-20T17:19:25.062Z","event":"monitor_stopped","duration":51,"stats":{"filesWatched":28,"changesDetected":1,"violationsFound":0,"aiCodeDetected":0,"startTime":"2025-08-20T17:18:33.997Z"}}
+{"timestamp":"2025-08-20T17:19:26.073Z","event":"monitor_started","watchDirectory":"src/","filesWatched":28,"configuration":{"hasPatterns":false,"hasRules":true,"aiDetection":true,"driftDetection":true,"ruleChecking":true}}
+{"timestamp":"2025-08-20T17:20:06.591Z","event":"monitor_stopped","duration":41,"stats":{"filesWatched":28,"changesDetected":0,"violationsFound":0,"aiCodeDetected":0,"startTime":"2025-08-20T17:19:26.072Z"}}
+{"timestamp":"2025-08-20T17:20:08.589Z","event":"monitor_started","watchDirectory":"src/","filesWatched":28,"configuration":{"hasPatterns":false,"hasRules":true,"aiDetection":true,"driftDetection":true,"ruleChecking":true}}
+{"timestamp":"2025-08-20T17:21:49.199Z","event":"monitor_stopped","duration":101,"stats":{"filesWatched":28,"changesDetected":0,"violationsFound":0,"aiCodeDetected":0,"startTime":"2025-08-20T17:20:08.589Z"}}
+{"timestamp":"2025-08-20T17:21:58.682Z","event":"monitor_started","watchDirectory":"src/","filesWatched":28,"configuration":{"hasPatterns":false,"hasRules":true,"aiDetection":true,"driftDetection":true,"ruleChecking":true}}
+────────────────────────────────────────────────────────────────────────────────
+📅 TIMESTAMP: 2025-08-20T17:23:45.417Z
+🎯 EVENT: file_analyzed
+📁 FILE: test-violations.js
+📊 SUMMARY:
+   • Violations: 4
+   • Severity: critical
+   • AI Detected: NO
+🚨 VIOLATIONS:
+   1. 🔥 [CRITICAL] eval() usage is prohibited for security reasons
+      📍 Line 1 | Rule: security/no-eval
+   2. 🚨 [HIGH] Direct HTML manipulation detected
+      📍 Line 1 | Rule: security/no-dangerous-html
+   3. ⚠️ [MEDIUM] Use companyFetch instead of raw fetch
+      📍 Line 1 | Rule: security/require-company-fetch
+   4. 🚨 [HIGH] Synchronous readFileSync detected
+      📍 Line 1 | Rule: performance/no-sync-fs
+────────────────────────────────────────────────────────────────────────────────
+📅 TIMESTAMP: 2025-08-20T17:24:51.472Z
+🎯 EVENT: file_analyzed
+📁 FILE: index.js
+📊 SUMMARY:
+   • Violations: 3
+   • Severity: high
+   • AI Detected: NO
+🚨 VIOLATIONS:
+   1. 🚨 [HIGH] Synchronous readFileSync detected
+      📍 Line 1 | Rule: performance/no-sync-fs
+   2. 💡 [LOW] console.log statements should be removed
+      📍 Line 1 | Rule: performance/no-console-log
+   3. 💡 [LOW] Imports should be ordered: external libraries first, then internal
+      📍 Line 1 | Rule: imports/order
+{"timestamp":"2025-08-20T17:25:00.142Z","event":"monitor_stopped","duration":181,"stats":{"filesWatched":28,"changesDetected":2,"violationsFound":7,"aiCodeDetected":0,"startTime":"2025-08-20T17:21:58.682Z"}}
+{"timestamp":"2025-08-20T17:25:01.246Z","event":"monitor_started","watchDirectory":"src/","filesWatched":28,"configuration":{"hasPatterns":false,"hasRules":true,"aiDetection":true,"driftDetection":true,"ruleChecking":true}}
+────────────────────────────────────────────────────────────────────────────────
+📅 TIMESTAMP: 2025-08-20T17:25:06.170Z
+🎯 EVENT: file_analyzed
+📁 FILE: test-violations.js
+📊 SUMMARY:
+   • Violations: 4
+   • Severity: critical
+   • AI Detected: NO
+🚨 VIOLATIONS:
+   1. 🔥 [CRITICAL] eval() usage is prohibited for security reasons
+      📍 Line 1 | Rule: security/no-eval
+   2. 🚨 [HIGH] Direct HTML manipulation detected
+      📍 Line 1 | Rule: security/no-dangerous-html
+   3. ⚠️ [MEDIUM] Use companyFetch instead of raw fetch
+      📍 Line 1 | Rule: security/require-company-fetch
+   4. 🚨 [HIGH] Synchronous readFileSync detected
+      📍 Line 1 | Rule: performance/no-sync-fs
+────────────────────────────────────────────────────────────────────────────────
+📅 TIMESTAMP: 2025-08-20T17:26:13.137Z
+🎯 EVENT: file_analyzed
+📁 FILE: utils/logger.js
+📊 SUMMARY:
+   • Violations: 1
+   • Severity: low
+   • AI Detected: NO
+🚨 VIOLATIONS:
+   1. 💡 [LOW] console.log statements should be removed
+      📍 Line 1 | Rule: performance/no-console-log
+────────────────────────────────────────────────────────────────────────────────
+📅 TIMESTAMP: 2025-08-20T17:26:21.431Z
+🎯 EVENT: file_analyzed
+📁 FILE: test-violations.js
+📊 SUMMARY:
+   • Violations: 4
+   • Severity: critical
+   • AI Detected: NO
+🚨 VIOLATIONS:
+   1. 🔥 [CRITICAL] eval() usage is prohibited for security reasons
+      📍 Line 1 | Rule: security/no-eval
+   2. 🚨 [HIGH] Direct HTML manipulation detected
+      📍 Line 1 | Rule: security/no-dangerous-html
+   3. ⚠️ [MEDIUM] Use companyFetch instead of raw fetch
+      📍 Line 1 | Rule: security/require-company-fetch
+   4. 🚨 [HIGH] Synchronous readFileSync detected
+      📍 Line 1 | Rule: performance/no-sync-fs
+{"timestamp":"2025-08-20T17:26:23.192Z","event":"monitor_stopped","duration":82,"stats":{"filesWatched":28,"changesDetected":3,"violationsFound":9,"aiCodeDetected":0,"startTime":"2025-08-20T17:25:01.246Z"}}
+{"timestamp":"2025-08-20T17:26:24.425Z","event":"monitor_started","watchDirectory":"src/","filesWatched":28,"configuration":{"hasPatterns":false,"hasRules":true,"aiDetection":true,"driftDetection":true,"ruleChecking":true}}
+────────────────────────────────────────────────────────────────────────────────
+📅 TIMESTAMP: 2025-08-20T17:27:46.330Z
+🎯 EVENT: file_analyzed
+📁 FILE: test-violations.js
+📊 SUMMARY:
+   • Violations: 5
+   • Severity: critical
+   • AI Detected: NO
+🚨 VIOLATIONS:
+   1. 🔥 [CRITICAL] eval() usage is prohibited for security reasons
+      📍 Line 1 | Rule: security/no-eval
+   2. 🚨 [HIGH] Direct HTML manipulation detected
+      📍 Line 1 | Rule: security/no-dangerous-html
+   3. ⚠️ [MEDIUM] Use companyFetch instead of raw fetch
+      📍 Line 1 | Rule: security/require-company-fetch
+   4. 🚨 [HIGH] Synchronous readFileSync detected
+      📍 Line 1 | Rule: performance/no-sync-fs
+   5. 🚨 [HIGH] Synchronous statSync detected
+      📍 Line 1 | Rule: performance/no-sync-fs
+────────────────────────────────────────────────────────────────────────────────
+📅 TIMESTAMP: 2025-08-20T17:30:00.474Z
+🎯 EVENT: file_analyzed
+📁 FILE: utils/logger.js
+📊 SUMMARY:
+   • Violations: 1
+   • Severity: low
+   • AI Detected: NO
+🚨 VIOLATIONS:
+   1. 💡 [LOW] console.log statements should be removed
+      📍 Line 1 | Rule: performance/no-console-log
+{"timestamp":"2025-08-20T17:30:07.919Z","event":"monitor_stopped","duration":223,"stats":{"filesWatched":28,"changesDetected":2,"violationsFound":6,"aiCodeDetected":0,"startTime":"2025-08-20T17:26:24.425Z"}}
+{"timestamp":"2025-08-20T17:30:10.334Z","event":"monitor_started","watchDirectory":"src/","filesWatched":28,"configuration":{"hasPatterns":false,"hasRules":true,"aiDetection":true,"driftDetection":true,"ruleChecking":true}}
+────────────────────────────────────────────────────────────────────────────────
+📅 TIMESTAMP: 2025-08-20T17:30:15.633Z
+🎯 EVENT: file_analyzed
+📁 FILE: test-violations.js
+📊 SUMMARY:
+   • Violations: 5
+   • Severity: critical
+   • AI Detected: NO
+🚨 VIOLATIONS:
+   1. 🔥 [CRITICAL] eval() usage is prohibited for security reasons
+      📍 Line 1 | Rule: security/no-eval
+   2. 🚨 [HIGH] Direct HTML manipulation detected
+      📍 Line 1 | Rule: security/no-dangerous-html
+   3. ⚠️ [MEDIUM] Use companyFetch instead of raw fetch
+      📍 Line 1 | Rule: security/require-company-fetch
+   4. 🚨 [HIGH] Synchronous readFileSync detected
+      📍 Line 1 | Rule: performance/no-sync-fs
+   5. 🚨 [HIGH] Synchronous statSync detected
+      📍 Line 1 | Rule: performance/no-sync-fs
+────────────────────────────────────────────────────────────────────────────────
+📅 TIMESTAMP: 2025-08-20T17:31:40.009Z
+🎯 EVENT: file_analyzed
+📁 FILE: monitor/ContinuousMonitor.js
+📊 SUMMARY:
+   • Violations: 3
+   • Severity: high
+   • AI Detected: NO
+🚨 VIOLATIONS:
+   1. 🚨 [HIGH] Synchronous readFileSync detected
+      📍 Line 1 | Rule: performance/no-sync-fs
+   2. 🚨 [HIGH] Synchronous statSync detected
+      📍 Line 1 | Rule: performance/no-sync-fs
+   3. 💡 [LOW] Imports should be ordered: external libraries first, then internal
+      📍 Line 1 | Rule: imports/order
+{"timestamp":"2025-08-20T17:31:44.192Z","event":"monitor_stopped","duration":94,"stats":{"filesWatched":28,"changesDetected":2,"violationsFound":8,"aiCodeDetected":0,"startTime":"2025-08-20T17:30:10.334Z"}}
+{"timestamp":"2025-08-20T17:31:45.005Z","event":"monitor_started","watchDirectory":"src/","filesWatched":28,"configuration":{"hasPatterns":false,"hasRules":true,"aiDetection":true,"driftDetection":true,"ruleChecking":true}}
+────────────────────────────────────────────────────────────────────────────────
+📅 TIMESTAMP: 2025-08-20T17:31:49.212Z
+🎯 EVENT: file_analyzed
+📁 FILE: test-violations.js
+📊 SUMMARY:
+   • Violations: 5
+   • Severity: critical
+   • AI Detected: NO
+🚨 VIOLATIONS:
+   1. 🔥 [CRITICAL] eval() usage is prohibited for security reasons
+      📍 Line 1 | Rule: security/no-eval
+   2. 🚨 [HIGH] Direct HTML manipulation detected
+      📍 Line 1 | Rule: security/no-dangerous-html
+   3. ⚠️ [MEDIUM] Use companyFetch instead of raw fetch
+      📍 Line 1 | Rule: security/require-company-fetch
+   4. 🚨 [HIGH] Synchronous readFileSync detected
+      📍 Line 1 | Rule: performance/no-sync-fs
+   5. 🚨 [HIGH] Synchronous statSync detected
+      📍 Line 1 | Rule: performance/no-sync-fs
+────────────────────────────────────────────────────────────────────────────────
+📅 TIMESTAMP: 2025-08-20T17:34:43.556Z
+🎯 EVENT: file_analyzed
+📁 FILE: utils/logger.js
+📊 SUMMARY:
+   • Violations: 1
+   • Severity: low
+   • AI Detected: NO
+🚨 VIOLATIONS:
+   1. 💡 [LOW] console.log statements should be removed
+      📍 Line 1 | Rule: performance/no-console-log
+{"timestamp":"2025-08-20T17:34:50.636Z","event":"monitor_stopped","duration":186,"stats":{"filesWatched":28,"changesDetected":2,"violationsFound":6,"aiCodeDetected":0,"startTime":"2025-08-20T17:31:45.005Z"}}
+{"timestamp":"2025-08-20T17:34:52.125Z","event":"monitor_started","watchDirectory":"src/","filesWatched":28,"configuration":{"hasPatterns":false,"hasRules":true,"aiDetection":true,"driftDetection":true,"ruleChecking":true}}
+────────────────────────────────────────────────────────────────────────────────
+📅 TIMESTAMP: 2025-08-20T17:34:56.427Z
+🎯 EVENT: file_analyzed
+📁 FILE: test-violations.js
+📊 SUMMARY:
+   • Violations: 5
+   • Severity: critical
+   • AI Detected: NO
+🚨 VIOLATIONS:
+   1. 🔥 [CRITICAL] eval() usage is prohibited for security reasons
+      📍 Line 1 | Rule: security/no-eval
+   2. 🚨 [HIGH] Direct HTML manipulation detected
+      📍 Line 1 | Rule: security/no-dangerous-html
+   3. ⚠️ [MEDIUM] Use companyFetch instead of raw fetch
+      📍 Line 1 | Rule: security/require-company-fetch
+   4. 🚨 [HIGH] Synchronous readFileSync detected
+      📍 Line 1 | Rule: performance/no-sync-fs
+   5. 🚨 [HIGH] Synchronous statSync detected
+      📍 Line 1 | Rule: performance/no-sync-fs
+────────────────────────────────────────────────────────────────────────────────
+📅 TIMESTAMP: 2025-08-20T17:36:56.645Z
+🎯 EVENT: file_analyzed
+📁 FILE: utils/logger.js
+📊 SUMMARY:
+   • Violations: 1
+   • Severity: low
+   • AI Detected: NO
+🚨 VIOLATIONS:
+   1. 💡 [LOW] console.log statements should be removed
+      📍 Line 1 | Rule: performance/no-console-log
+────────────────────────────────────────────────────────────────────────────────
+📅 TIMESTAMP: 2025-08-20T17:41:02.330Z
+🎯 EVENT: file_analyzed
+📁 FILE: cli/index.js
+📊 SUMMARY:
+   • Violations: 0
+   • Severity: info
+   • AI Detected: NO
+────────────────────────────────────────────────────────────────────────────────
+📅 TIMESTAMP: 2025-08-20T17:48:01.634Z
+🎯 EVENT: file_analyzed
+📁 FILE: cli/index.js
+📊 SUMMARY:
+   • Violations: 0
+   • Severity: info
+   • AI Detected: NO
+────────────────────────────────────────────────────────────────────────────────
+📅 TIMESTAMP: 2025-08-20T17:48:15.158Z
+🎯 EVENT: file_analyzed
+📁 FILE: cli/index.js
+📊 SUMMARY:
+   • Violations: 0
+   • Severity: info
+   • AI Detected: NO
+────────────────────────────────────────────────────────────────────────────────
+📅 TIMESTAMP: 2025-08-20T17:48:36.981Z
+🎯 EVENT: file_analyzed
+📁 FILE: utils/logger.js
+📊 SUMMARY:
+   • Violations: 1
+   • Severity: low
+   • AI Detected: NO
+🚨 VIOLATIONS:
+   1. 💡 [LOW] console.log statements should be removed
+      📍 Line 1 | Rule: performance/no-console-log
+────────────────────────────────────────────────────────────────────────────────
+📅 TIMESTAMP: 2025-08-20T17:48:43.926Z
+🎯 EVENT: file_analyzed
+📁 FILE: utils/logger.js
+📊 SUMMARY:
+   • Violations: 1
+   • Severity: low
+   • AI Detected: NO
+🚨 VIOLATIONS:
+   1. 💡 [LOW] console.log statements should be removed
+      📍 Line 1 | Rule: performance/no-console-log
+────────────────────────────────────────────────────────────────────────────────
+📅 TIMESTAMP: 2025-08-20T17:49:11.472Z
+🎯 EVENT: file_analyzed
+📁 FILE: index.js
+📊 SUMMARY:
+   • Violations: 3
+   • Severity: high
+   • AI Detected: NO
+🚨 VIOLATIONS:
+   1. 🚨 [HIGH] Synchronous readFileSync detected
+      📍 Line 1 | Rule: performance/no-sync-fs
+   2. 💡 [LOW] console.log statements should be removed
+      📍 Line 1 | Rule: performance/no-console-log
+   3. 💡 [LOW] Imports should be ordered: external libraries first, then internal
+      📍 Line 1 | Rule: imports/order
+────────────────────────────────────────────────────────────────────────────────
+📅 TIMESTAMP: 2025-08-20T17:49:25.307Z
+🎯 EVENT: file_analyzed
+📁 FILE: monitor/ContinuousMonitor.js
+📊 SUMMARY:
+   • Violations: 3
+   • Severity: high
+   • AI Detected: NO
+🚨 VIOLATIONS:
+   1. 🚨 [HIGH] Synchronous readFileSync detected
+      📍 Line 1 | Rule: performance/no-sync-fs
+   2. 🚨 [HIGH] Synchronous statSync detected
+      📍 Line 1 | Rule: performance/no-sync-fs
+   3. 💡 [LOW] Imports should be ordered: external libraries first, then internal
+      📍 Line 1 | Rule: imports/order
+────────────────────────────────────────────────────────────────────────────────
+📅 TIMESTAMP: 2025-08-20T17:49:34.850Z
+🎯 EVENT: file_analyzed
+📁 FILE: ai-audit/AIAuditor.js
+📊 SUMMARY:
+   • Violations: 1
+   • Severity: high
+   • AI Detected: NO
+🚨 VIOLATIONS:
+   1. 🚨 [HIGH] Direct HTML manipulation detected
+      📍 Line 1 | Rule: security/no-dangerous-html
+────────────────────────────────────────────────────────────────────────────────
+📅 TIMESTAMP: 2025-08-20T17:49:34.862Z
+🎯 EVENT: file_analyzed
+📁 FILE: index.js
+📊 SUMMARY:
+   • Violations: 3
+   • Severity: high
+   • AI Detected: NO
+🚨 VIOLATIONS:
+   1. 🚨 [HIGH] Synchronous readFileSync detected
+      📍 Line 1 | Rule: performance/no-sync-fs
+   2. 💡 [LOW] console.log statements should be removed
+      📍 Line 1 | Rule: performance/no-console-log
+   3. 💡 [LOW] Imports should be ordered: external libraries first, then internal
+      📍 Line 1 | Rule: imports/order
+────────────────────────────────────────────────────────────────────────────────
+📅 TIMESTAMP: 2025-08-20T17:49:34.870Z
+🎯 EVENT: file_analyzed
+📁 FILE: governance/RuleEngine.js
+📊 SUMMARY:
+   • Violations: 13
+   • Severity: critical
+   • AI Detected: NO
+🚨 VIOLATIONS:
+   1. 🔥 [CRITICAL] eval() usage is prohibited for security reasons
+      📍 Line 1 | Rule: security/no-eval
+   2. 🚨 [HIGH] Direct HTML manipulation detected
+      📍 Line 1 | Rule: security/no-dangerous-html
+   3. 🚨 [HIGH] Synchronous readFileSync detected
+      📍 Line 1 | Rule: performance/no-sync-fs
+   4. 🚨 [HIGH] Synchronous writeFileSync detected
+      📍 Line 1 | Rule: performance/no-sync-fs
+   5. 🚨 [HIGH] Synchronous statSync detected
+      📍 Line 1 | Rule: performance/no-sync-fs
+   6. 💡 [LOW] console.log statements should be removed
+      📍 Line 1 | Rule: performance/no-console-log
+   7. 🚨 [HIGH] Direct database access outside repository layer
+      📍 Line 1 | Rule: architecture/no-direct-db
+   8. 🚨 [HIGH] Direct database access outside repository layer
+      📍 Line 1 | Rule: architecture/no-direct-db
+   9. 🚨 [HIGH] Direct database access outside repository layer
+      📍 Line 1 | Rule: architecture/no-direct-db
+   10. 🚨 [HIGH] Direct database access outside repository layer
+      📍 Line 1 | Rule: architecture/no-direct-db
+   11. 🚨 [HIGH] Direct database access outside repository layer
+      📍 Line 1 | Rule: architecture/no-direct-db
+   12. ⚠️ [MEDIUM] Deeply nested relative imports detected
+      📍 Line 1 | Rule: imports/no-relative-parent
+   13. 💡 [LOW] Imports should be ordered: external libraries first, then internal
+      📍 Line 1 | Rule: imports/order
+────────────────────────────────────────────────────────────────────────────────
+📅 TIMESTAMP: 2025-08-20T17:49:34.873Z
+🎯 EVENT: file_analyzed
+📁 FILE: governance/DriftDetector.js
+📊 SUMMARY:
+   • Violations: 0
+   • Severity: info
+   • AI Detected: NO
+────────────────────────────────────────────────────────────────────────────────
+📅 TIMESTAMP: 2025-08-20T17:49:34.875Z
+🎯 EVENT: file_analyzed
+📁 FILE: integrations/MCPServer.js
+📊 SUMMARY:
+   • Violations: 2
+   • Severity: high
+   • AI Detected: NO
+🚨 VIOLATIONS:
+   1. 🚨 [HIGH] Synchronous readFileSync detected
+      📍 Line 1 | Rule: performance/no-sync-fs
+   2. 💡 [LOW] Imports should be ordered: external libraries first, then internal
+      📍 Line 1 | Rule: imports/order
+────────────────────────────────────────────────────────────────────────────────
+📅 TIMESTAMP: 2025-08-20T17:49:34.879Z
+🎯 EVENT: file_analyzed
+📁 FILE: monitor/ContinuousMonitor.js
+📊 SUMMARY:
+   • Violations: 3
+   • Severity: high
+   • AI Detected: NO
+🚨 VIOLATIONS:
+   1. 🚨 [HIGH] Synchronous readFileSync detected
+      📍 Line 1 | Rule: performance/no-sync-fs
+   2. 🚨 [HIGH] Synchronous statSync detected
+      📍 Line 1 | Rule: performance/no-sync-fs
+   3. 💡 [LOW] Imports should be ordered: external libraries first, then internal
+      📍 Line 1 | Rule: imports/order
+────────────────────────────────────────────────────────────────────────────────
+📅 TIMESTAMP: 2025-08-20T17:49:35.740Z
+🎯 EVENT: file_analyzed
+📁 FILE: utils/regexPatterns.js
+📊 SUMMARY:
+   • Violations: 0
+   • Severity: info
+   • AI Detected: NO
+────────────────────────────────────────────────────────────────────────────────
+📅 TIMESTAMP: 2025-08-20T17:49:35.914Z
+🎯 EVENT: file_analyzed
+📁 FILE: analysis/PerformanceAnalyzer.js
+📊 SUMMARY:
+   • Violations: 0
+   • Severity: info
+   • AI Detected: NO
+────────────────────────────────────────────────────────────────────────────────
+📅 TIMESTAMP: 2025-08-20T17:49:35.969Z
+🎯 EVENT: file_analyzed
+📁 FILE: suggestions/PerformanceSuggester.js
+📊 SUMMARY:
+   • Violations: 0
+   • Severity: info
+   • AI Detected: NO
+────────────────────────────────────────────────────────────────────────────────
+📅 TIMESTAMP: 2025-08-20T17:49:36.055Z
+🎯 EVENT: file_analyzed
+📁 FILE: analysis/SimpleBestPracticeAnalyzer.js
+📊 SUMMARY:
+   • Violations: 2
+   • Severity: high
+   • AI Detected: NO
+🚨 VIOLATIONS:
+   1. 🚨 [HIGH] Synchronous readFileSync detected
+      📍 Line 1 | Rule: performance/no-sync-fs
+   2. 🚨 [HIGH] Synchronous statSync detected
+      📍 Line 1 | Rule: performance/no-sync-fs
+────────────────────────────────────────────────────────────────────────────────
+📅 TIMESTAMP: 2025-08-20T17:49:36.129Z
+🎯 EVENT: file_analyzed
+📁 FILE: suggestions/BestPracticeSuggester.js
+📊 SUMMARY:
+   • Violations: 0
+   • Severity: info
+   • AI Detected: NO
+────────────────────────────────────────────────────────────────────────────────
+📅 TIMESTAMP: 2025-08-20T17:49:36.195Z
+🎯 EVENT: file_analyzed
+📁 FILE: agents/PerformanceAgent.js
+📊 SUMMARY:
+   • Violations: 0
+   • Severity: info
+   • AI Detected: NO
+────────────────────────────────────────────────────────────────────────────────
+📅 TIMESTAMP: 2025-08-20T17:49:36.268Z
+🎯 EVENT: file_analyzed
+📁 FILE: cli/index.js
+📊 SUMMARY:
+   • Violations: 0
+   • Severity: info
+   • AI Detected: NO
+────────────────────────────────────────────────────────────────────────────────
+📅 TIMESTAMP: 2025-08-20T17:49:36.278Z
+🎯 EVENT: file_analyzed
+📁 FILE: utils/logger.js
+📊 SUMMARY:
+   • Violations: 1
+   • Severity: low
+   • AI Detected: NO
+🚨 VIOLATIONS:
+   1. 💡 [LOW] console.log statements should be removed
+      📍 Line 1 | Rule: performance/no-console-log
+────────────────────────────────────────────────────────────────────────────────
+📅 TIMESTAMP: 2025-08-20T17:49:36.315Z
+🎯 EVENT: file_analyzed
+📁 FILE: agents/DebuggingAgent.js
+📊 SUMMARY:
+   • Violations: 0
+   • Severity: info
+   • AI Detected: NO
+────────────────────────────────────────────────────────────────────────────────
+📅 TIMESTAMP: 2025-08-20T17:49:36.378Z
+🎯 EVENT: file_analyzed
+📁 FILE: analysis/BestPracticeAnalyzer.js
+📊 SUMMARY:
+   • Violations: 2
+   • Severity: high
+   • AI Detected: NO
+🚨 VIOLATIONS:
+   1. 🚨 [HIGH] Synchronous readFileSync detected
+      📍 Line 1 | Rule: performance/no-sync-fs
+   2. 🚨 [HIGH] Synchronous statSync detected
+      📍 Line 1 | Rule: performance/no-sync-fs
+────────────────────────────────────────────────────────────────────────────────
+📅 TIMESTAMP: 2025-08-20T17:49:36.560Z
+🎯 EVENT: file_analyzed
+📁 FILE: utils/AiModel.js
+📊 SUMMARY:
+   • Violations: 2
+   • Severity: medium
+   • AI Detected: NO
+🚨 VIOLATIONS:
+   1. ⚠️ [MEDIUM] Use companyFetch instead of raw fetch
+      📍 Line 1 | Rule: security/require-company-fetch
+   2. 💡 [LOW] console.log statements should be removed
+      📍 Line 1 | Rule: performance/no-console-log
+────────────────────────────────────────────────────────────────────────────────
+📅 TIMESTAMP: 2025-08-20T17:49:36.608Z
+🎯 EVENT: file_analyzed
+📁 FILE: ai-audit/AIDetector.js
+📊 SUMMARY:
+   • Violations: 1
+   • Severity: low
+   • AI Detected: NO
+🚨 VIOLATIONS:
+   1. 💡 [LOW] Imports should be ordered: external libraries first, then internal
+      📍 Line 1 | Rule: imports/order
+────────────────────────────────────────────────────────────────────────────────
+📅 TIMESTAMP: 2025-08-20T17:49:36.659Z
+🎯 EVENT: file_analyzed
+📁 FILE: utils/logFormatter.js
+📊 SUMMARY:
+   • Violations: 3
+   • Severity: high
+   • AI Detected: NO
+🚨 VIOLATIONS:
+   1. 🚨 [HIGH] Synchronous writeFileSync detected
+      📍 Line 1 | Rule: performance/no-sync-fs
+   2. 🚨 [HIGH] Synchronous statSync detected
+      📍 Line 1 | Rule: performance/no-sync-fs
+   3. 💡 [LOW] console.log statements should be removed
+      📍 Line 1 | Rule: performance/no-console-log
+────────────────────────────────────────────────────────────────────────────────
+📅 TIMESTAMP: 2025-08-20T17:49:36.806Z
+🎯 EVENT: file_analyzed
+📁 FILE: governance/PatternLearner.js
+📊 SUMMARY:
+   • Violations: 1
+   • Severity: low
+   • AI Detected: NO
+🚨 VIOLATIONS:
+   1. 💡 [LOW] Imports should be ordered: external libraries first, then internal
+      📍 Line 1 | Rule: imports/order
+────────────────────────────────────────────────────────────────────────────────
+📅 TIMESTAMP: 2025-08-20T17:49:46.503Z
+🎯 EVENT: file_analyzed
+📁 FILE: ai-audit/AIDetector.js
+📊 SUMMARY:
+   • Violations: 1
+   • Severity: low
+   • AI Detected: NO
+🚨 VIOLATIONS:
+   1. 💡 [LOW] Imports should be ordered: external libraries first, then internal
+      📍 Line 1 | Rule: imports/order
+────────────────────────────────────────────────────────────────────────────────
+📅 TIMESTAMP: 2025-08-20T17:49:46.505Z
+🎯 EVENT: file_analyzed
+📁 FILE: utils/AiModel.js
+📊 SUMMARY:
+   • Violations: 2
+   • Severity: medium
+   • AI Detected: NO
+🚨 VIOLATIONS:
+   1. ⚠️ [MEDIUM] Use companyFetch instead of raw fetch
+      📍 Line 1 | Rule: security/require-company-fetch
+   2. 💡 [LOW] console.log statements should be removed
+      📍 Line 1 | Rule: performance/no-console-log
+────────────────────────────────────────────────────────────────────────────────
+📅 TIMESTAMP: 2025-08-20T17:49:46.508Z
+🎯 EVENT: file_analyzed
+📁 FILE: monitor/ContinuousMonitor.js
+📊 SUMMARY:
+   • Violations: 3
+   • Severity: high
+   • AI Detected: NO
+🚨 VIOLATIONS:
+   1. 🚨 [HIGH] Synchronous readFileSync detected
+      📍 Line 1 | Rule: performance/no-sync-fs
+   2. 🚨 [HIGH] Synchronous statSync detected
+      📍 Line 1 | Rule: performance/no-sync-fs
+   3. 💡 [LOW] Imports should be ordered: external libraries first, then internal
+      📍 Line 1 | Rule: imports/order
+────────────────────────────────────────────────────────────────────────────────
+📅 TIMESTAMP: 2025-08-20T17:49:46.509Z
+🎯 EVENT: file_analyzed
+📁 FILE: index.js
+📊 SUMMARY:
+   • Violations: 3
+   • Severity: high
+   • AI Detected: NO
+🚨 VIOLATIONS:
+   1. 🚨 [HIGH] Synchronous readFileSync detected
+      📍 Line 1 | Rule: performance/no-sync-fs
+   2. 💡 [LOW] console.log statements should be removed
+      📍 Line 1 | Rule: performance/no-console-log
+   3. 💡 [LOW] Imports should be ordered: external libraries first, then internal
+      📍 Line 1 | Rule: imports/order
+────────────────────────────────────────────────────────────────────────────────
+📅 TIMESTAMP: 2025-08-20T17:49:46.511Z
+🎯 EVENT: file_analyzed
+📁 FILE: analysis/BestPracticeAnalyzer.js
+📊 SUMMARY:
+   • Violations: 2
+   • Severity: high
+   • AI Detected: NO
+🚨 VIOLATIONS:
+   1. 🚨 [HIGH] Synchronous readFileSync detected
+      📍 Line 1 | Rule: performance/no-sync-fs
+   2. 🚨 [HIGH] Synchronous statSync detected
+      📍 Line 1 | Rule: performance/no-sync-fs
+────────────────────────────────────────────────────────────────────────────────
+📅 TIMESTAMP: 2025-08-20T17:49:46.512Z
+🎯 EVENT: file_analyzed
+📁 FILE: agents/PerformanceAgent.js
+📊 SUMMARY:
+   • Violations: 0
+   • Severity: info
+   • AI Detected: NO
+────────────────────────────────────────────────────────────────────────────────
+📅 TIMESTAMP: 2025-08-20T17:49:46.514Z
+🎯 EVENT: file_analyzed
+📁 FILE: utils/regexPatterns.js
+📊 SUMMARY:
+   • Violations: 0
+   • Severity: info
+   • AI Detected: NO
+────────────────────────────────────────────────────────────────────────────────
+📅 TIMESTAMP: 2025-08-20T17:49:46.516Z
+🎯 EVENT: file_analyzed
+📁 FILE: agents/DebuggingAgent.js
+📊 SUMMARY:
+   • Violations: 0
+   • Severity: info
+   • AI Detected: NO
+────────────────────────────────────────────────────────────────────────────────
+📅 TIMESTAMP: 2025-08-20T17:49:46.518Z
+🎯 EVENT: file_analyzed
+📁 FILE: suggestions/PerformanceSuggester.js
+📊 SUMMARY:
+   • Violations: 0
+   • Severity: info
+   • AI Detected: NO
+────────────────────────────────────────────────────────────────────────────────
+📅 TIMESTAMP: 2025-08-20T17:49:46.520Z
+🎯 EVENT: file_analyzed
+📁 FILE: governance/PatternLearner.js
+📊 SUMMARY:
+   • Violations: 1
+   • Severity: low
+   • AI Detected: NO
+🚨 VIOLATIONS:
+   1. 💡 [LOW] Imports should be ordered: external libraries first, then internal
+      📍 Line 1 | Rule: imports/order
+────────────────────────────────────────────────────────────────────────────────
+📅 TIMESTAMP: 2025-08-20T17:49:46.522Z
+🎯 EVENT: file_analyzed
+📁 FILE: integrations/MCPServer.js
+📊 SUMMARY:
+   • Violations: 2
+   • Severity: high
+   • AI Detected: NO
+🚨 VIOLATIONS:
+   1. 🚨 [HIGH] Synchronous readFileSync detected
+      📍 Line 1 | Rule: performance/no-sync-fs
+   2. 💡 [LOW] Imports should be ordered: external libraries first, then internal
+      📍 Line 1 | Rule: imports/order
+────────────────────────────────────────────────────────────────────────────────
+📅 TIMESTAMP: 2025-08-20T17:49:46.523Z
+🎯 EVENT: file_analyzed
+📁 FILE: analysis/PerformanceAnalyzer.js
+📊 SUMMARY:
+   • Violations: 0
+   • Severity: info
+   • AI Detected: NO
+────────────────────────────────────────────────────────────────────────────────
+📅 TIMESTAMP: 2025-08-20T17:49:46.525Z
+🎯 EVENT: file_analyzed
+📁 FILE: utils/logFormatter.js
+📊 SUMMARY:
+   • Violations: 3
+   • Severity: high
+   • AI Detected: NO
+🚨 VIOLATIONS:
+   1. 🚨 [HIGH] Synchronous writeFileSync detected
+      📍 Line 1 | Rule: performance/no-sync-fs
+   2. 🚨 [HIGH] Synchronous statSync detected
+      📍 Line 1 | Rule: performance/no-sync-fs
+   3. 💡 [LOW] console.log statements should be removed
+      📍 Line 1 | Rule: performance/no-console-log
+────────────────────────────────────────────────────────────────────────────────
+📅 TIMESTAMP: 2025-08-20T17:49:46.527Z
+🎯 EVENT: file_analyzed
+📁 FILE: governance/DriftDetector.js
+📊 SUMMARY:
+   • Violations: 0
+   • Severity: info
+   • AI Detected: NO
+────────────────────────────────────────────────────────────────────────────────
+📅 TIMESTAMP: 2025-08-20T17:49:46.528Z
+🎯 EVENT: file_analyzed
+📁 FILE: analysis/SimpleBestPracticeAnalyzer.js
+📊 SUMMARY:
+   • Violations: 2
+   • Severity: high
+   • AI Detected: NO
+🚨 VIOLATIONS:
+   1. 🚨 [HIGH] Synchronous readFileSync detected
+      📍 Line 1 | Rule: performance/no-sync-fs
+   2. 🚨 [HIGH] Synchronous statSync detected
+      📍 Line 1 | Rule: performance/no-sync-fs
+────────────────────────────────────────────────────────────────────────────────
+📅 TIMESTAMP: 2025-08-20T17:49:46.529Z
+🎯 EVENT: file_analyzed
+📁 FILE: cli/index.js
+📊 SUMMARY:
+   • Violations: 0
+   • Severity: info
+   • AI Detected: NO
+────────────────────────────────────────────────────────────────────────────────
+📅 TIMESTAMP: 2025-08-20T17:49:46.532Z
+🎯 EVENT: file_analyzed
+📁 FILE: ai-audit/AIAuditor.js
+📊 SUMMARY:
+   • Violations: 1
+   • Severity: high
+   • AI Detected: NO
+🚨 VIOLATIONS:
+   1. 🚨 [HIGH] Direct HTML manipulation detected
+      📍 Line 1 | Rule: security/no-dangerous-html
+────────────────────────────────────────────────────────────────────────────────
+📅 TIMESTAMP: 2025-08-20T17:49:46.535Z
+🎯 EVENT: file_analyzed
+📁 FILE: governance/RuleEngine.js
+📊 SUMMARY:
+   • Violations: 13
+   • Severity: critical
+   • AI Detected: NO
+🚨 VIOLATIONS:
+   1. 🔥 [CRITICAL] eval() usage is prohibited for security reasons
+      📍 Line 1 | Rule: security/no-eval
+   2. 🚨 [HIGH] Direct HTML manipulation detected
+      📍 Line 1 | Rule: security/no-dangerous-html
+   3. 🚨 [HIGH] Synchronous readFileSync detected
+      📍 Line 1 | Rule: performance/no-sync-fs
+   4. 🚨 [HIGH] Synchronous writeFileSync detected
+      📍 Line 1 | Rule: performance/no-sync-fs
+   5. 🚨 [HIGH] Synchronous statSync detected
+      📍 Line 1 | Rule: performance/no-sync-fs
+   6. 💡 [LOW] console.log statements should be removed
+      📍 Line 1 | Rule: performance/no-console-log
+   7. 🚨 [HIGH] Direct database access outside repository layer
+      📍 Line 1 | Rule: architecture/no-direct-db
+   8. 🚨 [HIGH] Direct database access outside repository layer
+      📍 Line 1 | Rule: architecture/no-direct-db
+   9. 🚨 [HIGH] Direct database access outside repository layer
+      📍 Line 1 | Rule: architecture/no-direct-db
+   10. 🚨 [HIGH] Direct database access outside repository layer
+      📍 Line 1 | Rule: architecture/no-direct-db
+   11. 🚨 [HIGH] Direct database access outside repository layer
+      📍 Line 1 | Rule: architecture/no-direct-db
+   12. ⚠️ [MEDIUM] Deeply nested relative imports detected
+      📍 Line 1 | Rule: imports/no-relative-parent
+   13. 💡 [LOW] Imports should be ordered: external libraries first, then internal
+      📍 Line 1 | Rule: imports/order
+────────────────────────────────────────────────────────────────────────────────
+📅 TIMESTAMP: 2025-08-20T17:49:46.547Z
+🎯 EVENT: file_analyzed
+📁 FILE: suggestions/BestPracticeSuggester.js
+📊 SUMMARY:
+   • Violations: 0
+   • Severity: info
+   • AI Detected: NO
+────────────────────────────────────────────────────────────────────────────────
+📅 TIMESTAMP: 2025-08-20T17:49:46.666Z
+🎯 EVENT: file_analyzed
+📁 FILE: utils/logger.js
+📊 SUMMARY:
+   • Violations: 1
+   • Severity: low
+   • AI Detected: NO
+🚨 VIOLATIONS:
+   1. 💡 [LOW] console.log statements should be removed
+      📍 Line 1 | Rule: performance/no-console-log
+────────────────────────────────────────────────────────────────────────────────
+📅 TIMESTAMP: 2025-08-20T17:50:35.390Z
+🎯 EVENT: file_analyzed
+📁 FILE: governance/RuleEngine.js
+📊 SUMMARY:
+   • Violations: 2
+   • Severity: critical
+   • AI Detected: NO
+🚨 VIOLATIONS:
+   1. 🔥 [CRITICAL] eval() usage is prohibited for security reasons
+      📍 Line 1 | Rule: security/no-eval
+   2. 🚨 [HIGH] Direct HTML manipulation detected
+      📍 Line 1 | Rule: security/no-dangerous-html
+{"timestamp":"2025-08-20T17:51:38.895Z","event":"monitor_stopped","duration":1007,"stats":{"filesWatched":28,"changesDetected":50,"violationsFound":84,"aiCodeDetected":0,"startTime":"2025-08-20T17:34:52.125Z"}}

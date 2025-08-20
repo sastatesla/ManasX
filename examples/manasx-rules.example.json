@@ -1,0 +1,310 @@
+{
+  "metadata": {
+    "version": "1.0.0",
+    "name": "Enterprise Code Governance Rules",
+    "description": "Organizational standards for maintaining code quality and consistency",
+    "organization": "Your Company Name",
+    "author": "DevOps Team",
+    "created": "2024-01-20T10:00:00.000Z",
+    "lastModified": "2024-01-20T10:00:00.000Z"
+  },
+  "global": {
+    "severity": "medium",
+    "autofix": false,
+    "reportUnusedRules": true,
+    "ignorePatterns": ["node_modules/**", "dist/**", "build/**", "*.min.js"]
+  },
+  "rules": {
+    "security": {
+      "enabled": true,
+      "description": "Security-related rules to prevent vulnerabilities",
+      "rules": {
+        "no-eval": {
+          "name": "Prohibit eval() usage",
+          "description": "The eval() function poses security risks and should not be used",
+          "severity": "critical",
+          "enabled": true,
+          "message": "eval() usage is prohibited for security reasons. Use safer alternatives.",
+          "tags": ["security", "vulnerability"]
+        },
+        "no-dangerous-html": {
+          "name": "Avoid dangerous HTML manipulation",
+          "description": "Direct innerHTML/outerHTML manipulation can lead to XSS vulnerabilities",
+          "severity": "high",
+          "enabled": true,
+          "message": "Use safe DOM manipulation methods instead of innerHTML/outerHTML",
+          "tags": ["security", "xss"]
+        },
+        "require-company-fetch": {
+          "name": "Use company fetch wrapper",
+          "description": "All API calls must use the company fetch wrapper instead of raw fetch",
+          "severity": "medium",
+          "enabled": true,
+          "parameters": {
+            "wrapperName": "apiClient",
+            "allowedMethods": ["apiClient.get", "apiClient.post", "apiClient.put", "apiClient.delete"]
+          },
+          "message": "Use apiClient methods instead of raw fetch for proper error handling and authentication",
+          "scope": ["src/**/*.js", "src/**/*.ts"],
+          "exclude": ["src/utils/apiClient.js", "**/*.test.js"]
+        },
+        "no-secrets": {
+          "name": "No hardcoded secrets",
+          "description": "API keys, passwords, and secrets should not be hardcoded",
+          "severity": "critical",
+          "enabled": true,
+          "parameters": {
+            "secretPatterns": ["password", "apikey", "secret", "token", "auth"]
+          }
+        }
+      }
+    },
+    "performance": {
+      "enabled": true,
+      "description": "Performance-related rules for optimal code execution",
+      "rules": {
+        "no-sync-fs": {
+          "name": "Avoid synchronous file operations",
+          "description": "Synchronous file operations block the event loop",
+          "severity": "high",
+          "enabled": true,
+          "exclude": ["**/*.test.js", "**/*.spec.js", "scripts/**", "build/**"],
+          "message": "Use asynchronous file operations to avoid blocking the event loop"
+        },
+        "no-console-log": {
+          "name": "Remove console.log statements",
+          "description": "Console.log statements should not be present in production code",
+          "severity": "low",
+          "enabled": true,
+          "exclude": ["**/*.test.js", "**/*.spec.js", "scripts/**", "src/utils/logger.js"],
+          "autofix": true,
+          "message": "Use proper logging instead of console.log"
+        },
+        "limit-nested-loops": {
+          "name": "Limit nested loop complexity",
+          "description": "Deeply nested loops can cause performance issues",
+          "severity": "medium",
+          "enabled": true,
+          "parameters": {
+            "maxNesting": 2
+          },
+          "message": "Consider refactoring nested loops or using more efficient algorithms"
+        }
+      }
+    },
+    "architecture": {
+      "enabled": true,
+      "description": "Architectural rules to maintain code organization",
+      "rules": {
+        "no-direct-db": {
+          "name": "No direct database access",
+          "description": "Database access should go through the repository layer",
+          "severity": "high",
+          "enabled": true,
+          "scope": ["src/**/*.js", "src/**/*.ts"],
+          "exclude": ["src/repositories/**", "src/database/**"],
+          "parameters": {
+            "forbiddenPatterns": ["mongoose.connect", "db.collection", "prisma.", "SELECT", "INSERT", "UPDATE", "DELETE"]
+          },
+          "message": "Use repository layer for database access to maintain proper separation of concerns"
+        },
+        "feature-folders": {
+          "name": "Follow feature folder structure",
+          "description": "Code should be organized in feature-based folders",
+          "severity": "medium",
+          "enabled": false,
+          "parameters": {
+            "requiredStructure": ["components", "services", "utils", "types"]
+          }
+        },
+        "import-boundaries": {
+          "name": "Respect import boundaries",
+          "description": "Modules should not import from higher-level or parallel features",
+          "severity": "medium",
+          "enabled": true,
+          "parameters": {
+            "boundaries": {
+              "src/components/**": ["src/utils/**", "src/types/**", "src/hooks/**"],
+              "src/services/**": ["src/utils/**", "src/types/**", "src/repositories/**"],
+              "src/pages/**": ["src/components/**", "src/services/**", "src/utils/**"]
+            }
+          }
+        }
+      }
+    },
+    "naming": {
+      "enabled": true,
+      "description": "Naming convention rules for consistency",
+      "rules": {
+        "consistent-variables": {
+          "name": "Consistent variable naming",
+          "description": "Variables should follow the established naming convention",
+          "severity": "low",
+          "enabled": true,
+          "autofix": true,
+          "parameters": {
+            "style": "camelCase",
+            "allowedPrefixes": ["is", "has", "can", "should", "will", "get", "set"]
+          }
+        },
+        "consistent-functions": {
+          "name": "Consistent function naming",
+          "description": "Functions should follow camelCase and use descriptive names",
+          "severity": "low",
+          "enabled": true,
+          "parameters": {
+            "style": "camelCase",
+            "minLength": 3,
+            "forbiddenNames": ["func", "fn", "temp", "data", "item"]
+          }
+        },
+        "component-naming": {
+          "name": "React component naming",
+          "description": "React components should use PascalCase",
+          "severity": "medium",
+          "enabled": true,
+          "scope": ["src/components/**/*.js", "src/components/**/*.jsx", "src/components/**/*.tsx"],
+          "parameters": {
+            "style": "PascalCase",
+            "suffix": "Component"
+          }
+        }
+      }
+    },
+    "imports": {
+      "enabled": true,
+      "description": "Import/export related rules",
+      "rules": {
+        "no-relative-parent": {
+          "name": "Avoid deep relative imports",
+          "description": "Relative imports should not go more than 2 levels up",
+          "severity": "medium",
+          "enabled": true,
+          "parameters": {
+            "maxDepth": 2
+          },
+          "message": "Use absolute imports or alias imports instead of deep relative paths"
+        },
+        "import-order": {
+          "name": "Import order",
+          "description": "Imports should be ordered: external libraries, internal modules, relative imports",
+          "severity": "low",
+          "enabled": true,
+          "autofix": true,
+          "parameters": {
+            "order": ["external", "internal", "relative"],
+            "alphabetize": true
+          }
+        },
+        "no-unused-imports": {
+          "name": "No unused imports",
+          "description": "Remove unused import statements",
+          "severity": "low",
+          "enabled": true,
+          "autofix": true
+        },
+        "group-imports": {
+          "name": "Group related imports",
+          "description": "Related imports should be grouped together with blank lines",
+          "severity": "info",
+          "enabled": true,
+          "autofix": true
+        }
+      }
+    },
+    "testing": {
+      "enabled": true,
+      "description": "Testing-related rules",
+      "rules": {
+        "require-tests": {
+          "name": "Require unit tests",
+          "description": "All utility functions and services must have unit tests",
+          "severity": "medium",
+          "enabled": false,
+          "scope": ["src/utils/**/*.js", "src/services/**/*.js"],
+          "parameters": {
+            "testSuffix": ".test.js",
+            "minCoverage": 80
+          }
+        },
+        "test-naming": {
+          "name": "Consistent test naming",
+          "description": "Test files should follow naming convention",
+          "severity": "low",
+          "enabled": true,
+          "scope": ["**/*.test.js", "**/*.spec.js"],
+          "parameters": {
+            "allowedSuffixes": [".test.js", ".spec.js", ".test.ts", ".spec.ts"]
+          }
+        }
+      }
+    },
+    "comments": {
+      "enabled": true,
+      "description": "Code documentation rules",
+      "rules": {
+        "require-jsdoc": {
+          "name": "Require JSDoc comments",
+          "description": "Public functions must have JSDoc comments",
+          "severity": "low",
+          "enabled": false,
+          "scope": ["src/**/*.js", "src/**/*.ts"],
+          "exclude": ["**/*.test.js", "**/*.spec.js"],
+          "parameters": {
+            "requireParams": true,
+            "requireReturns": true,
+            "requireDescription": true
+          }
+        },
+        "no-todo-comments": {
+          "name": "No TODO comments in production",
+          "description": "TODO comments should be resolved before merging to main",
+          "severity": "medium",
+          "enabled": true,
+          "parameters": {
+            "allowedBranches": ["develop", "feature/*", "fix/*"],
+            "forbiddenPatterns": ["TODO", "FIXME", "HACK", "XXX"]
+          }
+        }
+      }
+    }
+  },
+  "exceptions": [
+    {
+      "rule": "security/require-company-fetch",
+      "file": "src/utils/apiClient.js",
+      "reason": "This is the implementation of the company fetch wrapper",
+      "author": "DevOps Team",
+      "approved": true,
+      "expiry": null
+    },
+    {
+      "rule": "performance/no-console-log",
+      "file": "src/utils/logger.js",
+      "reason": "Logger implementation needs console access",
+      "author": "DevOps Team",
+      "approved": true,
+      "expiry": null
+    }
+  ],
+  "notifications": {
+    "slack": {
+      "enabled": false,
+      "webhook": "https://hooks.slack.com/services/YOUR/WEBHOOK/URL",
+      "channel": "#code-quality",
+      "severityThreshold": "medium"
+    },
+    "email": {
+      "enabled": false,
+      "recipients": ["devops@company.com"],
+      "severityThreshold": "high"
+    }
+  },
+  "reporting": {
+    "generateReports": true,
+    "outputDirectory": "reports/code-governance",
+    "formats": ["json", "html"],
+    "includeMetrics": true,
+    "retentionDays": 30
+  }
+}

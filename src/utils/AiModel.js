@@ -6,11 +6,6 @@ const API_KEY = process.env.GROQ_API_KEY || process.env.AI_MODEL_API_KEY;
 const API_URL = process.env.GROQ_API_URL || "https://api.groq.com/openai/v1/chat/completions";
 const DEFAULT_MODEL = process.env.GROQ_MODEL || "llama3-70b-8192";
 
-/**
- * @param {string} prompt - The system/user prompt for the model.
- * @param {object} [options] - Optional: { model, temperature }
- * @returns {Promise<string>} - The raw content returned by the model.
- */
 async function callGroqChatModel(prompt, options = {}) {
   if (!API_KEY) throw new Error("GROQ_API_KEY is not set.");
   const model = options.model || DEFAULT_MODEL;
@@ -44,11 +39,6 @@ async function callGroqChatModel(prompt, options = {}) {
   }
 }
 
-/**
- * @param {string} code - The source code to review.
- * @param {string} filename - The name of the file.
- * @returns {Promise<Array>} Suggestions in the format [{line, message, suggestion}]
- */
 export async function callAiModelOnCode(code, filename) {
   const prompt = `
 You are an expert JavaScript reviewer. Analyze the following code for best practices, maintainability, and style. 
@@ -68,11 +58,6 @@ ${code}
   }
 }
 
-/**
- * @param {string} code - The source code to analyze.
- * @param {string} filename - The name of the file.
- * @returns {Promise<{metrics: Object, issues: Array, suggestions: Array}>}
- */
 export async function callAiModelOnPerformance(code, filename) {
   const prompt = `
 You are a code performance analysis assistant. Analyze the following ${filename} file for performance metrics, common performance issues, and actionable suggestions.

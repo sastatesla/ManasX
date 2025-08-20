@@ -2,10 +2,6 @@ import fs from 'fs/promises';
 import { callAiModelOnPerformance } from '../utils/AiModel.js';
 
 export default class PerformanceAnalyzer {
-  /**
-   * @param {string} filePath 
-   * @returns {Promise<{metrics: Object, issues: Array, suggestions: Array}>}
-   */
   static async analyze(filePath) {
     try {
       const code = await fs.readFile(filePath, 'utf-8');
