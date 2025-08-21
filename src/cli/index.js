@@ -1,6 +1,6 @@
 import { Command } from 'commander';
 import pkg from '../../package.json' with { type: 'json' };
-import { runDebugAnalysis, runPerformanceAnalysis, runPatternLearning, runDriftDetection, runRuleInit, runRuleValidation, runComplianceCheck, runAIAudit, runAIDetection, runContinuousWatch, showMonitoringStatus, runMCPServer } from '../index.js';
+import { runDebugAnalysis, runPerformanceAnalysis, runPatternLearning, runDriftDetection, runRuleInit, runRuleValidation, runComplianceCheck, runAIAudit, runAIDetection, runContinuousWatch, showMonitoringStatus, runMCPServer, runGuidedSetup } from '../index.js';
 
 const program = new Command();
 
@@ -21,6 +21,18 @@ program
   .description('Analyze code for performance issues and suggest improvements')
   .action((file) => {
     runPerformanceAnalysis(file);
+  });
+
+program
+  .command('init [directory]')
+  .description('🚀 Complete guided setup for ManasX enterprise governance')
+  .option('--skip-patterns', 'Skip pattern learning step')
+  .option('--skip-rules', 'Skip rule configuration step')
+  .option('--skip-validation', 'Skip setup validation step')
+  .option('--patterns-file <file>', 'Patterns file name', 'patterns.json')
+  .option('--rules-file <file>', 'Rules file name', 'manasx-rules.json')
+  .action((directory, options) => {
+    runGuidedSetup(directory || '.', options);
   });
 
 program

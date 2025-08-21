@@ -7,6 +7,7 @@ import AIDetector from './ai-audit/AIDetector.js';
 import AIAuditor from './ai-audit/AIAuditor.js';
 import { logger } from './utils/logger.js';
 import fs from 'fs/promises';
+import fsSync from 'fs';
 import path from 'path';
 import ContinuousMonitor from './monitor/ContinuousMonitor.js';
 import MCPServer from './integrations/MCPServer.js';
@@ -150,11 +151,23 @@ export async function runComplianceCheck(directory, options) {
     }
     
     const complianceRate = Math.round(((files.length - filesWithViolations) / files.length) * 100);
-    logger.info(`\nCompliance Summary:`);
-    logger.info(`Files analyzed: ${files.length}`);
-    logger.info(`Files with violations: ${filesWithViolations}`);
-    logger.info(`Total violations: ${totalViolations}`);
-    logger.info(`Compliance rate: ${complianceRate}%`);
+    
+    // Enhanced compliance summary
+    const chalk = (await import('chalk')).default;
+    console.log(chalk.bold.yellow('\n📊 Compliance Summary:'));
+    console.log(chalk.gray(`Files analyzed: ${files.length}`));
+    console.log(chalk.gray(`Files with violations: ${filesWithViolations}`));
+    console.log(chalk.gray(`Total violations: ${totalViolations}`));
+    
+    const rateColor = complianceRate >= 80 ? 'green' : complianceRate >= 60 ? 'yellow' : 'red';
+    console.log(chalk[rateColor](`Compliance rate: ${complianceRate}%`));
+    
+    if (complianceRate < 80) {
+      console.log(chalk.yellow('\n⚠️  Compliance below recommended threshold (80%)'));
+      console.log(chalk.cyan('💡 Consider running: manasx watch [directory] for continuous monitoring'));
+    } else {
+      console.log(chalk.green('\n✅ Good compliance rate! Keep up the good work.'));
+    }
     
   } catch (error) {
     logger.error(`Compliance check failed: ${error.message}`);
@@ -318,7 +331,41 @@ async function findCodeFiles(directory, extensions) {
 
 export async function runContinuousWatch(directory, options) {
   try {
-    logger.info(`Starting continuous monitoring on ${directory}...`);
+    logger.monitor('Starting ManasX Continuous Monitoring');
+    
+    // Check if setup files exist
+    const hasPatterns = fsSync.existsSync(options.patterns || 'patterns.json');
+    const hasRules = fsSync.existsSync(options.rules || 'manasx-rules.json');
+    
+    if (!hasPatterns || !hasRules) {
+      logger.warn('Setup incomplete. Missing configuration files:');
+      if (!hasPatterns) logger.warn('   ❌ patterns.json (run: manasx learn)');
+      if (!hasRules) logger.warn('   ❌ manasx-rules.json (run: manasx rules init)');
+      logger.info('💡 Run `manasx init` for guided setup');
+    }
+    
+    logger.info(`📁 Watching: ${directory}`);
+    logger.info('🔍 Monitoring features enabled:');
+    
+    const features = [];
+    if (!options.noDriftDetection) features.push('Pattern drift detection');
+    if (!options.noRuleChecking) features.push('Organizational rule violations');
+    if (!options.noAiDetection) features.push('AI-generated code auditing');
+    if (!options.noMcp) features.push('Real-time AI tool integration');
+    
+    features.forEach(feature => {
+      logger.info(`   • ${feature}`);
+    });
+    
+    logger.info(`📝 Logs: ${options.logFile || '.manasx/monitor.log'}`);
+    logger.info(`🤖 Context: ${options.contextLog || '.manasx/context.log'}`);
+    
+    if (!options.noMcp) {
+      logger.info(`🔗 MCP Server: port ${options.mcpPort || 8765}`);
+    }
+    
+    logger.success('✅ Monitor started! File changes will be analyzed in real-time.');
+    logger.info('Press Ctrl+C to stop monitoring');
     
     const monitor = new ContinuousMonitor({
       watchDirectory: directory,
@@ -375,12 +422,12 @@ export async function showMonitoringStatus(options) {
   try {
     const contextLogFile = options.contextLog;
     
-    if (!require('fs').existsSync(contextLogFile)) {
+    if (!fsSync.existsSync(contextLogFile)) {
       logger.warn('No monitoring activity found. Run "manasx watch" to start monitoring.');
       return;
     }
     
-    const content = require('fs').readFileSync(contextLogFile, 'utf-8');
+    const content = fsSync.readFileSync(contextLogFile, 'utf-8');
     const lines = content.trim().split('\n');
     
     const entries = lines
@@ -461,6 +508,88 @@ export async function showMonitoringStatus(options) {
     
   } catch (error) {
     logger.error(`Error showing status: ${error.message}`);
+  }
+}
+
+export async function runGuidedSetup(directory, options = {}) {
+  const chalk = (await import('chalk')).default;
+  
+  console.log(chalk.bold.cyan('\n🚀 ManasX Enterprise Governance Setup\n'));
+  console.log('This guided setup will configure ManasX for comprehensive code governance:');
+  console.log('  📚 Learn your codebase patterns');
+  console.log('  ⚙️  Configure organizational rules');
+  console.log('  🔍 Validate setup');
+  console.log('  👀 Start continuous monitoring\n');
+  
+  try {
+    // Step 1: Pattern Learning
+    if (!options.skipPatterns) {
+      console.log(chalk.bold.yellow('Step 1/4: Learning Codebase Patterns 📚'));
+      console.log('Analyzing your codebase to learn organizational conventions...\n');
+      
+      await runPatternLearning(directory, { 
+        output: options.patternsFile || 'patterns.json' 
+      });
+      
+      console.log(chalk.green('✅ Pattern learning complete!\n'));
+    }
+    
+    // Step 2: Rule Configuration
+    if (!options.skipRules) {
+      console.log(chalk.bold.yellow('Step 2/4: Configuring Organizational Rules ⚙️'));
+      console.log('Setting up governance rules for your organization...\n');
+      
+      await runRuleInit({ 
+        file: options.rulesFile || 'manasx-rules.json' 
+      });
+      
+      console.log(chalk.green('✅ Rule configuration complete!\n'));
+    }
+    
+    // Step 3: Validation
+    if (!options.skipValidation) {
+      console.log(chalk.bold.yellow('Step 3/4: Validating Setup 🔍'));
+      console.log('Running comprehensive validation checks...\n');
+      
+      await runComplianceCheck(directory, {
+        rules: options.rulesFile || 'manasx-rules.json',
+        patterns: options.patternsFile || 'patterns.json'
+      });
+      
+      await runRuleValidation({ 
+        file: options.rulesFile || 'manasx-rules.json' 
+      });
+      
+      console.log(chalk.green('✅ Setup validation complete!\n'));
+    }
+    
+    // Step 4: Ready to Monitor
+    console.log(chalk.bold.yellow('Step 4/4: Ready for Continuous Monitoring 👀'));
+    console.log('Your ManasX setup is complete! Here\'s what you can do next:\n');
+    
+    console.log(chalk.bold.white('Start Continuous Monitoring:'));
+    console.log(chalk.cyan(`  manasx watch ${directory}`));
+    console.log('  This will monitor your codebase for:');
+    console.log('    • Pattern drift detection');
+    console.log('    • Rule violations');
+    console.log('    • AI-generated code auditing');
+    console.log('    • Real-time governance insights\n');
+    
+    console.log(chalk.bold.white('Other useful commands:'));
+    console.log(chalk.cyan('  manasx status') + '              # Check monitoring status');
+    console.log(chalk.cyan('  manasx compliance') + '          # Run full compliance check');
+    console.log(chalk.cyan('  manasx drift <files>') + '       # Check specific files for drift');
+    console.log(chalk.cyan('  manasx ai-detect <files>') + '   # Detect AI-generated code\n');
+    
+    console.log(chalk.bold.green('🎉 ManasX Enterprise Governance is ready!'));
+    console.log(chalk.gray('Pro tip: Run `manasx watch` to start continuous monitoring and get real-time insights in your AI coding tools.\n'));
+    
+  } catch (error) {
+    console.error(chalk.red(`Setup failed: ${error.message}`));
+    console.log(chalk.yellow('\nYou can run individual setup steps manually:'));
+    console.log(chalk.cyan('  manasx learn') + '               # Learn patterns');
+    console.log(chalk.cyan('  manasx rules init') + '          # Initialize rules');
+    console.log(chalk.cyan('  manasx compliance') + '          # Validate setup');
   }
 }
 
