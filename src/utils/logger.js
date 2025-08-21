@@ -43,19 +43,35 @@ export const logger = {
     }
   },
   
-  fileChange: (file, violations, aiDetected) => {
+  fileChange: (file, violations, aiDetected, extra = {}) => {
     const violationCount = violations.length;
+    const { driftScore, insights = [], recommendations = [] } = extra;
     
-    if (violationCount === 0 && !aiDetected) {
+    if (violationCount === 0 && !aiDetected && !insights.length) {
       console.log(chalk.green('✓') + chalk.dim(` ${file} `) + chalk.green('clean'));
       return;
     }
     
-    const fileHeader = chalk.cyan('📁') + chalk.bold.white(` ${file} `) + chalk.dim('being monitored');
+    const relativePath = file.includes('/') ? file.split('/').pop() : file;
+    const fileHeader = chalk.cyan('📁') + chalk.bold.white(` ${relativePath}`);
     console.log(fileHeader);
     
+    // Show drift score if available
+    if (typeof driftScore === 'number') {
+      const scoreColor = driftScore >= 80 ? 'green' : driftScore >= 60 ? 'yellow' : 'red';
+      console.log(chalk[scoreColor](`   📊 Compliance Score: ${driftScore}/100`));
+    }
+    
     if (aiDetected) {
-      console.log(chalk.cyan('  ◉ AI-DETECTED') + chalk.dim(' - Generated code identified'));
+      console.log(chalk.magenta('   🤖 AI-Generated Code Detected'));
+    }
+    
+    // Show insights
+    if (insights.length > 0) {
+      console.log(chalk.cyan('   💡 Insights:'));
+      insights.forEach(insight => {
+        console.log(chalk.cyan(`      • ${insight}`));
+      });
     }
     
     if (violationCount > 0) {
@@ -95,6 +111,14 @@ export const logger = {
       if (low.length > 0) summary.push(chalk.blue(`${low.length} low`));
       
       console.log(chalk.dim('  └─ ') + summary.join(chalk.dim(' • ')) + chalk.dim(' violations found'));
+    }
+    
+    // Show recommendations
+    if (recommendations.length > 0) {
+      console.log(chalk.green('   ✨ Recommendations:'));
+      recommendations.slice(0, 3).forEach(rec => { // Limit to top 3
+        console.log(chalk.green(`      • ${rec}`));
+      });
     }
     
     console.log();

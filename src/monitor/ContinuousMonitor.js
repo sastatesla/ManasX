@@ -1,6 +1,5 @@
 import fs from 'fs';
 import path from 'path';
-import chalk from 'chalk';
 import { EventEmitter } from 'events';
 import PatternLearner from '../governance/PatternLearner.js';
 import DriftDetector from '../governance/DriftDetector.js';
@@ -330,9 +329,20 @@ export default class ContinuousMonitor extends EventEmitter {
   }
 
   displayViolations(analysis) {
-    const { file, violations, aiDetection } = analysis;
+    const { file, violations, aiDetection, driftScore, insights = [], recommendations = [] } = analysis;
     
-    logger.fileChange(file, violations, aiDetection?.isLikelyAI);
+    // Skip if no violations or significant issues
+    if (violations.length === 0 && !aiDetection?.isLikelyAI && !insights.length) {
+      return;
+    }
+
+    // Use centralized logger for all output
+    logger.fileChange(file, violations, aiDetection?.isLikelyAI, {
+      driftScore,
+      insights,
+      recommendations,
+      analysis
+    });
   }
   
   groupViolationsBySeverity(violations) {

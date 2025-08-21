@@ -130,37 +130,59 @@ npm install -g manasx
 manasx --help
 ```
 
-### 1. Initialize Your Organization
+### 🎯 **One-Command Setup** (Recommended)
 ```bash
-# Set up organizational rules
-manasx init-rules
-# ✓ Created manasx-rules.json with example rules
+# Complete guided setup - learns patterns, configures rules, validates setup
+manasx init src/
+# 📚 Step 1/4: Learning Codebase Patterns...
+# ⚙️  Step 2/4: Configuring Organizational Rules...
+# 🔍 Step 3/4: Validating Setup...
+# 👀 Step 4/4: Ready for Continuous Monitoring!
+```
 
-# Learn your codebase patterns  
+### Manual Setup (Advanced)
+
+#### 1. Learn Your Codebase
+```bash
+# Analyze existing code to learn organizational patterns
 manasx learn src/
-# ✓ Learned naming conventions, import styles, architecture patterns
+# ✓ Analyzed 847 files
+# ✓ Learned naming conventions: camelCase variables, PascalCase files
+# ✓ Import styles: relative paths with explicit extensions
+# ✓ Architecture patterns: default exports, feature folders
 ```
 
-### 2. Start Continuous Monitoring
+#### 2. Configure Rules
 ```bash
-# Monitor entire repository
-manasx watch-all
-# 📁 src/components/Button.js being monitored
-#   ● CRITICAL @line:42 eval() usage is prohibited for security reasons
-#   ● HIGH @line:18 Synchronous readFileSync detected
-#   └─ 1 critical • 1 high violations found
+# Initialize organizational rule configuration
+manasx rules init
+# ✓ Created manasx-rules.json with enterprise security and performance rules
+```
 
-# Or monitor specific directory
+#### 3. Start Comprehensive Monitoring
+```bash
+# Start real-time monitoring with all features
 manasx watch src/
+# 👀 Starting ManasX Continuous Monitoring
+# 📁 Watching: src/
+# 🔍 Monitoring for:
+#    • Pattern drift detection
+#    • Organizational rule violations  
+#    • AI-generated code auditing
+#    • Real-time AI tool integration
+# ✅ Monitor started! File changes will be analyzed in real-time.
 
-# Or use npm scripts for convenience
-npm install manasx --save-dev
-npm run governance  # Starts monitoring
+# Example output when violations detected:
+# 📄 watch-test.js
+#    ⚠️  3 violations found:
+#       CRITICAL Line 6: [SECURITY] eval() usage is prohibited for security reasons
+#       HIGH Line 10: [SECURITY] Direct innerHTML manipulation can lead to XSS vulnerabilities
+#       HIGH Line 16: [PERFORMANCE] Avoid synchronous file operation: readFileSync
 ```
 
-### 3. Integrate with AI Tools
+#### 4. AI Tool Integration
 ```bash
-# Start context server for AI assistants
+# Start MCP server for AI coding assistants (Cursor, Claude Code CLI)
 manasx mcp-server --port 3001
 # ✓ MCP server running on port 3001
 # ✓ AI tools can now access organizational context
@@ -168,60 +190,132 @@ manasx mcp-server --port 3001
 
 ---
 
-## 🏗️ Enterprise Workflow
+## 🏗️ Enhanced Enterprise Workflow
 
-### **Initial Setup** (One-time)
-1. **Learn Patterns**: `manasx learn src/` - Analyze existing codebase
-2. **Configure Rules**: Edit `manasx-rules.json` for your organization  
-3. **Start Monitoring**: `manasx watch src/` - Begin continuous governance
-4. **AI Integration**: `manasx mcp-server` - Connect AI coding assistants
+### **🎯 Streamlined Setup** (One-time)
+```bash
+# Single command does everything:
+manasx init src/
+# ✅ Learns your codebase patterns automatically
+# ✅ Creates organizational rule configuration
+# ✅ Validates complete setup
+# ✅ Ready for continuous monitoring
+```
 
-### **Daily Development**
-- **Real-time Feedback**: Violations appear instantly as you code
-- **AI Assistance**: Cursor/Claude get organizational context automatically
-- **Clean Interface**: Only critical/high issues interrupt your flow
-- **Comprehensive Logging**: All activity logged for compliance tracking
+### **🔄 Daily Development Workflow**
+```bash
+# Start monitoring (all analyses enabled by default)
+manasx watch src/
+# Real-time analysis shows:
+# 📊 Compliance scores
+# 🤖 AI detection with confidence levels
+# 💡 Actionable insights
+# ⚠️ Violations categorized by severity
+# ✨ Smart recommendations
+```
 
-### **Team Management**
-- **Compliance Dashboard**: `manasx status` for team metrics
-- **Violation Reports**: Daily/weekly compliance summaries
-- **AI Usage Tracking**: Monitor AI-generated code across teams
-- **Pattern Evolution**: Track how coding patterns evolve over time
+**Enhanced Features:**
+- **Centralized Logging**: All output through unified logger system
+- **Clean Interface**: No duplicate messages, professional formatting
+- **Setup Validation**: Checks for missing configuration files
+- **Comprehensive Analysis**: Pattern drift + rule violations + AI detection simultaneously
+- **Smart Recommendations**: Context-aware suggestions for fixes
+
+### **📊 Team Management & Reporting**
+```bash
+# Comprehensive status dashboard
+manasx status
+# Organization-wide compliance metrics
+# AI code usage tracking across teams
+# Historical trend analysis
+```
+
+### **🔧 Advanced Commands**
+```bash
+# Individual analysis commands
+manasx compliance src/     # Full governance audit with enhanced reporting
+manasx drift src/file.js   # Pattern drift analysis
+manasx ai-detect src/      # AI-generated code detection
+```
 
 ---
 
-## 🔧 All Commands
+## 🔧 Complete Command Reference
 
-### **Core Governance**
+### **🚀 Setup & Initialization**
 ```bash
-manasx watch <dir>          # Real-time monitoring
-manasx learn <dir>          # Learn codebase patterns
-manasx drift <file>         # Check pattern compliance
-manasx compliance <dir>     # Full governance audit
+manasx init [directory]           # 🎯 Complete guided setup (RECOMMENDED)
+  --skip-patterns                 # Skip pattern learning step
+  --skip-rules                    # Skip rule configuration step
+  --skip-validation              # Skip setup validation step
+  --patterns-file <file>         # Custom patterns file name
+  --rules-file <file>            # Custom rules file name
 ```
 
-### **AI Detection & Auditing**  
+### **👀 Real-time Monitoring**
 ```bash
-manasx ai-detect <file>     # Detect AI-generated code
-manasx ai-audit <dir>       # Audit AI code compliance
+manasx watch [directory]         # Start comprehensive continuous monitoring
+  --patterns <file>              # Use custom patterns file
+  --rules <file>                 # Use custom rules file
+  --no-ai-detection             # Disable AI code detection
+  --no-drift-detection          # Disable pattern drift detection  
+  --no-rule-checking            # Disable organizational rule checking
+  --no-mcp                      # Disable MCP server for AI integration
+  --mcp-port <number>           # Custom MCP server port (default: 8765)
 ```
 
-### **Configuration & Rules**
+### **📚 Pattern Learning**
 ```bash
-manasx rules init           # Initialize rule configuration
-manasx rules validate       # Validate rule configuration
+manasx learn [directory]         # Learn organizational patterns from codebase
+  --output <file>                # Save patterns to custom file
+  --max-files <number>          # Limit files to analyze
 ```
 
-### **Enterprise Features**
+### **🔍 Analysis Commands**
 ```bash
-manasx status              # Governance dashboard
-manasx mcp-server          # Start AI integration server
+manasx compliance [directory]    # Full governance audit with enhanced reporting
+  --rules <file>                 # Use custom rules file
+  --patterns <file>              # Use custom patterns file
+  --format <format>              # Output format (console|json|html)
+
+manasx drift <files...>          # Check pattern compliance for specific files
+  --patterns <file>              # Use custom patterns file
+  --threshold <number>           # Compliance threshold (0-1)
+
+manasx ai-detect <files...>      # Detect AI-generated code patterns
+  --threshold <number>           # Detection confidence threshold (0-1)
+
+manasx ai-audit <files...>       # Audit AI-generated code against standards
+  --patterns <file>              # Use learned patterns file
+  --rules <file>                 # Use organizational rules file
 ```
 
-### **Legacy Performance Analysis**
+### **⚙️ Configuration Management**
 ```bash
-manasx perf <file>         # Performance analysis
-manasx debug <file>        # Best practices analysis
+manasx rules init               # Initialize organizational rule configuration
+  --file <file>                 # Custom configuration file name
+
+manasx rules validate           # Validate rule configuration
+  --file <file>                 # Configuration file to validate
+```
+
+### **📊 Enterprise Monitoring**
+```bash
+manasx status                   # Show monitoring status and activity dashboard
+  --context-log <file>          # Custom context log file
+  --format <format>             # Output format (console|json)
+
+manasx mcp-server               # Start Model Context Protocol server for AI tools
+  --port <number>               # Server port (default: 3001)
+  --context-log <file>          # Context log file
+  --patterns <file>             # Patterns file for AI context
+  --rules <file>                # Rules file for AI context
+```
+
+### **🔧 Legacy Analysis**
+```bash
+manasx perf <file>              # Performance analysis (legacy)
+manasx debug <file>             # Best practices analysis (legacy)
 ```
 
 ---

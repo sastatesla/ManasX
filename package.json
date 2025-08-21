@@ -1,6 +1,6 @@
 {
   "name": "manasx",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "main": "src/index.js",
   "type": "module",
   "description": "Enterprise code governance and AI audit platform. Detects AI drift, enforces organizational standards, and audits AI-generated code with continuous monitoring.",

@@ -109,7 +109,18 @@ export default class RuleEngine {
         description: ruleConfig.description || '',
         severity: ruleConfig.severity || 'medium',
         enabled: ruleConfig.enabled !== false,
-        parameters: ruleConfig.parameters || {},
+        parameters: ruleConfig.parameters || {}
+      };
+      
+      this.rules.set(fullRuleId, rule);
+    }
+  }
+
+  processExceptions(exceptions) {
+    for (const exception of exceptions) {
+      const key = `${exception.file || '*'}:${exception.rule || '*'}`;
+      this.exceptions.set(key, exception);
+    }
   }
 
   detectNamingStyle(name) {
@@ -228,4 +239,205 @@ export default class RuleEngine {
               name: 'Avoid synchronous file operations',
               description: 'Synchronous file operations block the event loop',
               severity: 'high',
-              enabled: true,
+              enabled: true
+            }
+          }
+        },
+        architecture: {
+          enabled: true,
+          description: 'Architectural rules for code organization',
+          rules: {
+            'feature-folder-structure': {
+              name: 'Use feature folder structure',
+              description: 'Code should be organized by features, not by file types',
+              severity: 'medium',
+              enabled: true
+            }
+          }
+        },
+        naming: {
+          enabled: true,
+          description: 'Naming convention rules',
+          rules: {
+            'camelcase-variables': {
+              name: 'Use camelCase for variables',
+              description: 'Variables should follow camelCase naming convention',
+              severity: 'low',
+              enabled: true
+            }
+          }
+        }
+      },
+      exceptions: []
+    };
+
+    try {
+      await fs.writeFile(filePath, JSON.stringify(config, null, 2));
+      logger.info(`Initial configuration created at ${filePath}`);
+      return config;
+    } catch (error) {
+      logger.error(`Error creating configuration: ${error.message}`);
+      throw error;
+    }
+  }
+
+  async validateRules() {
+    const errors = [];
+    const warnings = [];
+
+    for (const [ruleId, rule] of this.rules) {
+      if (!rule.name || !rule.description) {
+        warnings.push(`Rule ${ruleId} is missing name or description`);
+      }
+
+      if (!['low', 'medium', 'high', 'critical'].includes(rule.severity)) {
+        errors.push(`Rule ${ruleId} has invalid severity: ${rule.severity}`);
+      }
+    }
+
+    return { errors, warnings };
+  }
+
+  getRuleById(ruleId) {
+    return this.rules.get(ruleId);
+  }
+
+  getRulesByCategory(category) {
+    return Array.from(this.rules.values()).filter(rule => rule.category === category);
+  }
+
+  isRuleEnabled(ruleId) {
+    const rule = this.rules.get(ruleId);
+    return rule && rule.enabled;
+  }
+
+  hasException(filePath, ruleId) {
+    const keys = [
+      `${filePath}:${ruleId}`,
+      `${filePath}:*`,
+      `*:${ruleId}`,
+      '*:*'
+    ];
+
+    return keys.some(key => this.exceptions.has(key));
+  }
+
+  async applyRules(filePath, content, learnedPatterns = null) {
+    const violations = [];
+    const relativePath = path.relative(process.cwd(), filePath);
+
+    for (const [ruleId, rule] of this.rules) {
+      if (!rule.enabled || this.hasException(relativePath, ruleId)) {
+        continue;
+      }
+
+      try {
+        const ruleViolations = await this.executeRule(rule, filePath, content, learnedPatterns);
+        violations.push(...ruleViolations);
+      } catch (error) {
+        logger.warn(`Error executing rule ${ruleId}: ${error.message}`);
+      }
+    }
+
+    return violations;
+  }
+
+  async executeRule(rule, filePath, content, learnedPatterns) {
+    const violations = [];
+    const relativePath = path.relative(process.cwd(), filePath);
+
+    switch (rule.id) {
+      case 'security/no-eval':
+        if (content.includes('eval(')) {
+          violations.push({
+            ruleId: rule.id,
+            severity: rule.severity,
+            message: rule.parameters?.message || 'eval() usage is prohibited for security reasons',
+            file: relativePath,
+            line: this.getLineNumber(content, content.indexOf('eval(')),
+            category: rule.category
+          });
+        }
+        break;
+
+      case 'security/no-dangerous-html':
+        const dangerousPatterns = ['innerHTML', 'outerHTML'];
+        for (const pattern of dangerousPatterns) {
+          if (content.includes(pattern)) {
+            violations.push({
+              ruleId: rule.id,
+              severity: rule.severity,
+              message: `Direct ${pattern} manipulation can lead to XSS vulnerabilities`,
+              file: relativePath,
+              line: this.getLineNumber(content, content.indexOf(pattern)),
+              category: rule.category
+            });
+          }
+        }
+        break;
+
+      case 'security/require-company-fetch':
+        if (content.includes('fetch(') && !content.includes(rule.parameters?.wrapperName || 'companyFetch')) {
+          violations.push({
+            ruleId: rule.id,
+            severity: rule.severity,
+            message: `Use ${rule.parameters?.wrapperName || 'companyFetch'} instead of raw fetch()`,
+            file: relativePath,
+            line: this.getLineNumber(content, content.indexOf('fetch(')),
+            category: rule.category
+          });
+        }
+        break;
+
+      case 'performance/no-sync-fs':
+        const syncFsPatterns = ['readFileSync', 'writeFileSync', 'statSync'];
+        for (const pattern of syncFsPatterns) {
+          if (content.includes(pattern)) {
+            violations.push({
+              ruleId: rule.id,
+              severity: rule.severity,
+              message: `Avoid synchronous file operation: ${pattern}`,
+              file: relativePath,
+              line: this.getLineNumber(content, content.indexOf(pattern)),
+              category: rule.category
+            });
+          }
+        }
+        break;
+
+      case 'architecture/feature-folder-structure':
+        if (!this.followsFeatureFolderStructure(relativePath)) {
+          violations.push({
+            ruleId: rule.id,
+            severity: rule.severity,
+            message: 'File should follow feature folder structure',
+            file: relativePath,
+            line: 1,
+            category: rule.category
+          });
+        }
+        break;
+
+      case 'naming/camelcase-variables':
+        if (learnedPatterns?.recommendations?.naming?.variables === 'camelCase') {
+          const varMatches = content.match(/(?:let|const|var)\s+([a-zA-Z_$][a-zA-Z0-9_$]*)/g) || [];
+          for (const match of varMatches) {
+            const varName = match.split(/\s+/)[1];
+            if (this.detectNamingStyle(varName) !== 'camelCase') {
+              violations.push({
+                ruleId: rule.id,
+                severity: rule.severity,
+                message: `Variable '${varName}' should use camelCase naming`,
+                file: relativePath,
+                line: this.getLineNumber(content, content.indexOf(match)),
+                category: rule.category
+              });
+            }
+          }
+        }
+        break;
+    }
+
+    return violations;
+  }
+}
