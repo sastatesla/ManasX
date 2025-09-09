@@ -5,7 +5,6 @@
 ManasX is an enterprise-grade code governance platform that continuously monitors your codebase for organizational compliance, detects AI-generated code, and provides real-time feedback to development teams and AI coding assistants.
 
 [![npm version](https://badge.fury.io/js/manasx.svg)](https://badge.fury.io/js/manasx)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ---
 
