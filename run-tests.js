@@ -1,10 +1,3 @@
-#!/usr/bin/env node
-
-/**
- * Simple test runner for ManasX functionality
- * Run this to quickly test the main features
- */
-
 import { execSync, spawn } from 'child_process';
 import fs from 'fs';
 
@@ -16,10 +9,10 @@ function runCommand(command, description) {
   try {
     const result = execSync(command, { encoding: 'utf8', stdio: 'pipe' });
     console.log('   ', result.replace(/\n/g, '\n   '));
-    console.log('✅ Success\n');
+    console.log('Success\n');
     return true;
   } catch (error) {
-    console.log('❌ Failed:', error.message.replace(/\n/g, '\n   '));
+    console.log('Failed:', error.message.replace(/\n/g, '\n   '));
     return false;
   }
 }
@@ -27,7 +20,6 @@ function runCommand(command, description) {
 function testMCPServer() {
   console.log('\n🌐 Testing MCP Server...');
   
-  // Start the server in background
   const serverProcess = spawn('node', ['src/cli/index.js', 'watch', 'test-workspace', '--no-rule-checking', '--no-drift-detection'], {
     stdio: 'pipe',
     detached: true
@@ -35,7 +27,6 @@ function testMCPServer() {
   
   console.log('   Started monitoring process...');
   
-  // Wait a bit for server to start
   setTimeout(() => {
     try {
       const healthCheck = execSync('curl -s http://localhost:8765/health', { encoding: 'utf8' });

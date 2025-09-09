@@ -1,1 +1,5 @@
 .env
+.manasx
+watch-test.js
+patterns.json
+manasx-rules.json
