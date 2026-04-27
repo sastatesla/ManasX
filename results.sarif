@@ -1,0 +1,543 @@
+{
+  "$schema": "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json",
+  "version": "2.1.0",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "ManasX",
+          "version": "2.0.1",
+          "rules": [
+            {
+              "id": "performance/no-sync-fs"
+            },
+            {
+              "id": "security/require-company-fetch"
+            },
+            {
+              "id": "security/no-eval"
+            },
+            {
+              "id": "security/no-dangerous-html"
+            }
+          ]
+        }
+      },
+      "results": [
+        {
+          "ruleId": "performance/no-sync-fs",
+          "level": "error",
+          "message": {
+            "text": "Avoid synchronous file operation: readFileSync"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/index.js"
+                },
+                "region": {
+                  "startLine": 491
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "performance/no-sync-fs",
+          "level": "error",
+          "message": {
+            "text": "Avoid synchronous file operation: writeFileSync"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/index.js"
+                },
+                "region": {
+                  "startLine": 182
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "security/require-company-fetch",
+          "level": "warning",
+          "message": {
+            "text": "Use companyFetch instead of raw fetch()"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/utils/AiModel.js"
+                },
+                "region": {
+                  "startLine": 19
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "performance/no-sync-fs",
+          "level": "error",
+          "message": {
+            "text": "Avoid synchronous file operation: writeFileSync"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/utils/logFormatter.js"
+                },
+                "region": {
+                  "startLine": 176
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "performance/no-sync-fs",
+          "level": "error",
+          "message": {
+            "text": "Avoid synchronous file operation: statSync"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/utils/logFormatter.js"
+                },
+                "region": {
+                  "startLine": 188
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "performance/no-sync-fs",
+          "level": "error",
+          "message": {
+            "text": "Avoid synchronous file operation: readFileSync"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/review/ViolationTracker.js"
+                },
+                "region": {
+                  "startLine": 25
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "performance/no-sync-fs",
+          "level": "error",
+          "message": {
+            "text": "Avoid synchronous file operation: writeFileSync"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/review/ViolationTracker.js"
+                },
+                "region": {
+                  "startLine": 19
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "performance/no-sync-fs",
+          "level": "error",
+          "message": {
+            "text": "Avoid synchronous file operation: readFileSync"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/monitor/ContinuousMonitor.js"
+                },
+                "region": {
+                  "startLine": 473
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "performance/no-sync-fs",
+          "level": "error",
+          "message": {
+            "text": "Avoid synchronous file operation: statSync"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/monitor/ContinuousMonitor.js"
+                },
+                "region": {
+                  "startLine": 403
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "performance/no-sync-fs",
+          "level": "error",
+          "message": {
+            "text": "Avoid synchronous file operation: readFileSync"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/integrations/MCPServer.js"
+                },
+                "region": {
+                  "startLine": 154
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "performance/no-sync-fs",
+          "level": "error",
+          "message": {
+            "text": "Avoid synchronous file operation: readFileSync"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/identity/IdentityResolver.js"
+                },
+                "region": {
+                  "startLine": 33
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "performance/no-sync-fs",
+          "level": "error",
+          "message": {
+            "text": "Avoid synchronous file operation: writeFileSync"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/identity/IdentityResolver.js"
+                },
+                "region": {
+                  "startLine": 66
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "performance/no-sync-fs",
+          "level": "error",
+          "message": {
+            "text": "Avoid synchronous file operation: readFileSync"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/guardrails/GuardrailsEngine.js"
+                },
+                "region": {
+                  "startLine": 52
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "performance/no-sync-fs",
+          "level": "error",
+          "message": {
+            "text": "Avoid synchronous file operation: writeFileSync"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/guardrails/GuardrailsEngine.js"
+                },
+                "region": {
+                  "startLine": 28
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "security/no-eval",
+          "level": "error",
+          "message": {
+            "text": "eval() usage is prohibited for security reasons"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/governance/RuleEngine.js"
+                },
+                "region": {
+                  "startLine": 175
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "security/no-dangerous-html",
+          "level": "error",
+          "message": {
+            "text": "Direct innerHTML manipulation can lead to XSS vulnerabilities"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/governance/RuleEngine.js"
+                },
+                "region": {
+                  "startLine": 226
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "security/no-dangerous-html",
+          "level": "error",
+          "message": {
+            "text": "Direct outerHTML manipulation can lead to XSS vulnerabilities"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/governance/RuleEngine.js"
+                },
+                "region": {
+                  "startLine": 226
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "performance/no-sync-fs",
+          "level": "error",
+          "message": {
+            "text": "Avoid synchronous file operation: readFileSync"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/governance/RuleEngine.js"
+                },
+                "region": {
+                  "startLine": 400
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "performance/no-sync-fs",
+          "level": "error",
+          "message": {
+            "text": "Avoid synchronous file operation: writeFileSync"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/governance/RuleEngine.js"
+                },
+                "region": {
+                  "startLine": 400
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "performance/no-sync-fs",
+          "level": "error",
+          "message": {
+            "text": "Avoid synchronous file operation: statSync"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/governance/RuleEngine.js"
+                },
+                "region": {
+                  "startLine": 400
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "performance/no-sync-fs",
+          "level": "error",
+          "message": {
+            "text": "Avoid synchronous file operation: readFileSync"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/cli/index.js"
+                },
+                "region": {
+                  "startLine": 254
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "performance/no-sync-fs",
+          "level": "error",
+          "message": {
+            "text": "Avoid synchronous file operation: writeFileSync"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/cli/index.js"
+                },
+                "region": {
+                  "startLine": 222
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "performance/no-sync-fs",
+          "level": "error",
+          "message": {
+            "text": "Avoid synchronous file operation: readFileSync"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/analysis/BestPracticeAnalyzer.js"
+                },
+                "region": {
+                  "startLine": 62
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "performance/no-sync-fs",
+          "level": "error",
+          "message": {
+            "text": "Avoid synchronous file operation: statSync"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/analysis/BestPracticeAnalyzer.js"
+                },
+                "region": {
+                  "startLine": 29
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "performance/no-sync-fs",
+          "level": "error",
+          "message": {
+            "text": "Avoid synchronous file operation: readFileSync"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/analysis/SimpleBestPracticeAnalyzer.js"
+                },
+                "region": {
+                  "startLine": 31
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "performance/no-sync-fs",
+          "level": "error",
+          "message": {
+            "text": "Avoid synchronous file operation: statSync"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/analysis/SimpleBestPracticeAnalyzer.js"
+                },
+                "region": {
+                  "startLine": 21
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "security/no-dangerous-html",
+          "level": "error",
+          "message": {
+            "text": "Direct innerHTML manipulation can lead to XSS vulnerabilities"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/ai-audit/AIAuditor.js"
+                },
+                "region": {
+                  "startLine": 201
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
