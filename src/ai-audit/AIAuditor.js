@@ -1,6 +1,7 @@
 import AIDetector from './AIDetector.js';
 import { callAiModelOnCode } from '../utils/AiModel.js';
 import { logger } from '../utils/logger.js';
+import { detectNamingStyle, convertNamingStyle } from '../utils/namingUtils.js';
 
 export default class AIAuditor {
   constructor(organizationalRules = null) {
@@ -439,27 +440,11 @@ export default class AIAuditor {
 
 
   detectNamingStyle(name) {
-    if (/^[a-z][a-zA-Z0-9]*$/.test(name) && /[A-Z]/.test(name)) return 'camelCase';
-    if (/^[a-z][a-z0-9_]*$/.test(name) && name.includes('_')) return 'snake_case';
-    if (/^[A-Z][a-zA-Z0-9]*$/.test(name)) return 'PascalCase';
-    if (/^[A-Z][A-Z0-9_]*$/.test(name)) return 'UPPER_CASE';
-    return 'unknown';
+    return detectNamingStyle(name);
   }
 
   convertNamingStyle(name, targetStyle) {
-    switch (targetStyle) {
-      case 'camelCase':
-        return name.replace(/_(.)/g, (_, char) => char.toUpperCase())
-                  .replace(/-(.)/g, (_, char) => char.toUpperCase());
-      case 'snake_case':
-        return name.replace(/[A-Z]/g, letter => `_${letter.toLowerCase()}`)
-                  .replace(/-/g, '_');
-      case 'PascalCase':
-        return name.charAt(0).toUpperCase() + 
-               name.slice(1).replace(/_(.)/g, (_, char) => char.toUpperCase());
-      default:
-        return name;
-    }
+    return convertNamingStyle(name, targetStyle);
   }
 
   async auditDirectory(directory, options = {}) {

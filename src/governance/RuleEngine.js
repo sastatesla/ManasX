@@ -1,6 +1,7 @@
 import fs from 'fs/promises';
 import path from 'path';
 import { logger } from '../utils/logger.js';
+import { detectNamingStyle } from '../utils/namingUtils.js';
 
 export default class RuleEngine {
   constructor() {
@@ -124,20 +125,48 @@ export default class RuleEngine {
   }
 
   detectNamingStyle(name) {
-    if (/^[a-z][a-zA-Z0-9]*$/.test(name) && /[A-Z]/.test(name)) return 'camelCase';
-    if (/^[a-z][a-z0-9_]*$/.test(name) && name.includes('_')) return 'snake_case';
-    if (/^[A-Z][a-zA-Z0-9]*$/.test(name)) return 'PascalCase';
-    if (/^[A-Z][A-Z0-9_]*$/.test(name)) return 'UPPER_CASE';
-    return 'unknown';
+    return detectNamingStyle(name);
   }
 
   getLineNumber(content, index) {
     return content.substring(0, index).split('\n').length;
   }
 
-  followsFeatureFolderStructure(relativePath) {
-    const pathParts = relativePath.split('/');
-    return pathParts.length >= 2; // At least feature/file.js
+  followsFeatureFolderStructure(relativePath, learnedPatterns = null) {
+    const normalized = relativePath.split(path.sep).join('/');
+    const parts = normalized.split('/');
+
+    // Top-level root entry points (e.g., server.js, app.js, index.js) are permitted
+    if (parts.length === 1 || (parts[0] === 'src' && parts.length === 2)) {
+      const fileName = parts[parts.length - 1];
+      if (/^(index|app|server|main|config)\.[a-zA-Z0-9]+$/.test(fileName)) {
+        return true;
+      }
+    }
+
+    // Check learned folder patterns (e.g. "modules/*", "system/*", "utils/*")
+    const folderPatterns = learnedPatterns?.recommendations?.architecture?.folderPatterns || [];
+    const topFolder = parts[0] === 'src' && parts.length > 2 ? parts[1] : parts[0];
+
+    if (folderPatterns.length > 0) {
+      const matches = folderPatterns.some(p => {
+        const prefix = p.replace('/*', '');
+        return topFolder === prefix || normalized.includes(prefix + '/');
+      });
+      if (matches) return true;
+    }
+
+    // Standard modular, RCSR, event-driven, or feature folder conventions
+    const standardFolders = [
+      'modules', 'components', 'features', 'system', 'utils', 'jobs', 
+      'mailers', 'workers', 'queues', 'events', 'services', 'controllers', 
+      'routes', 'models', 'repositories', 'config', 'middleware'
+    ];
+    if (standardFolders.includes(topFolder)) {
+      return true;
+    }
+
+    return parts.length >= 2; // At least feature/file.js
   }
 
   getExpectedTestFileName(filePath) {
@@ -188,12 +217,26 @@ export default class RuleEngine {
     };
   }
 
-  async createInitialConfig(filePath = 'manasx-rules.json') {
+  async createInitialConfig(filePath = 'manasx-rules.json', patterns = null) {
+    if (!patterns) {
+      try {
+        const pPath = path.join(process.cwd(), 'patterns.json');
+        patterns = JSON.parse(await fs.readFile(pPath, 'utf-8'));
+      } catch (e) {
+        // patterns not available
+      }
+    }
+
+    const archRec = patterns?.recommendations?.architecture;
+    const isCompanyFetchUsed = patterns?.recommendations?.imports?.popularLibraries?.includes('companyFetch');
+
     const config = {
       metadata: {
         version: '1.0.0',
         name: 'Project Code Governance Rules',
-        description: 'Organizational rules for maintaining code quality and consistency',
+        description: archRec?.style 
+          ? `Organizational rules tuned for ${archRec.style} architecture`
+          : 'Organizational rules for maintaining code quality and consistency',
         author: process.env.USER || 'Team',
         created: new Date().toISOString()
       },
@@ -224,7 +267,7 @@ export default class RuleEngine {
               name: 'Use company fetch wrapper',
               description: 'All API calls must use the company fetch wrapper instead of raw fetch',
               severity: 'medium',
-              enabled: true,
+              enabled: isCompanyFetchUsed ? true : false,
               parameters: {
                 wrapperName: 'companyFetch'
               }
@@ -248,8 +291,10 @@ export default class RuleEngine {
           description: 'Architectural rules for code organization',
           rules: {
             'feature-folder-structure': {
-              name: 'Use feature folder structure',
-              description: 'Code should be organized by features, not by file types',
+              name: archRec?.style ? `Follow ${archRec.style} folder structure` : 'Use feature folder structure',
+              description: archRec?.conventions?.length 
+                ? archRec.conventions.join('; ')
+                : 'Code should be organized by features or modular roles, not placed flat at root',
               severity: 'medium',
               enabled: true
             }
@@ -261,9 +306,9 @@ export default class RuleEngine {
           rules: {
             'camelcase-variables': {
               name: 'Use camelCase for variables',
-              description: 'Variables should follow camelCase naming convention',
+              description: 'Variables should follow camelCase naming convention (UPPER_CASE permitted for constants)',
               severity: 'low',
-              enabled: true
+              enabled: patterns?.recommendations?.naming?.variables === 'camelCase' || true
             }
           }
         }
@@ -406,11 +451,11 @@ export default class RuleEngine {
         break;
 
       case 'architecture/feature-folder-structure':
-        if (!this.followsFeatureFolderStructure(relativePath)) {
+        if (!this.followsFeatureFolderStructure(relativePath, learnedPatterns)) {
           violations.push({
             ruleId: rule.id,
             severity: rule.severity,
-            message: 'File should follow feature folder structure',
+            message: 'File should be organized within a feature module or established folder structure',
             file: relativePath,
             line: 1,
             category: rule.category
@@ -419,19 +464,34 @@ export default class RuleEngine {
         break;
 
       case 'naming/camelcase-variables':
-        if (learnedPatterns?.recommendations?.naming?.variables === 'camelCase') {
-          const varMatches = content.match(/(?:let|const|var)\s+([a-zA-Z_$][a-zA-Z0-9_$]*)/g) || [];
-          for (const match of varMatches) {
-            const varName = match.split(/\s+/)[1];
-            if (this.detectNamingStyle(varName) !== 'camelCase') {
-              violations.push({
-                ruleId: rule.id,
-                severity: rule.severity,
-                message: `Variable '${varName}' should use camelCase naming`,
-                file: relativePath,
-                line: this.getLineNumber(content, content.indexOf(match)),
-                category: rule.category
-              });
+        if (learnedPatterns?.recommendations?.naming?.variables === 'camelCase' || !learnedPatterns) {
+          const varRegex = /\b(let|const|var)\s+([a-zA-Z_$][a-zA-Z0-9_$]*)/g;
+          let m;
+          const reported = new Set();
+          while ((m = varRegex.exec(content)) !== null) {
+            const keyword = m[1];
+            const varName = m[2];
+            const style = this.detectNamingStyle(varName);
+
+            // Permit UPPER_CASE constants for 'const' declarations (e.g. const ETSY = ..., const PORT = 3000)
+            if (keyword === 'const' && style === 'UPPER_CASE') {
+              continue;
+            }
+
+            if (style !== 'camelCase') {
+              const line = this.getLineNumber(content, m.index);
+              const key = `${line}:${varName}`;
+              if (!reported.has(key)) {
+                reported.add(key);
+                violations.push({
+                  ruleId: rule.id,
+                  severity: rule.severity,
+                  message: `Variable '${varName}' should use camelCase naming`,
+                  file: relativePath,
+                  line: line,
+                  category: rule.category
+                });
+              }
             }
           }
         }

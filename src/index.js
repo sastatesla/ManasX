@@ -177,7 +177,16 @@ export async function runComplianceCheck(directory, options) {
 export async function runRuleInit(options) {
   try {
     const ruleEngine = new RuleEngine();
-    const config = await ruleEngine.createInitialConfig(options.file);
+    let patterns = null;
+    const patternsFile = options.patterns || 'patterns.json';
+    try {
+      const pPath = path.resolve(process.cwd(), patternsFile);
+      const content = await fs.readFile(pPath, 'utf-8');
+      patterns = JSON.parse(content);
+    } catch (e) {
+      // patterns not found or invalid
+    }
+    const config = await ruleEngine.createInitialConfig(options.file, patterns);
     logger.info(`Rule configuration initialized at ${options.file}`);
     logger.info('Edit the configuration to customize rules for your organization.');
   } catch (error) {
@@ -540,7 +549,8 @@ export async function runGuidedSetup(directory, options = {}) {
       console.log('Setting up governance rules for your organization...\n');
       
       await runRuleInit({ 
-        file: options.rulesFile || 'manasx-rules.json' 
+        file: options.rulesFile || 'manasx-rules.json',
+        patterns: options.patternsFile || 'patterns.json'
       });
       
       console.log(chalk.green('✅ Rule configuration complete!\n'));

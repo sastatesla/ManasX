@@ -1,6 +1,7 @@
 import fs from 'fs/promises';
 import path from 'path';
 import { logger } from '../utils/logger.js';
+import { detectNamingStyle, convertNamingStyle } from '../utils/namingUtils.js';
 
 export default class DriftDetector {
   constructor(learnedPatterns) {
@@ -159,15 +160,25 @@ export default class DriftDetector {
     const expectedStyle = recommendations.variables;
     if (!expectedStyle) return;
 
-    const variableRegex = /(?:let|const|var)\s+([a-zA-Z_$][a-zA-Z0-9_$]*)/g;
+    const variableRegex = /\b(let|const|var)\s+([a-zA-Z_$][a-zA-Z0-9_$]*)/g;
     let match;
+    const reported = new Set();
     
     while ((match = variableRegex.exec(content)) !== null) {
-      const varName = match[1];
+      const keyword = match[1];
+      const varName = match[2];
       const actualStyle = this.detectNamingStyle(varName);
+
+      // Skip UPPER_CASE constants for 'const' declarations (handled by analyzeConstantNaming)
+      if (keyword === 'const' && actualStyle === 'UPPER_CASE') {
+        continue;
+      }
+
       const lineNum = this.getLineNumber(content, match.index);
+      const key = `${lineNum}:${varName}`;
       
-      if (actualStyle !== expectedStyle && actualStyle !== 'unknown') {
+      if (actualStyle !== expectedStyle && actualStyle !== 'unknown' && !reported.has(key)) {
+        reported.add(key);
         result.violations.push({
           type: 'naming_drift',
           category: 'variable_naming',
@@ -321,18 +332,53 @@ export default class DriftDetector {
 
   analyzeArchitectureDrift(filePath, result) {
     const recommendations = this.patterns.recommendations?.architecture || {};
-    const relativePath = path.relative(process.cwd(), filePath);
-    const pathParts = relativePath.split(path.sep);
+    const relativePath = path.relative(process.cwd(), filePath).split(path.sep).join('/');
+    const pathParts = relativePath.split('/');
     
-    if (recommendations.commonFolders) {
-      const fileName = path.basename(filePath);
-      const expectedFolders = recommendations.commonFolders;
-      
-      const isInCommonFolder = expectedFolders.some(folder => 
+    // Top-level root entry points (e.g. server.js, app.js, index.js)
+    if (pathParts.length === 1 || (pathParts[0] === 'src' && pathParts.length === 2)) {
+      const fileName = pathParts[pathParts.length - 1];
+      if (/^(index|app|server|main|config)\.[a-zA-Z0-9]+$/.test(fileName)) {
+        return;
+      }
+    }
+
+    // Check against folder patterns (e.g. "modules/*", "system/*", "utils/*")
+    const folderPatterns = recommendations.folderPatterns || [];
+    const topFolder = pathParts[0] === 'src' && pathParts.length > 2 ? pathParts[1] : pathParts[0];
+    const matchesPattern = folderPatterns.some(pattern => {
+      const prefix = pattern.replace('/*', '');
+      return topFolder === prefix || relativePath.includes(prefix + '/');
+    });
+
+    if (matchesPattern) {
+      // Check RCSR role convention if RCSR pattern is expected
+      if (recommendations.hasRCSR && (topFolder === 'modules' || relativePath.includes('modules/'))) {
+        const fileName = path.basename(filePath);
+        const hasRole = recommendations.roleSuffixes?.some(role => fileName.includes(`.${role}.`)) || fileName.startsWith('index.');
+        if (!hasRole && recommendations.roleSuffixes?.length > 0) {
+          result.violations.push({
+            type: 'architecture_drift',
+            category: 'rcsr_convention',
+            severity: this.severityLevels.LOW,
+            line: 1,
+            column: 1,
+            message: `Module file '${fileName}' does not follow RCSR role naming (e.g., .service.js, .controller.js, .routes.js)`,
+            expected: `Filename with one of: ${recommendations.roleSuffixes.slice(0, 5).map(r => `.${r}.js`).join(', ')}`,
+            actual: fileName,
+            rule: 'rcsr_role_naming'
+          });
+        }
+      }
+      return;
+    }
+
+    if (recommendations.commonFolders && recommendations.commonFolders.length > 0) {
+      const isInCommonFolder = recommendations.commonFolders.some(folder => 
         relativePath.includes(folder)
       );
       
-      if (!isInCommonFolder && expectedFolders.length > 0) {
+      if (!isInCommonFolder) {
         result.violations.push({
           type: 'architecture_drift',
           category: 'folder_structure',
@@ -340,7 +386,7 @@ export default class DriftDetector {
           line: 1,
           column: 1,
           message: `File location may not follow established folder patterns`,
-          expected: `One of: ${expectedFolders.join(', ')}`,
+          expected: `One of: ${folderPatterns.join(', ') || recommendations.commonFolders.slice(0, 5).join(', ')}`,
           actual: pathParts.slice(0, -1).join('/'),
           rule: 'consistent_folder_structure'
         });
@@ -395,31 +441,11 @@ export default class DriftDetector {
 
 
   detectNamingStyle(name) {
-    if (/^[a-z][a-zA-Z0-9]*$/.test(name) && /[A-Z]/.test(name)) return 'camelCase';
-    if (/^[a-z][a-z0-9_]*$/.test(name) && name.includes('_')) return 'snake_case';
-    if (/^[A-Z][a-zA-Z0-9]*$/.test(name)) return 'PascalCase';
-    if (/^[a-z][a-z0-9-]*$/.test(name) && name.includes('-')) return 'kebab-case';
-    if (/^[A-Z][A-Z0-9_]*$/.test(name)) return 'UPPER_CASE';
-    return 'unknown';
+    return detectNamingStyle(name);
   }
 
   convertNamingStyle(name, targetStyle) {
-    switch (targetStyle) {
-      case 'camelCase':
-        return name.replace(/_(.)/g, (_, char) => char.toUpperCase())
-                  .replace(/-(.)/g, (_, char) => char.toUpperCase());
-      case 'snake_case':
-        return name.replace(/[A-Z]/g, letter => `_${letter.toLowerCase()}`)
-                  .replace(/-/g, '_');
-      case 'PascalCase':
-        return name.charAt(0).toUpperCase() + 
-               name.slice(1).replace(/_(.)/g, (_, char) => char.toUpperCase());
-      case 'kebab-case':
-        return name.replace(/[A-Z]/g, letter => `-${letter.toLowerCase()}`)
-                  .replace(/_/g, '-');
-      default:
-        return name;
-    }
+    return convertNamingStyle(name, targetStyle);
   }
 
   getLineNumber(content, index) {

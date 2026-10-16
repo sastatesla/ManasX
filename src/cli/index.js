@@ -71,6 +71,7 @@ program
     new Command('init')
       .description('Initialize rule configuration')
       .option('-f, --file <file>', 'Configuration file name', 'manasx-rules.json')
+      .option('-p, --patterns <file>', 'Learned patterns file', 'patterns.json')
       .action((options) => {
         runRuleInit(options);
       })

@@ -1,6 +1,7 @@
 import fs from 'fs/promises';
 import path from 'path';
 import { logger } from '../utils/logger.js';
+import { detectNamingStyle, isCamelCase, isPascalCase, isSnakeCase, isKebabCase, isUpperCase } from '../utils/namingUtils.js';
 
 export default class PatternLearner {
   constructor() {
@@ -22,6 +23,9 @@ export default class PatternLearner {
       },
       architecture: {
         folderStructure: new Map(),
+        folderPatterns: new Map(),
+        fileRoles: new Map(),
+        patternsDetected: { isEventDriven: false, isRCSR: false, isModular: false },
         fileTypes: new Map(),
         componentPatterns: new Map(),
         exportStyles: { named: 0, default: 0, mixed: 0 }
@@ -136,10 +140,21 @@ export default class PatternLearner {
     const functionMatches = content.match(/(?:function\s+([a-zA-Z_$][a-zA-Z0-9_$]*)|(?:const|let)\s+([a-zA-Z_$][a-zA-Z0-9_$]*)\s*=\s*(?:async\s+)?\()/g) || [];
 
     variableMatches.forEach(match => {
-      const varName = match.split(/\s+/)[1];
+      const parts = match.split(/\s+/);
+      const keyword = parts[0];
+      const varName = parts[1];
+      if (!varName) return;
+
+      // Handle UPPER_CASE constants
+      if (keyword === 'const' && this.isUpperCase(varName)) {
+        this.patterns.naming.constants.UPPER_CASE++;
+        return;
+      }
+
       if (this.isCamelCase(varName)) this.patterns.naming.variables.camelCase++;
       else if (this.isSnakeCase(varName)) this.patterns.naming.variables.snake_case++;
       else if (this.isPascalCase(varName)) this.patterns.naming.variables.PascalCase++;
+      else if (this.isUpperCase(varName)) this.patterns.naming.constants.UPPER_CASE++;
     });
 
     functionMatches.forEach(match => {
@@ -173,6 +188,10 @@ export default class PatternLearner {
             libName, 
             (this.patterns.imports.libraries.get(libName) || 0) + 1
           );
+
+          if (['bullmq', 'bull', 'kafkajs', 'amqplib', 'rabbitmq', 'redis', 'ioredis'].includes(libName)) {
+            this.patterns.architecture.patternsDetected.isEventDriven = true;
+          }
         }
 
         if (path.extname(importPath)) {
@@ -192,8 +211,10 @@ export default class PatternLearner {
   }
 
   analyzeArchitecturePatterns(filePath, relativePath) {
-    const pathParts = relativePath.split(path.sep);
+    const normalized = relativePath.split(path.sep).join('/');
+    const pathParts = normalized.split('/');
     const fileExt = path.extname(filePath);
+    const fileName = path.basename(filePath);
     
     if (pathParts.length > 1) {
       const folderPath = pathParts.slice(0, -1).join('/');
@@ -201,6 +222,37 @@ export default class PatternLearner {
         folderPath,
         (this.patterns.architecture.folderStructure.get(folderPath) || 0) + 1
       );
+
+      const topFolder = pathParts[0] === 'src' && pathParts.length > 2 ? pathParts[1] : pathParts[0];
+      const patternKey = `${topFolder}/*`;
+      this.patterns.architecture.folderPatterns.set(
+        patternKey,
+        (this.patterns.architecture.folderPatterns.get(patternKey) || 0) + 1
+      );
+
+      if (topFolder === 'modules') {
+        this.patterns.architecture.patternsDetected.isModular = true;
+      }
+      if (topFolder === 'system' || folderPath.includes('jobs') || folderPath.includes('mailers') || folderPath.includes('queues') || folderPath.includes('events')) {
+        this.patterns.architecture.patternsDetected.isEventDriven = true;
+      }
+    }
+
+    // Detect RCSR / Component Roles (e.g. .service.js, .controller.js, .routes.js, .model.js, .repository.js, .job.js)
+    const roleMatch = fileName.match(/\.([a-zA-Z0-9_-]+)\.(?:js|ts|jsx|tsx)$/);
+    if (roleMatch) {
+      const role = roleMatch[1].toLowerCase();
+      this.patterns.architecture.fileRoles.set(
+        role,
+        (this.patterns.architecture.fileRoles.get(role) || 0) + 1
+      );
+
+      if (['service', 'controller', 'routes', 'route', 'repository', 'repo', 'model', 'schema'].includes(role)) {
+        this.patterns.architecture.patternsDetected.isRCSR = true;
+      }
+      if (['job', 'worker', 'queue', 'listener', 'event', 'mailer'].includes(role)) {
+        this.patterns.architecture.patternsDetected.isEventDriven = true;
+      }
     }
 
     this.patterns.architecture.fileTypes.set(
@@ -248,6 +300,42 @@ export default class PatternLearner {
     else this.patterns.comments.density.none++;
   }
 
+  serializePatterns(patterns) {
+    return {
+      naming: {
+        variables: patterns.naming.variables,
+        functions: patterns.naming.functions,
+        constants: patterns.naming.constants,
+        files: patterns.naming.files,
+        prefixes: Object.fromEntries(patterns.naming.prefixes.entries()),
+        suffixes: Object.fromEntries(patterns.naming.suffixes.entries())
+      },
+      imports: {
+        style: patterns.imports.style,
+        extensions: patterns.imports.extensions,
+        grouping: patterns.imports.grouping,
+        libraries: Object.fromEntries(patterns.imports.libraries.entries()),
+        internalPaths: Array.from(patterns.imports.internalPaths)
+      },
+      architecture: {
+        folderStructure: Object.fromEntries(patterns.architecture.folderStructure.entries()),
+        folderPatterns: Object.fromEntries(patterns.architecture.folderPatterns.entries()),
+        fileRoles: Object.fromEntries(patterns.architecture.fileRoles.entries()),
+        patternsDetected: patterns.architecture.patternsDetected,
+        fileTypes: Object.fromEntries(patterns.architecture.fileTypes.entries()),
+        componentPatterns: Object.fromEntries(patterns.architecture.componentPatterns.entries()),
+        exportStyles: patterns.architecture.exportStyles
+      },
+      testing: {
+        fileNaming: patterns.testing.fileNaming,
+        location: patterns.testing.location,
+        framework: Object.fromEntries(patterns.testing.framework.entries()),
+        assertionStyles: Object.fromEntries(patterns.testing.assertionStyles.entries())
+      },
+      comments: patterns.comments
+    };
+  }
+
   consolidatePatterns() {
     return {
       timestamp: new Date().toISOString(),
@@ -259,12 +347,12 @@ export default class PatternLearner {
         testing: this.getTestingRecommendations(),
         comments: this.getCommentRecommendations()
       },
-      rawPatterns: this.patterns
+      rawPatterns: this.serializePatterns(this.patterns)
     };
   }
 
   calculateConfidence() {
-    const totalFiles = Object.values(this.patterns.architecture.fileTypes)
+    const totalFiles = Array.from(this.patterns.architecture.fileTypes.values())
       .reduce((sum, count) => sum + count, 0);
     
     if (totalFiles < 10) return 'low';
@@ -293,11 +381,54 @@ export default class PatternLearner {
   }
 
   getArchitectureRecommendations() {
+    const isModular = this.patterns.architecture.patternsDetected.isModular;
+    const isRCSR = this.patterns.architecture.patternsDetected.isRCSR;
+    const isEventDriven = this.patterns.architecture.patternsDetected.isEventDriven;
+
+    let style = 'standard';
+    if (isModular && isRCSR && isEventDriven) {
+      style = 'event-driven-modular-rcsr';
+    } else if (isModular && isRCSR) {
+      style = 'modular-rcsr';
+    } else if (isRCSR) {
+      style = 'layered-rcsr';
+    } else if (isEventDriven) {
+      style = 'event-driven';
+    } else if (isModular) {
+      style = 'modular';
+    }
+
+    const detectedRoles = Array.from(this.patterns.architecture.fileRoles.entries())
+      .sort(([, a], [, b]) => b - a)
+      .map(([role]) => role);
+
+    const conventions = [];
+    if (isModular) {
+      conventions.push('Modular Feature Folders: modules/<feature>/');
+    }
+    if (isRCSR) {
+      conventions.push(`RCSR Components: <feature>.{${detectedRoles.slice(0, 4).join(',')}}.js`);
+    }
+    if (isEventDriven) {
+      conventions.push('Event-Driven Background Processing: system/jobs/ or workers/ (BullMQ/Queues)');
+    }
+
+    const folderPatterns = Array.from(this.patterns.architecture.folderPatterns.entries())
+      .sort(([, a], [, b]) => b - a)
+      .map(([pattern]) => pattern);
+
     return {
+      style,
+      isEventDriven,
+      hasRCSR: isRCSR,
+      isModular,
+      roleSuffixes: detectedRoles,
+      conventions,
+      folderPatterns,
       exportStyle: this.getMostCommon(this.patterns.architecture.exportStyles),
       commonFolders: Array.from(this.patterns.architecture.folderStructure.entries())
-        .sort(([,a], [,b]) => b - a)
-        .slice(0, 10)
+        .sort(([, a], [, b]) => b - a)
+        .slice(0, 15)
         .map(([folder]) => folder)
     };
   }
@@ -328,19 +459,23 @@ export default class PatternLearner {
   }
 
   isCamelCase(str) {
-    return /^[a-z][a-zA-Z0-9]*$/.test(str) && /[A-Z]/.test(str);
+    return isCamelCase(str);
   }
 
   isSnakeCase(str) {
-    return /^[a-z][a-z0-9_]*$/.test(str) && str.includes('_');
+    return isSnakeCase(str);
   }
 
   isPascalCase(str) {
-    return /^[A-Z][a-zA-Z0-9]*$/.test(str);
+    return isPascalCase(str);
   }
 
   isKebabCase(str) {
-    return /^[a-z][a-z0-9-]*$/.test(str) && str.includes('-');
+    return isKebabCase(str);
+  }
+
+  isUpperCase(str) {
+    return isUpperCase(str);
   }
 
   async savePatterns(patterns, filePath) {
